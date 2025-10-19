@@ -36,6 +36,8 @@ Kubernetes Cluster Clash — соревновательная настольна
 
 В каталоге `frontend/` размещён клиент (React + Tailwind), в `backend/` — сервер на FastAPI. Общий план и архитектура описаны в `docs/online_platform.md`. Для запуска набора контейнеров разработчика используйте `docker-compose up` (требуются Docker и pnpm/Poetry для работы вне контейнеров). Ближайшие задачи: реализация WebSocket-шины, хранение комнат и интеграция правил Classic/Junior.
 
+Локально фронтенд ожидает переменную `VITE_API_URL` (по умолчанию `http://localhost:8000`); бекенд — `DATABASE_URL`/`REDIS_URL`, которые уже заданы в `docker-compose.yml`.
+
 ## Junior-режим (6+)
 
 Для игры с детьми используйте:
