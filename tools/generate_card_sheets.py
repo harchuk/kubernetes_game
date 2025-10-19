@@ -15,15 +15,15 @@ OUTPUT_HTML = ROOT / "cards" / "cards_print.html"
 
 # Основные цвета и мягкие оттенки для разных типов карт.
 TYPE_COLORS: Dict[str, Dict[str, str]] = {
-    "Нода": {"accent": "#1d4ed8", "soft": "#dbeafe"},
-    "Контрольный план": {"accent": "#1e3a8a", "soft": "#e0e7ff"},
-    "Хранилище": {"accent": "#0ea5e9", "soft": "#cffafe"},
-    "Сеть": {"accent": "#6366f1", "soft": "#e0e7ff"},
-    "Автоматизация": {"accent": "#14b8a6", "soft": "#ccfbf1"},
-    "Улучшение": {"accent": "#0f766e", "soft": "#d1fae5"},
-    "Нагрузка": {"accent": "#22c55e", "soft": "#dcfce7"},
-    "Атака": {"accent": "#ef4444", "soft": "#fee2e2"},
-    "Ответ": {"accent": "#f59e0b", "soft": "#fef3c7"},
+    "Node": {"accent": "#1d4ed8", "soft": "#dbeafe"},
+    "Control Plane": {"accent": "#1e3a8a", "soft": "#e0e7ff"},
+    "Storage": {"accent": "#0ea5e9", "soft": "#cffafe"},
+    "Networking": {"accent": "#6366f1", "soft": "#e0e7ff"},
+    "Automation": {"accent": "#14b8a6", "soft": "#ccfbf1"},
+    "Upgrade": {"accent": "#0f766e", "soft": "#d1fae5"},
+    "Workload": {"accent": "#22c55e", "soft": "#dcfce7"},
+    "Attack": {"accent": "#ef4444", "soft": "#fee2e2"},
+    "Response": {"accent": "#f59e0b", "soft": "#fef3c7"},
 }
 
 FIELD_ALIASES: Dict[str, Iterable[str]] = {
