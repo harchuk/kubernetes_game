@@ -1,0 +1,18 @@
+name,type,stars,cost,action,quantity
+Friendly Node,Node,0,1,Добавьте 1 Node в свой кластер.,6
+Turbo Node,Node,0,2,Добавьте 1 Node и возьмите 1 карту.,3
+Shield Node,Node,0,2,Добавьте 1 Node и получите 1 энергию.,3
+Simple App,Workload,1,1,Получите 1 звезду SLO.,4
+Weather Widget,Workload,1,1,Получите 1 звезду и 1 энергию.,3
+School Portal,Workload,2,2,Если у вас 2+ Nodes получите 2 звезды иначе 1.,3
+Game Server,Workload,2,3,Получите 2 звезды; если у вас есть Turbo Node добавьте ещё 1.,2
+Science Lab,Workload,3,3,Если у вас 2+ Nodes получите 3 звезды иначе 2.,2
+Energy Surge,Boost,0,0,Получите 2 энергии.,3
+Helper Drone,Boost,0,1,Возьмите 2 карты оставьте 1 в руке.,3
+Friendly Upgrade,Boost,0,1,Снимите 1 аварию или получите 1 звезду обратно.,3
+Quick Fix,Boost,0,1,Удалите 1 аварию с любой вашей карты.,2
+Happy Share,Event,0,0,Все игроки получают 1 энергию вы берёте 1 карту.,2
+Mini Outage,Event,0,1,Выберите игрока: он теряет 1 звезду но получает 1 энергию.,2
+Storm Cloud,Event,0,0,Положите 1 аварию на любую Workload. Владелец получает 1 энергию.,2
+Festival Day,Event,0,0,Все игроки получают 1 карту. Вы получаете 1 звезду.,1
+Double Shift,Boost,0,2,Сыграйте ещё 1 карту в этот ход.,2
