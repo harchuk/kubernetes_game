@@ -12,7 +12,7 @@
 body {
     font-family: 'Segoe UI', 'Helvetica Neue', Helvetica, Arial, sans-serif;
     margin: 0;
-    background: radial-gradient(circle at top, #0f172a 0%, #111827 40%, #1e293b 100%);
+    background: #0f172a;
     color: #0f172a;
     -webkit-print-color-adjust: exact;
     print-color-adjust: exact;
@@ -25,7 +25,7 @@ main {
     grid-template-columns: repeat(3, 2.5in);
     grid-auto-rows: 3.5in;
     gap: 0.3in;
-    margin-bottom: 0.6in;
+    margin-bottom: 0.5in;
     page-break-after: always;
 }
 .sheet:last-of-type {
@@ -34,147 +34,116 @@ main {
 .card {
     position: relative;
     box-sizing: border-box;
-    border-radius: 0.26in;
-    padding: 0.24in 0.22in;
-    background: linear-gradient(160deg, rgba(255, 255, 255, 0.97), rgba(236, 242, 247, 0.9));
+    border-radius: 0.2in;
+    padding: 0.18in 0.16in;
+    background: #ffffff;
+    border: 1.5px solid rgba(15, 23, 42, 0.25);
     display: flex;
     flex-direction: column;
-    justify-content: center;
-    box-shadow: 0 0.12in 0.38in rgba(15, 23, 42, 0.28);
+    gap: 0.12in;
     overflow: hidden;
-    border: 1px solid rgba(15, 23, 42, 0.12);
-}
-.card::before {
-    content: '';
-    position: absolute;
-    inset: 0.16in;
-    border-radius: 0.18in;
-    border: 1px solid rgba(15, 23, 42, 0.08);
-    pointer-events: none;
-}
-.card::after {
-    content: '';
-    position: absolute;
-    width: 88%;
-    height: 88%;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%) rotate(5deg);
-    background: radial-gradient(circle at top left, rgba(255,255,255,0.82), transparent 68%),
-                linear-gradient(120deg, rgba(255,255,255,0.0), rgba(148, 163, 184, 0.14));
-    border-radius: 2in;
-    pointer-events: none;
 }
 .card-content {
-    position: relative;
-    z-index: 1;
-    display: grid;
-    grid-template-rows: auto auto auto 1fr auto;
-    row-gap: 0.14in;
-    height: 100%;
+    flex: 1 1 auto;
+    display: flex;
+    flex-direction: column;
+    gap: 0.12in;
+    min-height: 0;
 }
 .card-top {
-    display: grid;
-    grid-template-columns: auto 1fr auto;
+    display: flex;
     align-items: center;
     gap: 0.12in;
+    min-height: 0;
 }
 .type-glyph {
-    width: 0.54in;
-    height: 0.54in;
+    width: 0.42in;
+    height: 0.42in;
     border-radius: 999px;
     display: flex;
     align-items: center;
     justify-content: center;
     font-weight: 700;
-    font-size: 0.6rem;
+    font-size: 0.52rem;
     letter-spacing: 0.08em;
     color: #0f172a;
-    background: rgba(148, 163, 184, 0.16);
-    border: 1px solid rgba(15, 23, 42, 0.08);
+    background: rgba(148, 163, 184, 0.18);
+    border: 1px solid rgba(15, 23, 42, 0.12);
 }
 .tag {
     flex: 1 1 auto;
-    padding: 0.04in 0.18in;
-    border-radius: 999px;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    padding: 0.05in 0.12in;
+    border-radius: 0.16in;
     color: #ffffff;
     font-weight: 700;
-    font-size: 0.6rem;
-    letter-spacing: 0.08em;
+    font-size: 0.5rem;
+    letter-spacing: 0.1em;
     text-transform: uppercase;
-    box-shadow: 0 0.08in 0.22in rgba(15, 23, 42, 0.18);
-    background: var(--accent, #1d4ed8);
 }
 .cost-badge {
     display: inline-flex;
-    flex-direction: column;
     align-items: center;
-    min-width: 0.48in;
-    padding: 0.04in 0.16in;
-    border-radius: 0.18in;
-    background: rgba(15, 23, 42, 0.92);
+    justify-content: center;
+    padding: 0.05in 0.14in;
+    border-radius: 0.16in;
+    background: #0f172a;
     color: #f8fafc;
-    box-shadow: 0 0.08in 0.25in rgba(15, 23, 42, 0.28);
-}
-.cost-label {
-    font-size: 0.45rem;
-    letter-spacing: 0.12em;
-    text-transform: uppercase;
-    opacity: 0.7;
-}
-.cost-value {
-    font-size: 0.75rem;
+    font-size: 0.66rem;
     font-weight: 700;
 }
 .card-name {
     margin: 0;
-    font-size: 0.98rem;
-    line-height: 1.18;
+    font-size: 0.9rem;
+    line-height: 1.15;
     color: #0f172a;
 }
 .stat-row {
     display: flex;
-    gap: 0.12in;
+    flex-wrap: wrap;
+    gap: 0.08in;
 }
 .stat-chip {
     display: flex;
     flex-direction: column;
-    padding: 0.06in 0.14in;
-    border-radius: 0.16in;
+    gap: 0.03in;
+    padding: 0.05in 0.12in;
+    border-radius: 0.14in;
     background: rgba(15, 23, 42, 0.04);
-    border: 1px solid rgba(15, 23, 42, 0.08);
-    min-width: 1.05in;
-    box-shadow: inset 0 0 0 1px rgba(255,255,255,0.55);
+    border: 1px solid rgba(15, 23, 42, 0.12);
 }
 .stat-label {
-    font-size: 0.48rem;
+    font-size: 0.46rem;
     text-transform: uppercase;
-    letter-spacing: 0.12em;
+    letter-spacing: 0.1em;
     color: rgba(15, 23, 42, 0.65);
 }
 .stat-value {
-    font-size: 0.72rem;
+    font-size: 0.68rem;
     font-weight: 700;
     color: #0f172a;
 }
 .body-panel {
-    position: relative;
-    border-radius: 0.18in;
-    padding: 0.16in 0.18in;
-    background: linear-gradient(160deg, rgba(255,255,255,0.85), rgba(238,242,247,0.95));
-    border: 1px solid rgba(15, 23, 42, 0.08);
-    box-shadow: inset 0 0.06in 0.16in rgba(15, 23, 42, 0.08);
-    font-size: 0.66rem;
-    line-height: 1.4;
+    flex: 1 1 auto;
+    display: flex;
+    flex-direction: column;
+    gap: 0.08in;
+    padding: 0.12in 0.14in;
+    border-radius: 0.16in;
+    background: #f8fafc;
+    border: 1px solid rgba(15, 23, 42, 0.12);
+    font-size: 0.6rem;
+    line-height: 1.35;
     color: #1e293b;
-    overflow-wrap: anywhere;
-    hyphens: auto;
+    min-height: 0;
 }
 .body-panel p {
-    margin: 0 0 0.12in;
+    margin: 0;
 }
-.body-panel p:last-child {
-    margin-bottom: 0;
+.body-panel p + p {
+    margin-top: 0.08in;
 }
 .prereq strong {
     color: #0f172a;
@@ -183,172 +152,217 @@ main {
     display: flex;
     justify-content: space-between;
     align-items: center;
-    font-size: 0.52rem;
+    font-size: 0.48rem;
     letter-spacing: 0.04em;
-    color: rgba(15, 23, 42, 0.68);
+    color: rgba(15, 23, 42, 0.7);
 }
 .series-badge {
-    padding: 0.04in 0.12in;
+    padding: 0.04in 0.1in;
     border-radius: 999px;
     border: 1px solid rgba(15, 23, 42, 0.12);
-    background: rgba(148, 163, 184, 0.12);
+    background: rgba(148, 163, 184, 0.16);
 }
 .placeholder {
-    border: 2px dashed #94a3b8;
-    background: rgba(148, 163, 184, 0.16);
-    border-radius: 0.24in;
+    border: 1.5px dashed rgba(148, 163, 184, 0.6);
+    background: rgba(148, 163, 184, 0.18);
+    border-radius: 0.2in;
 }
 
 .card-type-node {
-    border: 1px solid rgba(15, 23, 42, 0.12);
+    border-color: #1d4ed8;
 }
 .card-type-node .tag {
     background: #1d4ed8;
 }
 .card-type-node .type-glyph {
-    background: linear-gradient(135deg, rgba(148, 163, 184, 0.22), #dbeafe);
-}
-.card-type-node::after {
-    box-shadow: 0 0.25in 0.6in rgba(29, 78, 216, 0.28);
+    color: #1d4ed8;
+    border-color: #1d4ed855;
+    background: #e0edff;
 }
 .card-type-node .body-panel {
-    background: linear-gradient(160deg, rgba(255,255,255,0.86), #dbeafe);
+    background: linear-gradient(180deg, rgba(255,255,255,0.96), #e0edff);
+    border-color: #1d4ed844;
+}
+.card-type-node .series-badge {
+    border-color: #1d4ed844;
+    background: #e0edff;
+    color: #1d4ed8;
 }
 
 
 .card-type-control-plane {
-    border: 1px solid rgba(15, 23, 42, 0.12);
+    border-color: #1e3a8a;
 }
 .card-type-control-plane .tag {
     background: #1e3a8a;
 }
 .card-type-control-plane .type-glyph {
-    background: linear-gradient(135deg, rgba(148, 163, 184, 0.22), #e0e7ff);
-}
-.card-type-control-plane::after {
-    box-shadow: 0 0.25in 0.6in rgba(30, 58, 138, 0.3);
+    color: #1e3a8a;
+    border-color: #1e3a8a55;
+    background: #e5e9ff;
 }
 .card-type-control-plane .body-panel {
-    background: linear-gradient(160deg, rgba(255,255,255,0.86), #e0e7ff);
+    background: linear-gradient(180deg, rgba(255,255,255,0.96), #e5e9ff);
+    border-color: #1e3a8a44;
+}
+.card-type-control-plane .series-badge {
+    border-color: #1e3a8a44;
+    background: #e5e9ff;
+    color: #1e3a8a;
 }
 
 
 .card-type-storage {
-    border: 1px solid rgba(15, 23, 42, 0.12);
+    border-color: #0ea5e9;
 }
 .card-type-storage .tag {
     background: #0ea5e9;
 }
 .card-type-storage .type-glyph {
-    background: linear-gradient(135deg, rgba(148, 163, 184, 0.22), #cffafe);
-}
-.card-type-storage::after {
-    box-shadow: 0 0.25in 0.6in rgba(14, 165, 233, 0.28);
+    color: #0ea5e9;
+    border-color: #0ea5e955;
+    background: #def5ff;
 }
 .card-type-storage .body-panel {
-    background: linear-gradient(160deg, rgba(255,255,255,0.86), #cffafe);
+    background: linear-gradient(180deg, rgba(255,255,255,0.96), #def5ff);
+    border-color: #0ea5e944;
+}
+.card-type-storage .series-badge {
+    border-color: #0ea5e944;
+    background: #def5ff;
+    color: #0ea5e9;
 }
 
 
 .card-type-networking {
-    border: 1px solid rgba(15, 23, 42, 0.12);
+    border-color: #6366f1;
 }
 .card-type-networking .tag {
     background: #6366f1;
 }
 .card-type-networking .type-glyph {
-    background: linear-gradient(135deg, rgba(148, 163, 184, 0.22), #e0e7ff);
-}
-.card-type-networking::after {
-    box-shadow: 0 0.25in 0.6in rgba(99, 102, 241, 0.3);
+    color: #6366f1;
+    border-color: #6366f155;
+    background: #e5e7ff;
 }
 .card-type-networking .body-panel {
-    background: linear-gradient(160deg, rgba(255,255,255,0.86), #e0e7ff);
+    background: linear-gradient(180deg, rgba(255,255,255,0.96), #e5e7ff);
+    border-color: #6366f144;
+}
+.card-type-networking .series-badge {
+    border-color: #6366f144;
+    background: #e5e7ff;
+    color: #6366f1;
 }
 
 
 .card-type-automation {
-    border: 1px solid rgba(15, 23, 42, 0.12);
+    border-color: #14b8a6;
 }
 .card-type-automation .tag {
     background: #14b8a6;
 }
 .card-type-automation .type-glyph {
-    background: linear-gradient(135deg, rgba(148, 163, 184, 0.22), #ccfbf1);
-}
-.card-type-automation::after {
-    box-shadow: 0 0.25in 0.6in rgba(20, 184, 166, 0.28);
+    color: #14b8a6;
+    border-color: #14b8a655;
+    background: #d7fcf2;
 }
 .card-type-automation .body-panel {
-    background: linear-gradient(160deg, rgba(255,255,255,0.86), #ccfbf1);
+    background: linear-gradient(180deg, rgba(255,255,255,0.96), #d7fcf2);
+    border-color: #14b8a644;
+}
+.card-type-automation .series-badge {
+    border-color: #14b8a644;
+    background: #d7fcf2;
+    color: #14b8a6;
 }
 
 
 .card-type-upgrade {
-    border: 1px solid rgba(15, 23, 42, 0.12);
+    border-color: #0f766e;
 }
 .card-type-upgrade .tag {
     background: #0f766e;
 }
 .card-type-upgrade .type-glyph {
-    background: linear-gradient(135deg, rgba(148, 163, 184, 0.22), #d1fae5);
-}
-.card-type-upgrade::after {
-    box-shadow: 0 0.25in 0.6in rgba(15, 118, 110, 0.3);
+    color: #0f766e;
+    border-color: #0f766e55;
+    background: #d6f7ef;
 }
 .card-type-upgrade .body-panel {
-    background: linear-gradient(160deg, rgba(255,255,255,0.86), #d1fae5);
+    background: linear-gradient(180deg, rgba(255,255,255,0.96), #d6f7ef);
+    border-color: #0f766e44;
+}
+.card-type-upgrade .series-badge {
+    border-color: #0f766e44;
+    background: #d6f7ef;
+    color: #0f766e;
 }
 
 
 .card-type-workload {
-    border: 1px solid rgba(15, 23, 42, 0.12);
+    border-color: #22c55e;
 }
 .card-type-workload .tag {
     background: #22c55e;
 }
 .card-type-workload .type-glyph {
-    background: linear-gradient(135deg, rgba(148, 163, 184, 0.22), #dcfce7);
-}
-.card-type-workload::after {
-    box-shadow: 0 0.25in 0.6in rgba(34, 197, 94, 0.28);
+    color: #22c55e;
+    border-color: #22c55e55;
+    background: #e4fbe9;
 }
 .card-type-workload .body-panel {
-    background: linear-gradient(160deg, rgba(255,255,255,0.86), #dcfce7);
+    background: linear-gradient(180deg, rgba(255,255,255,0.96), #e4fbe9);
+    border-color: #22c55e44;
+}
+.card-type-workload .series-badge {
+    border-color: #22c55e44;
+    background: #e4fbe9;
+    color: #22c55e;
 }
 
 
 .card-type-attack {
-    border: 1px solid rgba(15, 23, 42, 0.12);
+    border-color: #ef4444;
 }
 .card-type-attack .tag {
     background: #ef4444;
 }
 .card-type-attack .type-glyph {
-    background: linear-gradient(135deg, rgba(148, 163, 184, 0.22), #fee2e2);
-}
-.card-type-attack::after {
-    box-shadow: 0 0.25in 0.6in rgba(239, 68, 68, 0.32);
+    color: #ef4444;
+    border-color: #ef444455;
+    background: #ffe2e2;
 }
 .card-type-attack .body-panel {
-    background: linear-gradient(160deg, rgba(255,255,255,0.86), #fee2e2);
+    background: linear-gradient(180deg, rgba(255,255,255,0.96), #ffe2e2);
+    border-color: #ef444444;
+}
+.card-type-attack .series-badge {
+    border-color: #ef444444;
+    background: #ffe2e2;
+    color: #ef4444;
 }
 
 
 .card-type-response {
-    border: 1px solid rgba(15, 23, 42, 0.12);
+    border-color: #f59e0b;
 }
 .card-type-response .tag {
     background: #f59e0b;
 }
 .card-type-response .type-glyph {
-    background: linear-gradient(135deg, rgba(148, 163, 184, 0.22), #fef3c7);
-}
-.card-type-response::after {
-    box-shadow: 0 0.25in 0.6in rgba(245, 158, 11, 0.3);
+    color: #f59e0b;
+    border-color: #f59e0b55;
+    background: #fff1cf;
 }
 .card-type-response .body-panel {
-    background: linear-gradient(160deg, rgba(255,255,255,0.86), #fef3c7);
+    background: linear-gradient(180deg, rgba(255,255,255,0.96), #fff1cf);
+    border-color: #f59e0b44;
+}
+.card-type-response .series-badge {
+    border-color: #f59e0b44;
+    background: #fff1cf;
+    color: #f59e0b;
 }
 
 </style>
@@ -366,7 +380,7 @@ main {
     <div class="card-top">
       <span class="type-glyph">ND</span>
       <span class="tag">Node</span>
-      <span class="cost-badge"><span class="cost-label">Cost</span><span class="cost-value">2</span></span>
+      <span class="cost-badge">⚙ 2</span>
     </div>
     <h2 class="card-name">Standard Node</h2>
     <div class="stat-row">
@@ -396,7 +410,7 @@ main {
     <div class="card-top">
       <span class="type-glyph">ND</span>
       <span class="tag">Node</span>
-      <span class="cost-badge"><span class="cost-label">Cost</span><span class="cost-value">2</span></span>
+      <span class="cost-badge">⚙ 2</span>
     </div>
     <h2 class="card-name">Standard Node</h2>
     <div class="stat-row">
@@ -426,7 +440,7 @@ main {
     <div class="card-top">
       <span class="type-glyph">ND</span>
       <span class="tag">Node</span>
-      <span class="cost-badge"><span class="cost-label">Cost</span><span class="cost-value">2</span></span>
+      <span class="cost-badge">⚙ 2</span>
     </div>
     <h2 class="card-name">Standard Node</h2>
     <div class="stat-row">
@@ -456,7 +470,7 @@ main {
     <div class="card-top">
       <span class="type-glyph">ND</span>
       <span class="tag">Node</span>
-      <span class="cost-badge"><span class="cost-label">Cost</span><span class="cost-value">2</span></span>
+      <span class="cost-badge">⚙ 2</span>
     </div>
     <h2 class="card-name">Standard Node</h2>
     <div class="stat-row">
@@ -486,7 +500,7 @@ main {
     <div class="card-top">
       <span class="type-glyph">ND</span>
       <span class="tag">Node</span>
-      <span class="cost-badge"><span class="cost-label">Cost</span><span class="cost-value">2</span></span>
+      <span class="cost-badge">⚙ 2</span>
     </div>
     <h2 class="card-name">Standard Node</h2>
     <div class="stat-row">
@@ -516,7 +530,7 @@ main {
     <div class="card-top">
       <span class="type-glyph">ND</span>
       <span class="tag">Node</span>
-      <span class="cost-badge"><span class="cost-label">Cost</span><span class="cost-value">2</span></span>
+      <span class="cost-badge">⚙ 2</span>
     </div>
     <h2 class="card-name">Standard Node</h2>
     <div class="stat-row">
@@ -546,7 +560,7 @@ main {
     <div class="card-top">
       <span class="type-glyph">ND</span>
       <span class="tag">Node</span>
-      <span class="cost-badge"><span class="cost-label">Cost</span><span class="cost-value">2</span></span>
+      <span class="cost-badge">⚙ 2</span>
     </div>
     <h2 class="card-name">Standard Node</h2>
     <div class="stat-row">
@@ -576,7 +590,7 @@ main {
     <div class="card-top">
       <span class="type-glyph">ND</span>
       <span class="tag">Node</span>
-      <span class="cost-badge"><span class="cost-label">Cost</span><span class="cost-value">4</span></span>
+      <span class="cost-badge">⚙ 4</span>
     </div>
     <h2 class="card-name">GPU Accelerator Node</h2>
     <div class="stat-row">
@@ -606,7 +620,7 @@ main {
     <div class="card-top">
       <span class="type-glyph">ND</span>
       <span class="tag">Node</span>
-      <span class="cost-badge"><span class="cost-label">Cost</span><span class="cost-value">4</span></span>
+      <span class="cost-badge">⚙ 4</span>
     </div>
     <h2 class="card-name">GPU Accelerator Node</h2>
     <div class="stat-row">
@@ -638,7 +652,7 @@ main {
     <div class="card-top">
       <span class="type-glyph">ND</span>
       <span class="tag">Node</span>
-      <span class="cost-badge"><span class="cost-label">Cost</span><span class="cost-value">4</span></span>
+      <span class="cost-badge">⚙ 4</span>
     </div>
     <h2 class="card-name">GPU Accelerator Node</h2>
     <div class="stat-row">
@@ -668,7 +682,7 @@ main {
     <div class="card-top">
       <span class="type-glyph">ND</span>
       <span class="tag">Node</span>
-      <span class="cost-badge"><span class="cost-label">Cost</span><span class="cost-value">1</span></span>
+      <span class="cost-badge">⚙ 1</span>
     </div>
     <h2 class="card-name">Spot Node</h2>
     <div class="stat-row">
@@ -698,7 +712,7 @@ main {
     <div class="card-top">
       <span class="type-glyph">ND</span>
       <span class="tag">Node</span>
-      <span class="cost-badge"><span class="cost-label">Cost</span><span class="cost-value">1</span></span>
+      <span class="cost-badge">⚙ 1</span>
     </div>
     <h2 class="card-name">Spot Node</h2>
     <div class="stat-row">
@@ -728,7 +742,7 @@ main {
     <div class="card-top">
       <span class="type-glyph">ND</span>
       <span class="tag">Node</span>
-      <span class="cost-badge"><span class="cost-label">Cost</span><span class="cost-value">1</span></span>
+      <span class="cost-badge">⚙ 1</span>
     </div>
     <h2 class="card-name">Spot Node</h2>
     <div class="stat-row">
@@ -758,7 +772,7 @@ main {
     <div class="card-top">
       <span class="type-glyph">ND</span>
       <span class="tag">Node</span>
-      <span class="cost-badge"><span class="cost-label">Cost</span><span class="cost-value">1</span></span>
+      <span class="cost-badge">⚙ 1</span>
     </div>
     <h2 class="card-name">Spot Node</h2>
     <div class="stat-row">
@@ -788,7 +802,7 @@ main {
     <div class="card-top">
       <span class="type-glyph">CP</span>
       <span class="tag">Control Plane</span>
-      <span class="cost-badge"><span class="cost-label">Cost</span><span class="cost-value">3</span></span>
+      <span class="cost-badge">⚙ 3</span>
     </div>
     <h2 class="card-name">Managed Control Plane</h2>
     <div class="stat-row">
@@ -818,7 +832,7 @@ main {
     <div class="card-top">
       <span class="type-glyph">CP</span>
       <span class="tag">Control Plane</span>
-      <span class="cost-badge"><span class="cost-label">Cost</span><span class="cost-value">3</span></span>
+      <span class="cost-badge">⚙ 3</span>
     </div>
     <h2 class="card-name">Managed Control Plane</h2>
     <div class="stat-row">
@@ -848,7 +862,7 @@ main {
     <div class="card-top">
       <span class="type-glyph">CP</span>
       <span class="tag">Control Plane</span>
-      <span class="cost-badge"><span class="cost-label">Cost</span><span class="cost-value">3</span></span>
+      <span class="cost-badge">⚙ 3</span>
     </div>
     <h2 class="card-name">Managed Control Plane</h2>
     <div class="stat-row">
@@ -878,7 +892,7 @@ main {
     <div class="card-top">
       <span class="type-glyph">CP</span>
       <span class="tag">Control Plane</span>
-      <span class="cost-badge"><span class="cost-label">Cost</span><span class="cost-value">5</span></span>
+      <span class="cost-badge">⚙ 5</span>
     </div>
     <h2 class="card-name">High-Availability Control Plane</h2>
     <div class="stat-row">
@@ -910,7 +924,7 @@ main {
     <div class="card-top">
       <span class="type-glyph">CP</span>
       <span class="tag">Control Plane</span>
-      <span class="cost-badge"><span class="cost-label">Cost</span><span class="cost-value">5</span></span>
+      <span class="cost-badge">⚙ 5</span>
     </div>
     <h2 class="card-name">High-Availability Control Plane</h2>
     <div class="stat-row">
@@ -940,7 +954,7 @@ main {
     <div class="card-top">
       <span class="type-glyph">ST</span>
       <span class="tag">Storage</span>
-      <span class="cost-badge"><span class="cost-label">Cost</span><span class="cost-value">3</span></span>
+      <span class="cost-badge">⚙ 3</span>
     </div>
     <h2 class="card-name">Persistent Volume Stack</h2>
     <div class="stat-row">
@@ -970,7 +984,7 @@ main {
     <div class="card-top">
       <span class="type-glyph">ST</span>
       <span class="tag">Storage</span>
-      <span class="cost-badge"><span class="cost-label">Cost</span><span class="cost-value">3</span></span>
+      <span class="cost-badge">⚙ 3</span>
     </div>
     <h2 class="card-name">Persistent Volume Stack</h2>
     <div class="stat-row">
@@ -1000,7 +1014,7 @@ main {
     <div class="card-top">
       <span class="type-glyph">ST</span>
       <span class="tag">Storage</span>
-      <span class="cost-badge"><span class="cost-label">Cost</span><span class="cost-value">3</span></span>
+      <span class="cost-badge">⚙ 3</span>
     </div>
     <h2 class="card-name">Persistent Volume Stack</h2>
     <div class="stat-row">
@@ -1030,7 +1044,7 @@ main {
     <div class="card-top">
       <span class="type-glyph">ST</span>
       <span class="tag">Storage</span>
-      <span class="cost-badge"><span class="cost-label">Cost</span><span class="cost-value">3</span></span>
+      <span class="cost-badge">⚙ 3</span>
     </div>
     <h2 class="card-name">Persistent Volume Stack</h2>
     <div class="stat-row">
@@ -1060,7 +1074,7 @@ main {
     <div class="card-top">
       <span class="type-glyph">NW</span>
       <span class="tag">Networking</span>
-      <span class="cost-badge"><span class="cost-label">Cost</span><span class="cost-value">3</span></span>
+      <span class="cost-badge">⚙ 3</span>
     </div>
     <h2 class="card-name">Service Mesh Gateway</h2>
     <div class="stat-row">
@@ -1090,7 +1104,7 @@ main {
     <div class="card-top">
       <span class="type-glyph">NW</span>
       <span class="tag">Networking</span>
-      <span class="cost-badge"><span class="cost-label">Cost</span><span class="cost-value">3</span></span>
+      <span class="cost-badge">⚙ 3</span>
     </div>
     <h2 class="card-name">Service Mesh Gateway</h2>
     <div class="stat-row">
@@ -1120,7 +1134,7 @@ main {
     <div class="card-top">
       <span class="type-glyph">NW</span>
       <span class="tag">Networking</span>
-      <span class="cost-badge"><span class="cost-label">Cost</span><span class="cost-value">3</span></span>
+      <span class="cost-badge">⚙ 3</span>
     </div>
     <h2 class="card-name">Service Mesh Gateway</h2>
     <div class="stat-row">
@@ -1150,7 +1164,7 @@ main {
     <div class="card-top">
       <span class="type-glyph">NW</span>
       <span class="tag">Networking</span>
-      <span class="cost-badge"><span class="cost-label">Cost</span><span class="cost-value">2</span></span>
+      <span class="cost-badge">⚙ 2</span>
     </div>
     <h2 class="card-name">Edge Ingress Load Balancer</h2>
     <div class="stat-row">
@@ -1182,7 +1196,7 @@ main {
     <div class="card-top">
       <span class="type-glyph">NW</span>
       <span class="tag">Networking</span>
-      <span class="cost-badge"><span class="cost-label">Cost</span><span class="cost-value">2</span></span>
+      <span class="cost-badge">⚙ 2</span>
     </div>
     <h2 class="card-name">Edge Ingress Load Balancer</h2>
     <div class="stat-row">
@@ -1212,7 +1226,7 @@ main {
     <div class="card-top">
       <span class="type-glyph">NW</span>
       <span class="tag">Networking</span>
-      <span class="cost-badge"><span class="cost-label">Cost</span><span class="cost-value">2</span></span>
+      <span class="cost-badge">⚙ 2</span>
     </div>
     <h2 class="card-name">Edge Ingress Load Balancer</h2>
     <div class="stat-row">
@@ -1242,7 +1256,7 @@ main {
     <div class="card-top">
       <span class="type-glyph">AU</span>
       <span class="tag">Automation</span>
-      <span class="cost-badge"><span class="cost-label">Cost</span><span class="cost-value">2</span></span>
+      <span class="cost-badge">⚙ 2</span>
     </div>
     <h2 class="card-name">Observability Stack</h2>
     <div class="stat-row">
@@ -1272,7 +1286,7 @@ main {
     <div class="card-top">
       <span class="type-glyph">AU</span>
       <span class="tag">Automation</span>
-      <span class="cost-badge"><span class="cost-label">Cost</span><span class="cost-value">2</span></span>
+      <span class="cost-badge">⚙ 2</span>
     </div>
     <h2 class="card-name">Observability Stack</h2>
     <div class="stat-row">
@@ -1302,7 +1316,7 @@ main {
     <div class="card-top">
       <span class="type-glyph">AU</span>
       <span class="tag">Automation</span>
-      <span class="cost-badge"><span class="cost-label">Cost</span><span class="cost-value">2</span></span>
+      <span class="cost-badge">⚙ 2</span>
     </div>
     <h2 class="card-name">Observability Stack</h2>
     <div class="stat-row">
@@ -1332,7 +1346,7 @@ main {
     <div class="card-top">
       <span class="type-glyph">AU</span>
       <span class="tag">Automation</span>
-      <span class="cost-badge"><span class="cost-label">Cost</span><span class="cost-value">2</span></span>
+      <span class="cost-badge">⚙ 2</span>
     </div>
     <h2 class="card-name">Observability Stack</h2>
     <div class="stat-row">
@@ -1362,7 +1376,7 @@ main {
     <div class="card-top">
       <span class="type-glyph">AU</span>
       <span class="tag">Automation</span>
-      <span class="cost-badge"><span class="cost-label">Cost</span><span class="cost-value">3</span></span>
+      <span class="cost-badge">⚙ 3</span>
     </div>
     <h2 class="card-name">GitOps Pipeline</h2>
     <div class="stat-row">
@@ -1392,7 +1406,7 @@ main {
     <div class="card-top">
       <span class="type-glyph">AU</span>
       <span class="tag">Automation</span>
-      <span class="cost-badge"><span class="cost-label">Cost</span><span class="cost-value">3</span></span>
+      <span class="cost-badge">⚙ 3</span>
     </div>
     <h2 class="card-name">GitOps Pipeline</h2>
     <div class="stat-row">
@@ -1422,7 +1436,7 @@ main {
     <div class="card-top">
       <span class="type-glyph">AU</span>
       <span class="tag">Automation</span>
-      <span class="cost-badge"><span class="cost-label">Cost</span><span class="cost-value">3</span></span>
+      <span class="cost-badge">⚙ 3</span>
     </div>
     <h2 class="card-name">GitOps Pipeline</h2>
     <div class="stat-row">
@@ -1454,7 +1468,7 @@ main {
     <div class="card-top">
       <span class="type-glyph">AU</span>
       <span class="tag">Automation</span>
-      <span class="cost-badge"><span class="cost-label">Cost</span><span class="cost-value">3</span></span>
+      <span class="cost-badge">⚙ 3</span>
     </div>
     <h2 class="card-name">Cluster Autoscaler</h2>
     <div class="stat-row">
@@ -1484,7 +1498,7 @@ main {
     <div class="card-top">
       <span class="type-glyph">AU</span>
       <span class="tag">Automation</span>
-      <span class="cost-badge"><span class="cost-label">Cost</span><span class="cost-value">3</span></span>
+      <span class="cost-badge">⚙ 3</span>
     </div>
     <h2 class="card-name">Cluster Autoscaler</h2>
     <div class="stat-row">
@@ -1514,7 +1528,7 @@ main {
     <div class="card-top">
       <span class="type-glyph">AU</span>
       <span class="tag">Automation</span>
-      <span class="cost-badge"><span class="cost-label">Cost</span><span class="cost-value">3</span></span>
+      <span class="cost-badge">⚙ 3</span>
     </div>
     <h2 class="card-name">Cluster Autoscaler</h2>
     <div class="stat-row">
@@ -1544,7 +1558,7 @@ main {
     <div class="card-top">
       <span class="type-glyph">UP</span>
       <span class="tag">Upgrade</span>
-      <span class="cost-badge"><span class="cost-label">Cost</span><span class="cost-value">4</span></span>
+      <span class="cost-badge">⚙ 4</span>
     </div>
     <h2 class="card-name">Disaster Recovery Plan</h2>
     <div class="stat-row">
@@ -1574,7 +1588,7 @@ main {
     <div class="card-top">
       <span class="type-glyph">UP</span>
       <span class="tag">Upgrade</span>
-      <span class="cost-badge"><span class="cost-label">Cost</span><span class="cost-value">4</span></span>
+      <span class="cost-badge">⚙ 4</span>
     </div>
     <h2 class="card-name">Disaster Recovery Plan</h2>
     <div class="stat-row">
@@ -1604,7 +1618,7 @@ main {
     <div class="card-top">
       <span class="type-glyph">UP</span>
       <span class="tag">Upgrade</span>
-      <span class="cost-badge"><span class="cost-label">Cost</span><span class="cost-value">4</span></span>
+      <span class="cost-badge">⚙ 4</span>
     </div>
     <h2 class="card-name">Disaster Recovery Plan</h2>
     <div class="stat-row">
@@ -1634,7 +1648,7 @@ main {
     <div class="card-top">
       <span class="type-glyph">WL</span>
       <span class="tag">Workload</span>
-      <span class="cost-badge"><span class="cost-label">Cost</span><span class="cost-value">2</span></span>
+      <span class="cost-badge">⚙ 2</span>
     </div>
     <h2 class="card-name">Stateless API Service</h2>
     <div class="stat-row">
@@ -1664,7 +1678,7 @@ main {
     <div class="card-top">
       <span class="type-glyph">WL</span>
       <span class="tag">Workload</span>
-      <span class="cost-badge"><span class="cost-label">Cost</span><span class="cost-value">2</span></span>
+      <span class="cost-badge">⚙ 2</span>
     </div>
     <h2 class="card-name">Stateless API Service</h2>
     <div class="stat-row">
@@ -1694,7 +1708,7 @@ main {
     <div class="card-top">
       <span class="type-glyph">WL</span>
       <span class="tag">Workload</span>
-      <span class="cost-badge"><span class="cost-label">Cost</span><span class="cost-value">2</span></span>
+      <span class="cost-badge">⚙ 2</span>
     </div>
     <h2 class="card-name">Stateless API Service</h2>
     <div class="stat-row">
@@ -1726,7 +1740,7 @@ main {
     <div class="card-top">
       <span class="type-glyph">WL</span>
       <span class="tag">Workload</span>
-      <span class="cost-badge"><span class="cost-label">Cost</span><span class="cost-value">2</span></span>
+      <span class="cost-badge">⚙ 2</span>
     </div>
     <h2 class="card-name">Stateless API Service</h2>
     <div class="stat-row">
@@ -1756,7 +1770,7 @@ main {
     <div class="card-top">
       <span class="type-glyph">WL</span>
       <span class="tag">Workload</span>
-      <span class="cost-badge"><span class="cost-label">Cost</span><span class="cost-value">2</span></span>
+      <span class="cost-badge">⚙ 2</span>
     </div>
     <h2 class="card-name">Stateless API Service</h2>
     <div class="stat-row">
@@ -1786,7 +1800,7 @@ main {
     <div class="card-top">
       <span class="type-glyph">WL</span>
       <span class="tag">Workload</span>
-      <span class="cost-badge"><span class="cost-label">Cost</span><span class="cost-value">3</span></span>
+      <span class="cost-badge">⚙ 3</span>
     </div>
     <h2 class="card-name">Event Processor Queue</h2>
     <div class="stat-row">
@@ -1816,7 +1830,7 @@ main {
     <div class="card-top">
       <span class="type-glyph">WL</span>
       <span class="tag">Workload</span>
-      <span class="cost-badge"><span class="cost-label">Cost</span><span class="cost-value">3</span></span>
+      <span class="cost-badge">⚙ 3</span>
     </div>
     <h2 class="card-name">Event Processor Queue</h2>
     <div class="stat-row">
@@ -1846,7 +1860,7 @@ main {
     <div class="card-top">
       <span class="type-glyph">WL</span>
       <span class="tag">Workload</span>
-      <span class="cost-badge"><span class="cost-label">Cost</span><span class="cost-value">3</span></span>
+      <span class="cost-badge">⚙ 3</span>
     </div>
     <h2 class="card-name">Event Processor Queue</h2>
     <div class="stat-row">
@@ -1876,7 +1890,7 @@ main {
     <div class="card-top">
       <span class="type-glyph">WL</span>
       <span class="tag">Workload</span>
-      <span class="cost-badge"><span class="cost-label">Cost</span><span class="cost-value">4</span></span>
+      <span class="cost-badge">⚙ 4</span>
     </div>
     <h2 class="card-name">Stateful Database Cluster</h2>
     <div class="stat-row">
@@ -1906,7 +1920,7 @@ main {
     <div class="card-top">
       <span class="type-glyph">WL</span>
       <span class="tag">Workload</span>
-      <span class="cost-badge"><span class="cost-label">Cost</span><span class="cost-value">4</span></span>
+      <span class="cost-badge">⚙ 4</span>
     </div>
     <h2 class="card-name">Stateful Database Cluster</h2>
     <div class="stat-row">
@@ -1936,7 +1950,7 @@ main {
     <div class="card-top">
       <span class="type-glyph">WL</span>
       <span class="tag">Workload</span>
-      <span class="cost-badge"><span class="cost-label">Cost</span><span class="cost-value">4</span></span>
+      <span class="cost-badge">⚙ 4</span>
     </div>
     <h2 class="card-name">Stateful Database Cluster</h2>
     <div class="stat-row">
@@ -1966,7 +1980,7 @@ main {
     <div class="card-top">
       <span class="type-glyph">WL</span>
       <span class="tag">Workload</span>
-      <span class="cost-badge"><span class="cost-label">Cost</span><span class="cost-value">5</span></span>
+      <span class="cost-badge">⚙ 5</span>
     </div>
     <h2 class="card-name">Machine Learning Platform</h2>
     <div class="stat-row">
@@ -1998,7 +2012,7 @@ main {
     <div class="card-top">
       <span class="type-glyph">WL</span>
       <span class="tag">Workload</span>
-      <span class="cost-badge"><span class="cost-label">Cost</span><span class="cost-value">5</span></span>
+      <span class="cost-badge">⚙ 5</span>
     </div>
     <h2 class="card-name">Machine Learning Platform</h2>
     <div class="stat-row">
@@ -2028,7 +2042,7 @@ main {
     <div class="card-top">
       <span class="type-glyph">WL</span>
       <span class="tag">Workload</span>
-      <span class="cost-badge"><span class="cost-label">Cost</span><span class="cost-value">3</span></span>
+      <span class="cost-badge">⚙ 3</span>
     </div>
     <h2 class="card-name">Batch ETL Pipeline</h2>
     <div class="stat-row">
@@ -2058,7 +2072,7 @@ main {
     <div class="card-top">
       <span class="type-glyph">WL</span>
       <span class="tag">Workload</span>
-      <span class="cost-badge"><span class="cost-label">Cost</span><span class="cost-value">3</span></span>
+      <span class="cost-badge">⚙ 3</span>
     </div>
     <h2 class="card-name">Batch ETL Pipeline</h2>
     <div class="stat-row">
@@ -2088,7 +2102,7 @@ main {
     <div class="card-top">
       <span class="type-glyph">WL</span>
       <span class="tag">Workload</span>
-      <span class="cost-badge"><span class="cost-label">Cost</span><span class="cost-value">3</span></span>
+      <span class="cost-badge">⚙ 3</span>
     </div>
     <h2 class="card-name">Batch ETL Pipeline</h2>
     <div class="stat-row">
@@ -2118,7 +2132,7 @@ main {
     <div class="card-top">
       <span class="type-glyph">WL</span>
       <span class="tag">Workload</span>
-      <span class="cost-badge"><span class="cost-label">Cost</span><span class="cost-value">4</span></span>
+      <span class="cost-badge">⚙ 4</span>
     </div>
     <h2 class="card-name">Realtime Analytics Dashboard</h2>
     <div class="stat-row">
@@ -2148,7 +2162,7 @@ main {
     <div class="card-top">
       <span class="type-glyph">WL</span>
       <span class="tag">Workload</span>
-      <span class="cost-badge"><span class="cost-label">Cost</span><span class="cost-value">4</span></span>
+      <span class="cost-badge">⚙ 4</span>
     </div>
     <h2 class="card-name">Realtime Analytics Dashboard</h2>
     <div class="stat-row">
@@ -2178,7 +2192,7 @@ main {
     <div class="card-top">
       <span class="type-glyph">WL</span>
       <span class="tag">Workload</span>
-      <span class="cost-badge"><span class="cost-label">Cost</span><span class="cost-value">2</span></span>
+      <span class="cost-badge">⚙ 2</span>
     </div>
     <h2 class="card-name">Internal Tools Suite</h2>
     <div class="stat-row">
@@ -2208,7 +2222,7 @@ main {
     <div class="card-top">
       <span class="type-glyph">WL</span>
       <span class="tag">Workload</span>
-      <span class="cost-badge"><span class="cost-label">Cost</span><span class="cost-value">2</span></span>
+      <span class="cost-badge">⚙ 2</span>
     </div>
     <h2 class="card-name">Internal Tools Suite</h2>
     <div class="stat-row">
@@ -2238,7 +2252,7 @@ main {
     <div class="card-top">
       <span class="type-glyph">WL</span>
       <span class="tag">Workload</span>
-      <span class="cost-badge"><span class="cost-label">Cost</span><span class="cost-value">2</span></span>
+      <span class="cost-badge">⚙ 2</span>
     </div>
     <h2 class="card-name">Internal Tools Suite</h2>
     <div class="stat-row">
@@ -2270,7 +2284,7 @@ main {
     <div class="card-top">
       <span class="type-glyph">AT</span>
       <span class="tag">Attack</span>
-      <span class="cost-badge"><span class="cost-label">Cost</span><span class="cost-value">3</span></span>
+      <span class="cost-badge">⚙ 3</span>
     </div>
     <h2 class="card-name">DDoS Burst</h2>
     <div class="stat-row">
@@ -2300,7 +2314,7 @@ main {
     <div class="card-top">
       <span class="type-glyph">AT</span>
       <span class="tag">Attack</span>
-      <span class="cost-badge"><span class="cost-label">Cost</span><span class="cost-value">3</span></span>
+      <span class="cost-badge">⚙ 3</span>
     </div>
     <h2 class="card-name">DDoS Burst</h2>
     <div class="stat-row">
@@ -2330,7 +2344,7 @@ main {
     <div class="card-top">
       <span class="type-glyph">AT</span>
       <span class="tag">Attack</span>
-      <span class="cost-badge"><span class="cost-label">Cost</span><span class="cost-value">3</span></span>
+      <span class="cost-badge">⚙ 3</span>
     </div>
     <h2 class="card-name">DDoS Burst</h2>
     <div class="stat-row">
@@ -2360,7 +2374,7 @@ main {
     <div class="card-top">
       <span class="type-glyph">AT</span>
       <span class="tag">Attack</span>
-      <span class="cost-badge"><span class="cost-label">Cost</span><span class="cost-value">3</span></span>
+      <span class="cost-badge">⚙ 3</span>
     </div>
     <h2 class="card-name">DDoS Burst</h2>
     <div class="stat-row">
@@ -2390,7 +2404,7 @@ main {
     <div class="card-top">
       <span class="type-glyph">AT</span>
       <span class="tag">Attack</span>
-      <span class="cost-badge"><span class="cost-label">Cost</span><span class="cost-value">4</span></span>
+      <span class="cost-badge">⚙ 4</span>
     </div>
     <h2 class="card-name">Supply Chain Compromise</h2>
     <div class="stat-row">
@@ -2420,7 +2434,7 @@ main {
     <div class="card-top">
       <span class="type-glyph">AT</span>
       <span class="tag">Attack</span>
-      <span class="cost-badge"><span class="cost-label">Cost</span><span class="cost-value">4</span></span>
+      <span class="cost-badge">⚙ 4</span>
     </div>
     <h2 class="card-name">Supply Chain Compromise</h2>
     <div class="stat-row">
@@ -2450,7 +2464,7 @@ main {
     <div class="card-top">
       <span class="type-glyph">AT</span>
       <span class="tag">Attack</span>
-      <span class="cost-badge"><span class="cost-label">Cost</span><span class="cost-value">2</span></span>
+      <span class="cost-badge">⚙ 2</span>
     </div>
     <h2 class="card-name">Rogue CronJob</h2>
     <div class="stat-row">
@@ -2480,7 +2494,7 @@ main {
     <div class="card-top">
       <span class="type-glyph">AT</span>
       <span class="tag">Attack</span>
-      <span class="cost-badge"><span class="cost-label">Cost</span><span class="cost-value">2</span></span>
+      <span class="cost-badge">⚙ 2</span>
     </div>
     <h2 class="card-name">Rogue CronJob</h2>
     <div class="stat-row">
@@ -2510,7 +2524,7 @@ main {
     <div class="card-top">
       <span class="type-glyph">AT</span>
       <span class="tag">Attack</span>
-      <span class="cost-badge"><span class="cost-label">Cost</span><span class="cost-value">3</span></span>
+      <span class="cost-badge">⚙ 3</span>
     </div>
     <h2 class="card-name">Budget Freeze</h2>
     <div class="stat-row">
@@ -2542,7 +2556,7 @@ main {
     <div class="card-top">
       <span class="type-glyph">AT</span>
       <span class="tag">Attack</span>
-      <span class="cost-badge"><span class="cost-label">Cost</span><span class="cost-value">3</span></span>
+      <span class="cost-badge">⚙ 3</span>
     </div>
     <h2 class="card-name">Budget Freeze</h2>
     <div class="stat-row">
@@ -2572,7 +2586,7 @@ main {
     <div class="card-top">
       <span class="type-glyph">AT</span>
       <span class="tag">Attack</span>
-      <span class="cost-badge"><span class="cost-label">Cost</span><span class="cost-value">3</span></span>
+      <span class="cost-badge">⚙ 3</span>
     </div>
     <h2 class="card-name">Budget Freeze</h2>
     <div class="stat-row">
@@ -2602,7 +2616,7 @@ main {
     <div class="card-top">
       <span class="type-glyph">AT</span>
       <span class="tag">Attack</span>
-      <span class="cost-badge"><span class="cost-label">Cost</span><span class="cost-value">2</span></span>
+      <span class="cost-badge">⚙ 2</span>
     </div>
     <h2 class="card-name">Compliance Audit</h2>
     <div class="stat-row">
@@ -2632,7 +2646,7 @@ main {
     <div class="card-top">
       <span class="type-glyph">AT</span>
       <span class="tag">Attack</span>
-      <span class="cost-badge"><span class="cost-label">Cost</span><span class="cost-value">2</span></span>
+      <span class="cost-badge">⚙ 2</span>
     </div>
     <h2 class="card-name">Compliance Audit</h2>
     <div class="stat-row">
@@ -2662,7 +2676,7 @@ main {
     <div class="card-top">
       <span class="type-glyph">AT</span>
       <span class="tag">Attack</span>
-      <span class="cost-badge"><span class="cost-label">Cost</span><span class="cost-value">4</span></span>
+      <span class="cost-badge">⚙ 4</span>
     </div>
     <h2 class="card-name">Zombie Pod Swarm</h2>
     <div class="stat-row">
@@ -2692,7 +2706,7 @@ main {
     <div class="card-top">
       <span class="type-glyph">AT</span>
       <span class="tag">Attack</span>
-      <span class="cost-badge"><span class="cost-label">Cost</span><span class="cost-value">4</span></span>
+      <span class="cost-badge">⚙ 4</span>
     </div>
     <h2 class="card-name">Zombie Pod Swarm</h2>
     <div class="stat-row">
@@ -2722,7 +2736,7 @@ main {
     <div class="card-top">
       <span class="type-glyph">AT</span>
       <span class="tag">Attack</span>
-      <span class="cost-badge"><span class="cost-label">Cost</span><span class="cost-value">4</span></span>
+      <span class="cost-badge">⚙ 4</span>
     </div>
     <h2 class="card-name">Zombie Pod Swarm</h2>
     <div class="stat-row">
@@ -2752,7 +2766,7 @@ main {
     <div class="card-top">
       <span class="type-glyph">RS</span>
       <span class="tag">Response</span>
-      <span class="cost-badge"><span class="cost-label">Cost</span><span class="cost-value">1</span></span>
+      <span class="cost-badge">⚙ 1</span>
     </div>
     <h2 class="card-name">Incident Response Runbook</h2>
     <div class="stat-row">
@@ -2782,7 +2796,7 @@ main {
     <div class="card-top">
       <span class="type-glyph">RS</span>
       <span class="tag">Response</span>
-      <span class="cost-badge"><span class="cost-label">Cost</span><span class="cost-value">1</span></span>
+      <span class="cost-badge">⚙ 1</span>
     </div>
     <h2 class="card-name">Incident Response Runbook</h2>
     <div class="stat-row">
@@ -2814,7 +2828,7 @@ main {
     <div class="card-top">
       <span class="type-glyph">RS</span>
       <span class="tag">Response</span>
-      <span class="cost-badge"><span class="cost-label">Cost</span><span class="cost-value">1</span></span>
+      <span class="cost-badge">⚙ 1</span>
     </div>
     <h2 class="card-name">Incident Response Runbook</h2>
     <div class="stat-row">
@@ -2844,7 +2858,7 @@ main {
     <div class="card-top">
       <span class="type-glyph">RS</span>
       <span class="tag">Response</span>
-      <span class="cost-badge"><span class="cost-label">Cost</span><span class="cost-value">2</span></span>
+      <span class="cost-badge">⚙ 2</span>
     </div>
     <h2 class="card-name">Chaos Engineering Drill</h2>
     <div class="stat-row">
@@ -2874,7 +2888,7 @@ main {
     <div class="card-top">
       <span class="type-glyph">RS</span>
       <span class="tag">Response</span>
-      <span class="cost-badge"><span class="cost-label">Cost</span><span class="cost-value">2</span></span>
+      <span class="cost-badge">⚙ 2</span>
     </div>
     <h2 class="card-name">Chaos Engineering Drill</h2>
     <div class="stat-row">
@@ -2904,7 +2918,7 @@ main {
     <div class="card-top">
       <span class="type-glyph">RS</span>
       <span class="tag">Response</span>
-      <span class="cost-badge"><span class="cost-label">Cost</span><span class="cost-value">2</span></span>
+      <span class="cost-badge">⚙ 2</span>
     </div>
     <h2 class="card-name">Chaos Engineering Drill</h2>
     <div class="stat-row">
@@ -2934,7 +2948,7 @@ main {
     <div class="card-top">
       <span class="type-glyph">RS</span>
       <span class="tag">Response</span>
-      <span class="cost-badge"><span class="cost-label">Cost</span><span class="cost-value">2</span></span>
+      <span class="cost-badge">⚙ 2</span>
     </div>
     <h2 class="card-name">Hotfix Brigade</h2>
     <div class="stat-row">
@@ -2964,7 +2978,7 @@ main {
     <div class="card-top">
       <span class="type-glyph">RS</span>
       <span class="tag">Response</span>
-      <span class="cost-badge"><span class="cost-label">Cost</span><span class="cost-value">2</span></span>
+      <span class="cost-badge">⚙ 2</span>
     </div>
     <h2 class="card-name">Hotfix Brigade</h2>
     <div class="stat-row">
@@ -2994,7 +3008,7 @@ main {
     <div class="card-top">
       <span class="type-glyph">RS</span>
       <span class="tag">Response</span>
-      <span class="cost-badge"><span class="cost-label">Cost</span><span class="cost-value">2</span></span>
+      <span class="cost-badge">⚙ 2</span>
     </div>
     <h2 class="card-name">Hotfix Brigade</h2>
     <div class="stat-row">
@@ -3024,7 +3038,7 @@ main {
     <div class="card-top">
       <span class="type-glyph">RS</span>
       <span class="tag">Response</span>
-      <span class="cost-badge"><span class="cost-label">Cost</span><span class="cost-value">3</span></span>
+      <span class="cost-badge">⚙ 3</span>
     </div>
     <h2 class="card-name">Blue-Green Rollout</h2>
     <div class="stat-row">
@@ -3054,7 +3068,7 @@ main {
     <div class="card-top">
       <span class="type-glyph">RS</span>
       <span class="tag">Response</span>
-      <span class="cost-badge"><span class="cost-label">Cost</span><span class="cost-value">3</span></span>
+      <span class="cost-badge">⚙ 3</span>
     </div>
     <h2 class="card-name">Blue-Green Rollout</h2>
     <div class="stat-row">

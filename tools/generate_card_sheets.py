@@ -16,15 +16,15 @@ BACK_HTML = ROOT / "cards" / "cards_back.html"
 CARDS_PER_SHEET = 9
 
 TYPE_COLORS: Dict[str, Dict[str, str]] = {
-    "Node": {"accent": "#1d4ed8", "soft": "#dbeafe", "shadow": "rgba(29, 78, 216, 0.28)"},
-    "Control Plane": {"accent": "#1e3a8a", "soft": "#e0e7ff", "shadow": "rgba(30, 58, 138, 0.3)"},
-    "Storage": {"accent": "#0ea5e9", "soft": "#cffafe", "shadow": "rgba(14, 165, 233, 0.28)"},
-    "Networking": {"accent": "#6366f1", "soft": "#e0e7ff", "shadow": "rgba(99, 102, 241, 0.3)"},
-    "Automation": {"accent": "#14b8a6", "soft": "#ccfbf1", "shadow": "rgba(20, 184, 166, 0.28)"},
-    "Upgrade": {"accent": "#0f766e", "soft": "#d1fae5", "shadow": "rgba(15, 118, 110, 0.3)"},
-    "Workload": {"accent": "#22c55e", "soft": "#dcfce7", "shadow": "rgba(34, 197, 94, 0.28)"},
-    "Attack": {"accent": "#ef4444", "soft": "#fee2e2", "shadow": "rgba(239, 68, 68, 0.32)"},
-    "Response": {"accent": "#f59e0b", "soft": "#fef3c7", "shadow": "rgba(245, 158, 11, 0.3)"},
+    "Node": {"accent": "#1d4ed8", "soft": "#e0edff"},
+    "Control Plane": {"accent": "#1e3a8a", "soft": "#e5e9ff"},
+    "Storage": {"accent": "#0ea5e9", "soft": "#def5ff"},
+    "Networking": {"accent": "#6366f1", "soft": "#e5e7ff"},
+    "Automation": {"accent": "#14b8a6", "soft": "#d7fcf2"},
+    "Upgrade": {"accent": "#0f766e", "soft": "#d6f7ef"},
+    "Workload": {"accent": "#22c55e", "soft": "#e4fbe9"},
+    "Attack": {"accent": "#ef4444", "soft": "#ffe2e2"},
+    "Response": {"accent": "#f59e0b", "soft": "#fff1cf"},
 }
 
 TYPE_MONOGRAMS: Dict[str, str] = {
@@ -164,7 +164,7 @@ def render_front_html(cards: List[Card]) -> str:
 body {
     font-family: 'Segoe UI', 'Helvetica Neue', Helvetica, Arial, sans-serif;
     margin: 0;
-    background: radial-gradient(circle at top, #0f172a 0%, #111827 40%, #1e293b 100%);
+    background: #0f172a;
     color: #0f172a;
     -webkit-print-color-adjust: exact;
     print-color-adjust: exact;
@@ -177,7 +177,7 @@ main {
     grid-template-columns: repeat(3, 2.5in);
     grid-auto-rows: 3.5in;
     gap: 0.3in;
-    margin-bottom: 0.6in;
+    margin-bottom: 0.5in;
     page-break-after: always;
 }
 .sheet:last-of-type {
@@ -186,147 +186,116 @@ main {
 .card {
     position: relative;
     box-sizing: border-box;
-    border-radius: 0.26in;
-    padding: 0.24in 0.22in;
-    background: linear-gradient(160deg, rgba(255, 255, 255, 0.97), rgba(236, 242, 247, 0.9));
+    border-radius: 0.2in;
+    padding: 0.18in 0.16in;
+    background: #ffffff;
+    border: 1.5px solid rgba(15, 23, 42, 0.25);
     display: flex;
     flex-direction: column;
-    justify-content: center;
-    box-shadow: 0 0.12in 0.38in rgba(15, 23, 42, 0.28);
+    gap: 0.12in;
     overflow: hidden;
-    border: 1px solid rgba(15, 23, 42, 0.12);
-}
-.card::before {
-    content: '';
-    position: absolute;
-    inset: 0.16in;
-    border-radius: 0.18in;
-    border: 1px solid rgba(15, 23, 42, 0.08);
-    pointer-events: none;
-}
-.card::after {
-    content: '';
-    position: absolute;
-    width: 88%;
-    height: 88%;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%) rotate(5deg);
-    background: radial-gradient(circle at top left, rgba(255,255,255,0.82), transparent 68%),
-                linear-gradient(120deg, rgba(255,255,255,0.0), rgba(148, 163, 184, 0.14));
-    border-radius: 2in;
-    pointer-events: none;
 }
 .card-content {
-    position: relative;
-    z-index: 1;
-    display: grid;
-    grid-template-rows: auto auto auto 1fr auto;
-    row-gap: 0.14in;
-    height: 100%;
+    flex: 1 1 auto;
+    display: flex;
+    flex-direction: column;
+    gap: 0.12in;
+    min-height: 0;
 }
 .card-top {
-    display: grid;
-    grid-template-columns: auto 1fr auto;
+    display: flex;
     align-items: center;
     gap: 0.12in;
+    min-height: 0;
 }
 .type-glyph {
-    width: 0.54in;
-    height: 0.54in;
+    width: 0.42in;
+    height: 0.42in;
     border-radius: 999px;
     display: flex;
     align-items: center;
     justify-content: center;
     font-weight: 700;
-    font-size: 0.6rem;
+    font-size: 0.52rem;
     letter-spacing: 0.08em;
     color: #0f172a;
-    background: rgba(148, 163, 184, 0.16);
-    border: 1px solid rgba(15, 23, 42, 0.08);
+    background: rgba(148, 163, 184, 0.18);
+    border: 1px solid rgba(15, 23, 42, 0.12);
 }
 .tag {
     flex: 1 1 auto;
-    padding: 0.04in 0.18in;
-    border-radius: 999px;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    padding: 0.05in 0.12in;
+    border-radius: 0.16in;
     color: #ffffff;
     font-weight: 700;
-    font-size: 0.6rem;
-    letter-spacing: 0.08em;
+    font-size: 0.5rem;
+    letter-spacing: 0.1em;
     text-transform: uppercase;
-    box-shadow: 0 0.08in 0.22in rgba(15, 23, 42, 0.18);
-    background: var(--accent, #1d4ed8);
 }
 .cost-badge {
     display: inline-flex;
-    flex-direction: column;
     align-items: center;
-    min-width: 0.48in;
-    padding: 0.04in 0.16in;
-    border-radius: 0.18in;
-    background: rgba(15, 23, 42, 0.92);
+    justify-content: center;
+    padding: 0.05in 0.14in;
+    border-radius: 0.16in;
+    background: #0f172a;
     color: #f8fafc;
-    box-shadow: 0 0.08in 0.25in rgba(15, 23, 42, 0.28);
-}
-.cost-label {
-    font-size: 0.45rem;
-    letter-spacing: 0.12em;
-    text-transform: uppercase;
-    opacity: 0.7;
-}
-.cost-value {
-    font-size: 0.75rem;
+    font-size: 0.66rem;
     font-weight: 700;
 }
 .card-name {
     margin: 0;
-    font-size: 0.98rem;
-    line-height: 1.18;
+    font-size: 0.9rem;
+    line-height: 1.15;
     color: #0f172a;
 }
 .stat-row {
     display: flex;
-    gap: 0.12in;
+    flex-wrap: wrap;
+    gap: 0.08in;
 }
 .stat-chip {
     display: flex;
     flex-direction: column;
-    padding: 0.06in 0.14in;
-    border-radius: 0.16in;
+    gap: 0.03in;
+    padding: 0.05in 0.12in;
+    border-radius: 0.14in;
     background: rgba(15, 23, 42, 0.04);
-    border: 1px solid rgba(15, 23, 42, 0.08);
-    min-width: 1.05in;
-    box-shadow: inset 0 0 0 1px rgba(255,255,255,0.55);
+    border: 1px solid rgba(15, 23, 42, 0.12);
 }
 .stat-label {
-    font-size: 0.48rem;
+    font-size: 0.46rem;
     text-transform: uppercase;
-    letter-spacing: 0.12em;
+    letter-spacing: 0.1em;
     color: rgba(15, 23, 42, 0.65);
 }
 .stat-value {
-    font-size: 0.72rem;
+    font-size: 0.68rem;
     font-weight: 700;
     color: #0f172a;
 }
 .body-panel {
-    position: relative;
-    border-radius: 0.18in;
-    padding: 0.16in 0.18in;
-    background: linear-gradient(160deg, rgba(255,255,255,0.85), rgba(238,242,247,0.95));
-    border: 1px solid rgba(15, 23, 42, 0.08);
-    box-shadow: inset 0 0.06in 0.16in rgba(15, 23, 42, 0.08);
-    font-size: 0.66rem;
-    line-height: 1.4;
+    flex: 1 1 auto;
+    display: flex;
+    flex-direction: column;
+    gap: 0.08in;
+    padding: 0.12in 0.14in;
+    border-radius: 0.16in;
+    background: #f8fafc;
+    border: 1px solid rgba(15, 23, 42, 0.12);
+    font-size: 0.6rem;
+    line-height: 1.35;
     color: #1e293b;
-    overflow-wrap: anywhere;
-    hyphens: auto;
+    min-height: 0;
 }
 .body-panel p {
-    margin: 0 0 0.12in;
+    margin: 0;
 }
-.body-panel p:last-child {
-    margin-bottom: 0;
+.body-panel p + p {
+    margin-top: 0.08in;
 }
 .prereq strong {
     color: #0f172a;
@@ -335,20 +304,20 @@ main {
     display: flex;
     justify-content: space-between;
     align-items: center;
-    font-size: 0.52rem;
+    font-size: 0.48rem;
     letter-spacing: 0.04em;
-    color: rgba(15, 23, 42, 0.68);
+    color: rgba(15, 23, 42, 0.7);
 }
 .series-badge {
-    padding: 0.04in 0.12in;
+    padding: 0.04in 0.1in;
     border-radius: 999px;
     border: 1px solid rgba(15, 23, 42, 0.12);
-    background: rgba(148, 163, 184, 0.12);
+    background: rgba(148, 163, 184, 0.16);
 }
 .placeholder {
-    border: 2px dashed #94a3b8;
-    background: rgba(148, 163, 184, 0.16);
-    border-radius: 0.24in;
+    border: 1.5px dashed rgba(148, 163, 184, 0.6);
+    background: rgba(148, 163, 184, 0.18);
+    border-radius: 0.2in;
 }
 ${styles}
 </style>
@@ -394,25 +363,29 @@ def generate_type_styles() -> str:
         slug = "-".join(card_type.lower().split())
         accent = palette["accent"]
         soft = palette["soft"]
-        shadow = palette["shadow"]
         rules.append(
-            """
-.card-type-${slug} {
-    border: 1px solid rgba(15, 23, 42, 0.12);
-}
-.card-type-${slug} .tag {
-    background: ${accent};
-}
-.card-type-${slug} .type-glyph {
-    background: linear-gradient(135deg, rgba(148, 163, 184, 0.22), ${soft});
-}
-.card-type-${slug}::after {
-    box-shadow: 0 0.25in 0.6in ${shadow};
-}
-.card-type-${slug} .body-panel {
-    background: linear-gradient(160deg, rgba(255,255,255,0.86), ${soft});
-}
-""".replace("${slug}", slug).replace("${accent}", accent).replace("${soft}", soft).replace("${shadow}", shadow)
+            f"""
+.card-type-{slug} {{
+    border-color: {accent};
+}}
+.card-type-{slug} .tag {{
+    background: {accent};
+}}
+.card-type-{slug} .type-glyph {{
+    color: {accent};
+    border-color: {accent}55;
+    background: {soft};
+}}
+.card-type-{slug} .body-panel {{
+    background: linear-gradient(180deg, rgba(255,255,255,0.96), {soft});
+    border-color: {accent}44;
+}}
+.card-type-{slug} .series-badge {{
+    border-color: {accent}44;
+    background: {soft};
+    color: {accent};
+}}
+"""
         )
     return "\n".join(rules)
 
@@ -430,7 +403,7 @@ def render_card(card: Card) -> str:
     <div class=\"card-top\">
       <span class=\"type-glyph\">{card.monogram}</span>
       <span class=\"tag\">{card.type}</span>
-      <span class=\"cost-badge\"><span class=\"cost-label\">Cost</span><span class=\"cost-value\">{card.cost}</span></span>
+      <span class=\"cost-badge\">⚙ {card.cost}</span>
     </div>
     <h2 class=\"card-name\">{card.name}</h2>
     <div class=\"stat-row\">
