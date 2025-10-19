@@ -5,6 +5,11 @@
 - Suggested card size: 63 × 88 mm (standard poker).
 - Use light blue borders for Infrastructure, green for Workloads, red for Attacks, and yellow for Responses.
 
+### Fast HTML Export
+- Run `./tools/generate_card_sheets.py` to build ready-to-print HTML sheets at `cards/cards_print.html` (9 cards per sheet).
+- Open the HTML file in a browser, set print scale to 100%, margins to none (or 0.5 in if required), and export to PDF.
+- Use double-sided printing with the short edge as the flip if you add custom backs.
+
 ## Tokens and Markers
 - Use coins, cubes, or cut-out circles for Resources (60 total needed).
 - Resilience can be tracked with a single cube on the track printed on each Player Aid.

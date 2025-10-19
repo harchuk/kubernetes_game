@@ -1,0 +1,3036 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8" />
+<title>Kubernetes Cluster Clash — Card Fronts</title>
+<style>
+@page {
+    size: letter;
+    margin: 0.5in;
+}
+body {
+    font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;
+    margin: 0;
+    background: #f8fafc;
+    color: #0f172a;
+}
+main {
+    padding: 0.5in;
+}
+.sheet {
+    display: grid;
+    grid-template-columns: repeat(3, 2.5in);
+    grid-auto-rows: 3.5in;
+    gap: 0.3in;
+    margin-bottom: 0.5in;
+    page-break-after: always;
+}
+.sheet:last-of-type {
+    page-break-after: auto;
+}
+.card {
+    box-sizing: border-box;
+    border: 3px solid #0f172a;
+    border-radius: 0.2in;
+    padding: 0.2in;
+    background: white;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    box-shadow: 0 0 0.08in rgba(15, 23, 42, 0.2);
+}
+.card-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    font-weight: 700;
+    text-transform: uppercase;
+    font-size: 0.6rem;
+}
+.card-name {
+    font-size: 0.95rem;
+    text-transform: none;
+    color: #0f172a;
+}
+.tag {
+    padding: 0.05in 0.12in;
+    border-radius: 999px;
+    color: white;
+    font-weight: 700;
+    font-size: 0.5rem;
+    letter-spacing: 0.05em;
+}
+.stats {
+    display: flex;
+    justify-content: flex-start;
+    gap: 0.2in;
+    margin: 0.1in 0;
+    font-size: 0.6rem;
+}
+.stat {
+    display: flex;
+    flex-direction: column;
+}
+.stat-label {
+    font-weight: 600;
+    letter-spacing: 0.04em;
+    color: #475569;
+}
+.stat-value {
+    font-size: 0.8rem;
+    font-weight: 700;
+    color: #0f172a;
+}
+.card-body {
+    flex: 1 1 auto;
+    font-size: 0.62rem;
+    line-height: 1.35;
+    color: #1e293b;
+}
+.card-body strong {
+    color: #0f172a;
+}
+.card-footer {
+    font-size: 0.55rem;
+    color: #475569;
+}
+.meta {
+    display: flex;
+    justify-content: space-between;
+    font-size: 0.5rem;
+    color: #475569;
+}
+.placeholder {
+    border: 2px dashed #cbd5f5;
+    background: #e2e8f0;
+}
+.card-type-node { border-color: #3b82f6; }
+.card-type-node .tag { background: #3b82f6; }
+.card-type-control-plane { border-color: #2563eb; }
+.card-type-control-plane .tag { background: #2563eb; }
+.card-type-storage { border-color: #0ea5e9; }
+.card-type-storage .tag { background: #0ea5e9; }
+.card-type-networking { border-color: #6366f1; }
+.card-type-networking .tag { background: #6366f1; }
+.card-type-automation { border-color: #14b8a6; }
+.card-type-automation .tag { background: #14b8a6; }
+.card-type-upgrade { border-color: #0f766e; }
+.card-type-upgrade .tag { background: #0f766e; }
+.card-type-workload { border-color: #22c55e; }
+.card-type-workload .tag { background: #22c55e; }
+.card-type-attack { border-color: #ef4444; }
+.card-type-attack .tag { background: #ef4444; }
+.card-type-response { border-color: #f59e0b; }
+.card-type-response .tag { background: #f59e0b; }
+</style>
+</head>
+<body>
+<main>
+<header style="margin-bottom:0.4in;">
+  <h1 style="margin:0;font-size:1.1rem;text-transform:uppercase;letter-spacing:0.12em;color:#1e293b;">Kubernetes Cluster Clash — Card Fronts</h1>
+  <p style="margin:0.2rem 0 0;font-size:0.65rem;color:#475569;">Total cards: 90 &nbsp;•&nbsp; Sheets: 10</p>
+</header>
+<section class="sheet">
+
+<div class="card card-type-node">
+  <div class="card-header">
+    <span class="tag">Node</span>
+    <span class="card-name">Standard Node</span>
+  </div>
+  <div class="stats">
+    <div class="stat">
+      <span class="stat-label">Cost</span>
+      <span class="stat-value">2</span>
+    </div>
+    <div class="stat">
+      <span class="stat-label">SLO</span>
+      <span class="stat-value">—</span>
+    </div>
+    <div class="stat">
+      <span class="stat-label">Repair</span>
+      <span class="stat-value">1 token to clear Incident</span>
+    </div>
+  </div>
+  <div class="card-body">
+    
+    <p>Gain +2 Resilience max; provides capacity for one Workload.</p>
+  </div>
+  <div class="card-footer">
+    <div class="meta">
+      <span>Copy 1/7</span>
+      <span>Kube Cluster Clash</span>
+    </div>
+  </div>
+</div>
+
+
+<div class="card card-type-node">
+  <div class="card-header">
+    <span class="tag">Node</span>
+    <span class="card-name">Standard Node</span>
+  </div>
+  <div class="stats">
+    <div class="stat">
+      <span class="stat-label">Cost</span>
+      <span class="stat-value">2</span>
+    </div>
+    <div class="stat">
+      <span class="stat-label">SLO</span>
+      <span class="stat-value">—</span>
+    </div>
+    <div class="stat">
+      <span class="stat-label">Repair</span>
+      <span class="stat-value">1 token to clear Incident</span>
+    </div>
+  </div>
+  <div class="card-body">
+    
+    <p>Gain +2 Resilience max; provides capacity for one Workload.</p>
+  </div>
+  <div class="card-footer">
+    <div class="meta">
+      <span>Copy 2/7</span>
+      <span>Kube Cluster Clash</span>
+    </div>
+  </div>
+</div>
+
+
+<div class="card card-type-node">
+  <div class="card-header">
+    <span class="tag">Node</span>
+    <span class="card-name">Standard Node</span>
+  </div>
+  <div class="stats">
+    <div class="stat">
+      <span class="stat-label">Cost</span>
+      <span class="stat-value">2</span>
+    </div>
+    <div class="stat">
+      <span class="stat-label">SLO</span>
+      <span class="stat-value">—</span>
+    </div>
+    <div class="stat">
+      <span class="stat-label">Repair</span>
+      <span class="stat-value">1 token to clear Incident</span>
+    </div>
+  </div>
+  <div class="card-body">
+    
+    <p>Gain +2 Resilience max; provides capacity for one Workload.</p>
+  </div>
+  <div class="card-footer">
+    <div class="meta">
+      <span>Copy 3/7</span>
+      <span>Kube Cluster Clash</span>
+    </div>
+  </div>
+</div>
+
+
+<div class="card card-type-node">
+  <div class="card-header">
+    <span class="tag">Node</span>
+    <span class="card-name">Standard Node</span>
+  </div>
+  <div class="stats">
+    <div class="stat">
+      <span class="stat-label">Cost</span>
+      <span class="stat-value">2</span>
+    </div>
+    <div class="stat">
+      <span class="stat-label">SLO</span>
+      <span class="stat-value">—</span>
+    </div>
+    <div class="stat">
+      <span class="stat-label">Repair</span>
+      <span class="stat-value">1 token to clear Incident</span>
+    </div>
+  </div>
+  <div class="card-body">
+    
+    <p>Gain +2 Resilience max; provides capacity for one Workload.</p>
+  </div>
+  <div class="card-footer">
+    <div class="meta">
+      <span>Copy 4/7</span>
+      <span>Kube Cluster Clash</span>
+    </div>
+  </div>
+</div>
+
+
+<div class="card card-type-node">
+  <div class="card-header">
+    <span class="tag">Node</span>
+    <span class="card-name">Standard Node</span>
+  </div>
+  <div class="stats">
+    <div class="stat">
+      <span class="stat-label">Cost</span>
+      <span class="stat-value">2</span>
+    </div>
+    <div class="stat">
+      <span class="stat-label">SLO</span>
+      <span class="stat-value">—</span>
+    </div>
+    <div class="stat">
+      <span class="stat-label">Repair</span>
+      <span class="stat-value">1 token to clear Incident</span>
+    </div>
+  </div>
+  <div class="card-body">
+    
+    <p>Gain +2 Resilience max; provides capacity for one Workload.</p>
+  </div>
+  <div class="card-footer">
+    <div class="meta">
+      <span>Copy 5/7</span>
+      <span>Kube Cluster Clash</span>
+    </div>
+  </div>
+</div>
+
+
+<div class="card card-type-node">
+  <div class="card-header">
+    <span class="tag">Node</span>
+    <span class="card-name">Standard Node</span>
+  </div>
+  <div class="stats">
+    <div class="stat">
+      <span class="stat-label">Cost</span>
+      <span class="stat-value">2</span>
+    </div>
+    <div class="stat">
+      <span class="stat-label">SLO</span>
+      <span class="stat-value">—</span>
+    </div>
+    <div class="stat">
+      <span class="stat-label">Repair</span>
+      <span class="stat-value">1 token to clear Incident</span>
+    </div>
+  </div>
+  <div class="card-body">
+    
+    <p>Gain +2 Resilience max; provides capacity for one Workload.</p>
+  </div>
+  <div class="card-footer">
+    <div class="meta">
+      <span>Copy 6/7</span>
+      <span>Kube Cluster Clash</span>
+    </div>
+  </div>
+</div>
+
+
+<div class="card card-type-node">
+  <div class="card-header">
+    <span class="tag">Node</span>
+    <span class="card-name">Standard Node</span>
+  </div>
+  <div class="stats">
+    <div class="stat">
+      <span class="stat-label">Cost</span>
+      <span class="stat-value">2</span>
+    </div>
+    <div class="stat">
+      <span class="stat-label">SLO</span>
+      <span class="stat-value">—</span>
+    </div>
+    <div class="stat">
+      <span class="stat-label">Repair</span>
+      <span class="stat-value">1 token to clear Incident</span>
+    </div>
+  </div>
+  <div class="card-body">
+    
+    <p>Gain +2 Resilience max; provides capacity for one Workload.</p>
+  </div>
+  <div class="card-footer">
+    <div class="meta">
+      <span>Copy 7/7</span>
+      <span>Kube Cluster Clash</span>
+    </div>
+  </div>
+</div>
+
+
+<div class="card card-type-node">
+  <div class="card-header">
+    <span class="tag">Node</span>
+    <span class="card-name">GPU Accelerator Node</span>
+  </div>
+  <div class="stats">
+    <div class="stat">
+      <span class="stat-label">Cost</span>
+      <span class="stat-value">4</span>
+    </div>
+    <div class="stat">
+      <span class="stat-label">SLO</span>
+      <span class="stat-value">—</span>
+    </div>
+    <div class="stat">
+      <span class="stat-label">Repair</span>
+      <span class="stat-value">2 tokens to clear Incident</span>
+    </div>
+  </div>
+  <div class="card-body">
+    <p><strong>Prerequisite:</strong> Requires Control Plane</p>
+    <p>Gives +1 SLO to any Workload it hosts; draw a card when played.</p>
+  </div>
+  <div class="card-footer">
+    <div class="meta">
+      <span>Copy 1/3</span>
+      <span>Kube Cluster Clash</span>
+    </div>
+  </div>
+</div>
+
+
+<div class="card card-type-node">
+  <div class="card-header">
+    <span class="tag">Node</span>
+    <span class="card-name">GPU Accelerator Node</span>
+  </div>
+  <div class="stats">
+    <div class="stat">
+      <span class="stat-label">Cost</span>
+      <span class="stat-value">4</span>
+    </div>
+    <div class="stat">
+      <span class="stat-label">SLO</span>
+      <span class="stat-value">—</span>
+    </div>
+    <div class="stat">
+      <span class="stat-label">Repair</span>
+      <span class="stat-value">2 tokens to clear Incident</span>
+    </div>
+  </div>
+  <div class="card-body">
+    <p><strong>Prerequisite:</strong> Requires Control Plane</p>
+    <p>Gives +1 SLO to any Workload it hosts; draw a card when played.</p>
+  </div>
+  <div class="card-footer">
+    <div class="meta">
+      <span>Copy 2/3</span>
+      <span>Kube Cluster Clash</span>
+    </div>
+  </div>
+</div>
+
+</section>
+<section class="sheet">
+
+<div class="card card-type-node">
+  <div class="card-header">
+    <span class="tag">Node</span>
+    <span class="card-name">GPU Accelerator Node</span>
+  </div>
+  <div class="stats">
+    <div class="stat">
+      <span class="stat-label">Cost</span>
+      <span class="stat-value">4</span>
+    </div>
+    <div class="stat">
+      <span class="stat-label">SLO</span>
+      <span class="stat-value">—</span>
+    </div>
+    <div class="stat">
+      <span class="stat-label">Repair</span>
+      <span class="stat-value">2 tokens to clear Incident</span>
+    </div>
+  </div>
+  <div class="card-body">
+    <p><strong>Prerequisite:</strong> Requires Control Plane</p>
+    <p>Gives +1 SLO to any Workload it hosts; draw a card when played.</p>
+  </div>
+  <div class="card-footer">
+    <div class="meta">
+      <span>Copy 3/3</span>
+      <span>Kube Cluster Clash</span>
+    </div>
+  </div>
+</div>
+
+
+<div class="card card-type-node">
+  <div class="card-header">
+    <span class="tag">Node</span>
+    <span class="card-name">Spot Node</span>
+  </div>
+  <div class="stats">
+    <div class="stat">
+      <span class="stat-label">Cost</span>
+      <span class="stat-value">1</span>
+    </div>
+    <div class="stat">
+      <span class="stat-label">SLO</span>
+      <span class="stat-value">—</span>
+    </div>
+    <div class="stat">
+      <span class="stat-label">Repair</span>
+      <span class="stat-value">Cannot be repaired</span>
+    </div>
+  </div>
+  <div class="card-body">
+    
+    <p>Provides 1 capacity; if hit by an Incident discard it instead of repairing.</p>
+  </div>
+  <div class="card-footer">
+    <div class="meta">
+      <span>Copy 1/4</span>
+      <span>Kube Cluster Clash</span>
+    </div>
+  </div>
+</div>
+
+
+<div class="card card-type-node">
+  <div class="card-header">
+    <span class="tag">Node</span>
+    <span class="card-name">Spot Node</span>
+  </div>
+  <div class="stats">
+    <div class="stat">
+      <span class="stat-label">Cost</span>
+      <span class="stat-value">1</span>
+    </div>
+    <div class="stat">
+      <span class="stat-label">SLO</span>
+      <span class="stat-value">—</span>
+    </div>
+    <div class="stat">
+      <span class="stat-label">Repair</span>
+      <span class="stat-value">Cannot be repaired</span>
+    </div>
+  </div>
+  <div class="card-body">
+    
+    <p>Provides 1 capacity; if hit by an Incident discard it instead of repairing.</p>
+  </div>
+  <div class="card-footer">
+    <div class="meta">
+      <span>Copy 2/4</span>
+      <span>Kube Cluster Clash</span>
+    </div>
+  </div>
+</div>
+
+
+<div class="card card-type-node">
+  <div class="card-header">
+    <span class="tag">Node</span>
+    <span class="card-name">Spot Node</span>
+  </div>
+  <div class="stats">
+    <div class="stat">
+      <span class="stat-label">Cost</span>
+      <span class="stat-value">1</span>
+    </div>
+    <div class="stat">
+      <span class="stat-label">SLO</span>
+      <span class="stat-value">—</span>
+    </div>
+    <div class="stat">
+      <span class="stat-label">Repair</span>
+      <span class="stat-value">Cannot be repaired</span>
+    </div>
+  </div>
+  <div class="card-body">
+    
+    <p>Provides 1 capacity; if hit by an Incident discard it instead of repairing.</p>
+  </div>
+  <div class="card-footer">
+    <div class="meta">
+      <span>Copy 3/4</span>
+      <span>Kube Cluster Clash</span>
+    </div>
+  </div>
+</div>
+
+
+<div class="card card-type-node">
+  <div class="card-header">
+    <span class="tag">Node</span>
+    <span class="card-name">Spot Node</span>
+  </div>
+  <div class="stats">
+    <div class="stat">
+      <span class="stat-label">Cost</span>
+      <span class="stat-value">1</span>
+    </div>
+    <div class="stat">
+      <span class="stat-label">SLO</span>
+      <span class="stat-value">—</span>
+    </div>
+    <div class="stat">
+      <span class="stat-label">Repair</span>
+      <span class="stat-value">Cannot be repaired</span>
+    </div>
+  </div>
+  <div class="card-body">
+    
+    <p>Provides 1 capacity; if hit by an Incident discard it instead of repairing.</p>
+  </div>
+  <div class="card-footer">
+    <div class="meta">
+      <span>Copy 4/4</span>
+      <span>Kube Cluster Clash</span>
+    </div>
+  </div>
+</div>
+
+
+<div class="card card-type-control-plane">
+  <div class="card-header">
+    <span class="tag">Control Plane</span>
+    <span class="card-name">Managed Control Plane</span>
+  </div>
+  <div class="stats">
+    <div class="stat">
+      <span class="stat-label">Cost</span>
+      <span class="stat-value">3</span>
+    </div>
+    <div class="stat">
+      <span class="stat-label">SLO</span>
+      <span class="stat-value">—</span>
+    </div>
+    <div class="stat">
+      <span class="stat-label">Repair</span>
+      <span class="stat-value">2 tokens to clear Incident</span>
+    </div>
+  </div>
+  <div class="card-body">
+    
+    <p>Unlocks playing Workloads; draw 1 card on deploy.</p>
+  </div>
+  <div class="card-footer">
+    <div class="meta">
+      <span>Copy 1/3</span>
+      <span>Kube Cluster Clash</span>
+    </div>
+  </div>
+</div>
+
+
+<div class="card card-type-control-plane">
+  <div class="card-header">
+    <span class="tag">Control Plane</span>
+    <span class="card-name">Managed Control Plane</span>
+  </div>
+  <div class="stats">
+    <div class="stat">
+      <span class="stat-label">Cost</span>
+      <span class="stat-value">3</span>
+    </div>
+    <div class="stat">
+      <span class="stat-label">SLO</span>
+      <span class="stat-value">—</span>
+    </div>
+    <div class="stat">
+      <span class="stat-label">Repair</span>
+      <span class="stat-value">2 tokens to clear Incident</span>
+    </div>
+  </div>
+  <div class="card-body">
+    
+    <p>Unlocks playing Workloads; draw 1 card on deploy.</p>
+  </div>
+  <div class="card-footer">
+    <div class="meta">
+      <span>Copy 2/3</span>
+      <span>Kube Cluster Clash</span>
+    </div>
+  </div>
+</div>
+
+
+<div class="card card-type-control-plane">
+  <div class="card-header">
+    <span class="tag">Control Plane</span>
+    <span class="card-name">Managed Control Plane</span>
+  </div>
+  <div class="stats">
+    <div class="stat">
+      <span class="stat-label">Cost</span>
+      <span class="stat-value">3</span>
+    </div>
+    <div class="stat">
+      <span class="stat-label">SLO</span>
+      <span class="stat-value">—</span>
+    </div>
+    <div class="stat">
+      <span class="stat-label">Repair</span>
+      <span class="stat-value">2 tokens to clear Incident</span>
+    </div>
+  </div>
+  <div class="card-body">
+    
+    <p>Unlocks playing Workloads; draw 1 card on deploy.</p>
+  </div>
+  <div class="card-footer">
+    <div class="meta">
+      <span>Copy 3/3</span>
+      <span>Kube Cluster Clash</span>
+    </div>
+  </div>
+</div>
+
+
+<div class="card card-type-control-plane">
+  <div class="card-header">
+    <span class="tag">Control Plane</span>
+    <span class="card-name">High-Availability Control Plane</span>
+  </div>
+  <div class="stats">
+    <div class="stat">
+      <span class="stat-label">Cost</span>
+      <span class="stat-value">5</span>
+    </div>
+    <div class="stat">
+      <span class="stat-label">SLO</span>
+      <span class="stat-value">—</span>
+    </div>
+    <div class="stat">
+      <span class="stat-label">Repair</span>
+      <span class="stat-value">3 tokens to clear Incident</span>
+    </div>
+  </div>
+  <div class="card-body">
+    <p><strong>Prerequisite:</strong> Requires Control Plane</p>
+    <p>Your Resilience cannot drop below 1 while this is incident-free.</p>
+  </div>
+  <div class="card-footer">
+    <div class="meta">
+      <span>Copy 1/2</span>
+      <span>Kube Cluster Clash</span>
+    </div>
+  </div>
+</div>
+
+</section>
+<section class="sheet">
+
+<div class="card card-type-control-plane">
+  <div class="card-header">
+    <span class="tag">Control Plane</span>
+    <span class="card-name">High-Availability Control Plane</span>
+  </div>
+  <div class="stats">
+    <div class="stat">
+      <span class="stat-label">Cost</span>
+      <span class="stat-value">5</span>
+    </div>
+    <div class="stat">
+      <span class="stat-label">SLO</span>
+      <span class="stat-value">—</span>
+    </div>
+    <div class="stat">
+      <span class="stat-label">Repair</span>
+      <span class="stat-value">3 tokens to clear Incident</span>
+    </div>
+  </div>
+  <div class="card-body">
+    <p><strong>Prerequisite:</strong> Requires Control Plane</p>
+    <p>Your Resilience cannot drop below 1 while this is incident-free.</p>
+  </div>
+  <div class="card-footer">
+    <div class="meta">
+      <span>Copy 2/2</span>
+      <span>Kube Cluster Clash</span>
+    </div>
+  </div>
+</div>
+
+
+<div class="card card-type-storage">
+  <div class="card-header">
+    <span class="tag">Storage</span>
+    <span class="card-name">Persistent Volume Stack</span>
+  </div>
+  <div class="stats">
+    <div class="stat">
+      <span class="stat-label">Cost</span>
+      <span class="stat-value">3</span>
+    </div>
+    <div class="stat">
+      <span class="stat-label">SLO</span>
+      <span class="stat-value">—</span>
+    </div>
+    <div class="stat">
+      <span class="stat-label">Repair</span>
+      <span class="stat-value">2 tokens to clear Incident</span>
+    </div>
+  </div>
+  <div class="card-body">
+    <p><strong>Prerequisite:</strong> Requires Node</p>
+    <p>Each Stateful Workload you control gains +1 SLO.</p>
+  </div>
+  <div class="card-footer">
+    <div class="meta">
+      <span>Copy 1/4</span>
+      <span>Kube Cluster Clash</span>
+    </div>
+  </div>
+</div>
+
+
+<div class="card card-type-storage">
+  <div class="card-header">
+    <span class="tag">Storage</span>
+    <span class="card-name">Persistent Volume Stack</span>
+  </div>
+  <div class="stats">
+    <div class="stat">
+      <span class="stat-label">Cost</span>
+      <span class="stat-value">3</span>
+    </div>
+    <div class="stat">
+      <span class="stat-label">SLO</span>
+      <span class="stat-value">—</span>
+    </div>
+    <div class="stat">
+      <span class="stat-label">Repair</span>
+      <span class="stat-value">2 tokens to clear Incident</span>
+    </div>
+  </div>
+  <div class="card-body">
+    <p><strong>Prerequisite:</strong> Requires Node</p>
+    <p>Each Stateful Workload you control gains +1 SLO.</p>
+  </div>
+  <div class="card-footer">
+    <div class="meta">
+      <span>Copy 2/4</span>
+      <span>Kube Cluster Clash</span>
+    </div>
+  </div>
+</div>
+
+
+<div class="card card-type-storage">
+  <div class="card-header">
+    <span class="tag">Storage</span>
+    <span class="card-name">Persistent Volume Stack</span>
+  </div>
+  <div class="stats">
+    <div class="stat">
+      <span class="stat-label">Cost</span>
+      <span class="stat-value">3</span>
+    </div>
+    <div class="stat">
+      <span class="stat-label">SLO</span>
+      <span class="stat-value">—</span>
+    </div>
+    <div class="stat">
+      <span class="stat-label">Repair</span>
+      <span class="stat-value">2 tokens to clear Incident</span>
+    </div>
+  </div>
+  <div class="card-body">
+    <p><strong>Prerequisite:</strong> Requires Node</p>
+    <p>Each Stateful Workload you control gains +1 SLO.</p>
+  </div>
+  <div class="card-footer">
+    <div class="meta">
+      <span>Copy 3/4</span>
+      <span>Kube Cluster Clash</span>
+    </div>
+  </div>
+</div>
+
+
+<div class="card card-type-storage">
+  <div class="card-header">
+    <span class="tag">Storage</span>
+    <span class="card-name">Persistent Volume Stack</span>
+  </div>
+  <div class="stats">
+    <div class="stat">
+      <span class="stat-label">Cost</span>
+      <span class="stat-value">3</span>
+    </div>
+    <div class="stat">
+      <span class="stat-label">SLO</span>
+      <span class="stat-value">—</span>
+    </div>
+    <div class="stat">
+      <span class="stat-label">Repair</span>
+      <span class="stat-value">2 tokens to clear Incident</span>
+    </div>
+  </div>
+  <div class="card-body">
+    <p><strong>Prerequisite:</strong> Requires Node</p>
+    <p>Each Stateful Workload you control gains +1 SLO.</p>
+  </div>
+  <div class="card-footer">
+    <div class="meta">
+      <span>Copy 4/4</span>
+      <span>Kube Cluster Clash</span>
+    </div>
+  </div>
+</div>
+
+
+<div class="card card-type-networking">
+  <div class="card-header">
+    <span class="tag">Networking</span>
+    <span class="card-name">Service Mesh Gateway</span>
+  </div>
+  <div class="stats">
+    <div class="stat">
+      <span class="stat-label">Cost</span>
+      <span class="stat-value">3</span>
+    </div>
+    <div class="stat">
+      <span class="stat-label">SLO</span>
+      <span class="stat-value">—</span>
+    </div>
+    <div class="stat">
+      <span class="stat-label">Repair</span>
+      <span class="stat-value">gain 1 Resource token.</span>
+    </div>
+  </div>
+  <div class="card-body">
+    
+    <p>When you play a Workload</p>
+  </div>
+  <div class="card-footer">
+    <div class="meta">
+      <span>Copy 1/3</span>
+      <span>Kube Cluster Clash</span>
+    </div>
+  </div>
+</div>
+
+
+<div class="card card-type-networking">
+  <div class="card-header">
+    <span class="tag">Networking</span>
+    <span class="card-name">Service Mesh Gateway</span>
+  </div>
+  <div class="stats">
+    <div class="stat">
+      <span class="stat-label">Cost</span>
+      <span class="stat-value">3</span>
+    </div>
+    <div class="stat">
+      <span class="stat-label">SLO</span>
+      <span class="stat-value">—</span>
+    </div>
+    <div class="stat">
+      <span class="stat-label">Repair</span>
+      <span class="stat-value">gain 1 Resource token.</span>
+    </div>
+  </div>
+  <div class="card-body">
+    
+    <p>When you play a Workload</p>
+  </div>
+  <div class="card-footer">
+    <div class="meta">
+      <span>Copy 2/3</span>
+      <span>Kube Cluster Clash</span>
+    </div>
+  </div>
+</div>
+
+
+<div class="card card-type-networking">
+  <div class="card-header">
+    <span class="tag">Networking</span>
+    <span class="card-name">Service Mesh Gateway</span>
+  </div>
+  <div class="stats">
+    <div class="stat">
+      <span class="stat-label">Cost</span>
+      <span class="stat-value">3</span>
+    </div>
+    <div class="stat">
+      <span class="stat-label">SLO</span>
+      <span class="stat-value">—</span>
+    </div>
+    <div class="stat">
+      <span class="stat-label">Repair</span>
+      <span class="stat-value">gain 1 Resource token.</span>
+    </div>
+  </div>
+  <div class="card-body">
+    
+    <p>When you play a Workload</p>
+  </div>
+  <div class="card-footer">
+    <div class="meta">
+      <span>Copy 3/3</span>
+      <span>Kube Cluster Clash</span>
+    </div>
+  </div>
+</div>
+
+
+<div class="card card-type-networking">
+  <div class="card-header">
+    <span class="tag">Networking</span>
+    <span class="card-name">Edge Ingress Load Balancer</span>
+  </div>
+  <div class="stats">
+    <div class="stat">
+      <span class="stat-label">Cost</span>
+      <span class="stat-value">2</span>
+    </div>
+    <div class="stat">
+      <span class="stat-label">SLO</span>
+      <span class="stat-value">—</span>
+    </div>
+    <div class="stat">
+      <span class="stat-label">Repair</span>
+      <span class="stat-value">1 token to clear Incident</span>
+    </div>
+  </div>
+  <div class="card-body">
+    
+    <p>Once per turn pay 1 Resource to draw a Commons Row card and discard it.</p>
+  </div>
+  <div class="card-footer">
+    <div class="meta">
+      <span>Copy 1/3</span>
+      <span>Kube Cluster Clash</span>
+    </div>
+  </div>
+</div>
+
+</section>
+<section class="sheet">
+
+<div class="card card-type-networking">
+  <div class="card-header">
+    <span class="tag">Networking</span>
+    <span class="card-name">Edge Ingress Load Balancer</span>
+  </div>
+  <div class="stats">
+    <div class="stat">
+      <span class="stat-label">Cost</span>
+      <span class="stat-value">2</span>
+    </div>
+    <div class="stat">
+      <span class="stat-label">SLO</span>
+      <span class="stat-value">—</span>
+    </div>
+    <div class="stat">
+      <span class="stat-label">Repair</span>
+      <span class="stat-value">1 token to clear Incident</span>
+    </div>
+  </div>
+  <div class="card-body">
+    
+    <p>Once per turn pay 1 Resource to draw a Commons Row card and discard it.</p>
+  </div>
+  <div class="card-footer">
+    <div class="meta">
+      <span>Copy 2/3</span>
+      <span>Kube Cluster Clash</span>
+    </div>
+  </div>
+</div>
+
+
+<div class="card card-type-networking">
+  <div class="card-header">
+    <span class="tag">Networking</span>
+    <span class="card-name">Edge Ingress Load Balancer</span>
+  </div>
+  <div class="stats">
+    <div class="stat">
+      <span class="stat-label">Cost</span>
+      <span class="stat-value">2</span>
+    </div>
+    <div class="stat">
+      <span class="stat-label">SLO</span>
+      <span class="stat-value">—</span>
+    </div>
+    <div class="stat">
+      <span class="stat-label">Repair</span>
+      <span class="stat-value">1 token to clear Incident</span>
+    </div>
+  </div>
+  <div class="card-body">
+    
+    <p>Once per turn pay 1 Resource to draw a Commons Row card and discard it.</p>
+  </div>
+  <div class="card-footer">
+    <div class="meta">
+      <span>Copy 3/3</span>
+      <span>Kube Cluster Clash</span>
+    </div>
+  </div>
+</div>
+
+
+<div class="card card-type-automation">
+  <div class="card-header">
+    <span class="tag">Automation</span>
+    <span class="card-name">Observability Stack</span>
+  </div>
+  <div class="stats">
+    <div class="stat">
+      <span class="stat-label">Cost</span>
+      <span class="stat-value">2</span>
+    </div>
+    <div class="stat">
+      <span class="stat-label">SLO</span>
+      <span class="stat-value">—</span>
+    </div>
+    <div class="stat">
+      <span class="stat-label">Repair</span>
+      <span class="stat-value">1 token to clear Incident</span>
+    </div>
+  </div>
+  <div class="card-body">
+    
+    <p>At end of turn you may peek at top card of deck; you may keep or discard.</p>
+  </div>
+  <div class="card-footer">
+    <div class="meta">
+      <span>Copy 1/4</span>
+      <span>Kube Cluster Clash</span>
+    </div>
+  </div>
+</div>
+
+
+<div class="card card-type-automation">
+  <div class="card-header">
+    <span class="tag">Automation</span>
+    <span class="card-name">Observability Stack</span>
+  </div>
+  <div class="stats">
+    <div class="stat">
+      <span class="stat-label">Cost</span>
+      <span class="stat-value">2</span>
+    </div>
+    <div class="stat">
+      <span class="stat-label">SLO</span>
+      <span class="stat-value">—</span>
+    </div>
+    <div class="stat">
+      <span class="stat-label">Repair</span>
+      <span class="stat-value">1 token to clear Incident</span>
+    </div>
+  </div>
+  <div class="card-body">
+    
+    <p>At end of turn you may peek at top card of deck; you may keep or discard.</p>
+  </div>
+  <div class="card-footer">
+    <div class="meta">
+      <span>Copy 2/4</span>
+      <span>Kube Cluster Clash</span>
+    </div>
+  </div>
+</div>
+
+
+<div class="card card-type-automation">
+  <div class="card-header">
+    <span class="tag">Automation</span>
+    <span class="card-name">Observability Stack</span>
+  </div>
+  <div class="stats">
+    <div class="stat">
+      <span class="stat-label">Cost</span>
+      <span class="stat-value">2</span>
+    </div>
+    <div class="stat">
+      <span class="stat-label">SLO</span>
+      <span class="stat-value">—</span>
+    </div>
+    <div class="stat">
+      <span class="stat-label">Repair</span>
+      <span class="stat-value">1 token to clear Incident</span>
+    </div>
+  </div>
+  <div class="card-body">
+    
+    <p>At end of turn you may peek at top card of deck; you may keep or discard.</p>
+  </div>
+  <div class="card-footer">
+    <div class="meta">
+      <span>Copy 3/4</span>
+      <span>Kube Cluster Clash</span>
+    </div>
+  </div>
+</div>
+
+
+<div class="card card-type-automation">
+  <div class="card-header">
+    <span class="tag">Automation</span>
+    <span class="card-name">Observability Stack</span>
+  </div>
+  <div class="stats">
+    <div class="stat">
+      <span class="stat-label">Cost</span>
+      <span class="stat-value">2</span>
+    </div>
+    <div class="stat">
+      <span class="stat-label">SLO</span>
+      <span class="stat-value">—</span>
+    </div>
+    <div class="stat">
+      <span class="stat-label">Repair</span>
+      <span class="stat-value">1 token to clear Incident</span>
+    </div>
+  </div>
+  <div class="card-body">
+    
+    <p>At end of turn you may peek at top card of deck; you may keep or discard.</p>
+  </div>
+  <div class="card-footer">
+    <div class="meta">
+      <span>Copy 4/4</span>
+      <span>Kube Cluster Clash</span>
+    </div>
+  </div>
+</div>
+
+
+<div class="card card-type-automation">
+  <div class="card-header">
+    <span class="tag">Automation</span>
+    <span class="card-name">GitOps Pipeline</span>
+  </div>
+  <div class="stats">
+    <div class="stat">
+      <span class="stat-label">Cost</span>
+      <span class="stat-value">3</span>
+    </div>
+    <div class="stat">
+      <span class="stat-label">SLO</span>
+      <span class="stat-value">—</span>
+    </div>
+    <div class="stat">
+      <span class="stat-label">Repair</span>
+      <span class="stat-value">2 tokens to clear Incident</span>
+    </div>
+  </div>
+  <div class="card-body">
+    <p><strong>Prerequisite:</strong> Requires Control Plane</p>
+    <p>During Deploy you may play one additional card for 1 less Resource.</p>
+  </div>
+  <div class="card-footer">
+    <div class="meta">
+      <span>Copy 1/3</span>
+      <span>Kube Cluster Clash</span>
+    </div>
+  </div>
+</div>
+
+
+<div class="card card-type-automation">
+  <div class="card-header">
+    <span class="tag">Automation</span>
+    <span class="card-name">GitOps Pipeline</span>
+  </div>
+  <div class="stats">
+    <div class="stat">
+      <span class="stat-label">Cost</span>
+      <span class="stat-value">3</span>
+    </div>
+    <div class="stat">
+      <span class="stat-label">SLO</span>
+      <span class="stat-value">—</span>
+    </div>
+    <div class="stat">
+      <span class="stat-label">Repair</span>
+      <span class="stat-value">2 tokens to clear Incident</span>
+    </div>
+  </div>
+  <div class="card-body">
+    <p><strong>Prerequisite:</strong> Requires Control Plane</p>
+    <p>During Deploy you may play one additional card for 1 less Resource.</p>
+  </div>
+  <div class="card-footer">
+    <div class="meta">
+      <span>Copy 2/3</span>
+      <span>Kube Cluster Clash</span>
+    </div>
+  </div>
+</div>
+
+
+<div class="card card-type-automation">
+  <div class="card-header">
+    <span class="tag">Automation</span>
+    <span class="card-name">GitOps Pipeline</span>
+  </div>
+  <div class="stats">
+    <div class="stat">
+      <span class="stat-label">Cost</span>
+      <span class="stat-value">3</span>
+    </div>
+    <div class="stat">
+      <span class="stat-label">SLO</span>
+      <span class="stat-value">—</span>
+    </div>
+    <div class="stat">
+      <span class="stat-label">Repair</span>
+      <span class="stat-value">2 tokens to clear Incident</span>
+    </div>
+  </div>
+  <div class="card-body">
+    <p><strong>Prerequisite:</strong> Requires Control Plane</p>
+    <p>During Deploy you may play one additional card for 1 less Resource.</p>
+  </div>
+  <div class="card-footer">
+    <div class="meta">
+      <span>Copy 3/3</span>
+      <span>Kube Cluster Clash</span>
+    </div>
+  </div>
+</div>
+
+</section>
+<section class="sheet">
+
+<div class="card card-type-automation">
+  <div class="card-header">
+    <span class="tag">Automation</span>
+    <span class="card-name">Cluster Autoscaler</span>
+  </div>
+  <div class="stats">
+    <div class="stat">
+      <span class="stat-label">Cost</span>
+      <span class="stat-value">3</span>
+    </div>
+    <div class="stat">
+      <span class="stat-label">SLO</span>
+      <span class="stat-value">—</span>
+    </div>
+    <div class="stat">
+      <span class="stat-label">Repair</span>
+      <span class="stat-value">2 tokens to clear Incident</span>
+    </div>
+  </div>
+  <div class="card-body">
+    <p><strong>Prerequisite:</strong> Requires Node</p>
+    <p>Gain +1 Resource during Refresh for each 2 Nodes you control.</p>
+  </div>
+  <div class="card-footer">
+    <div class="meta">
+      <span>Copy 1/3</span>
+      <span>Kube Cluster Clash</span>
+    </div>
+  </div>
+</div>
+
+
+<div class="card card-type-automation">
+  <div class="card-header">
+    <span class="tag">Automation</span>
+    <span class="card-name">Cluster Autoscaler</span>
+  </div>
+  <div class="stats">
+    <div class="stat">
+      <span class="stat-label">Cost</span>
+      <span class="stat-value">3</span>
+    </div>
+    <div class="stat">
+      <span class="stat-label">SLO</span>
+      <span class="stat-value">—</span>
+    </div>
+    <div class="stat">
+      <span class="stat-label">Repair</span>
+      <span class="stat-value">2 tokens to clear Incident</span>
+    </div>
+  </div>
+  <div class="card-body">
+    <p><strong>Prerequisite:</strong> Requires Node</p>
+    <p>Gain +1 Resource during Refresh for each 2 Nodes you control.</p>
+  </div>
+  <div class="card-footer">
+    <div class="meta">
+      <span>Copy 2/3</span>
+      <span>Kube Cluster Clash</span>
+    </div>
+  </div>
+</div>
+
+
+<div class="card card-type-automation">
+  <div class="card-header">
+    <span class="tag">Automation</span>
+    <span class="card-name">Cluster Autoscaler</span>
+  </div>
+  <div class="stats">
+    <div class="stat">
+      <span class="stat-label">Cost</span>
+      <span class="stat-value">3</span>
+    </div>
+    <div class="stat">
+      <span class="stat-label">SLO</span>
+      <span class="stat-value">—</span>
+    </div>
+    <div class="stat">
+      <span class="stat-label">Repair</span>
+      <span class="stat-value">2 tokens to clear Incident</span>
+    </div>
+  </div>
+  <div class="card-body">
+    <p><strong>Prerequisite:</strong> Requires Node</p>
+    <p>Gain +1 Resource during Refresh for each 2 Nodes you control.</p>
+  </div>
+  <div class="card-footer">
+    <div class="meta">
+      <span>Copy 3/3</span>
+      <span>Kube Cluster Clash</span>
+    </div>
+  </div>
+</div>
+
+
+<div class="card card-type-upgrade">
+  <div class="card-header">
+    <span class="tag">Upgrade</span>
+    <span class="card-name">Disaster Recovery Plan</span>
+  </div>
+  <div class="stats">
+    <div class="stat">
+      <span class="stat-label">Cost</span>
+      <span class="stat-value">4</span>
+    </div>
+    <div class="stat">
+      <span class="stat-label">SLO</span>
+      <span class="stat-value">—</span>
+    </div>
+    <div class="stat">
+      <span class="stat-label">Repair</span>
+      <span class="stat-value">discard this instead and set Resilience to 2.</span>
+    </div>
+  </div>
+  <div class="card-body">
+    <p><strong>Prerequisite:</strong> Requires Storage</p>
+    <p>If your Resilience would drop below 0</p>
+  </div>
+  <div class="card-footer">
+    <div class="meta">
+      <span>Copy 1/3</span>
+      <span>Kube Cluster Clash</span>
+    </div>
+  </div>
+</div>
+
+
+<div class="card card-type-upgrade">
+  <div class="card-header">
+    <span class="tag">Upgrade</span>
+    <span class="card-name">Disaster Recovery Plan</span>
+  </div>
+  <div class="stats">
+    <div class="stat">
+      <span class="stat-label">Cost</span>
+      <span class="stat-value">4</span>
+    </div>
+    <div class="stat">
+      <span class="stat-label">SLO</span>
+      <span class="stat-value">—</span>
+    </div>
+    <div class="stat">
+      <span class="stat-label">Repair</span>
+      <span class="stat-value">discard this instead and set Resilience to 2.</span>
+    </div>
+  </div>
+  <div class="card-body">
+    <p><strong>Prerequisite:</strong> Requires Storage</p>
+    <p>If your Resilience would drop below 0</p>
+  </div>
+  <div class="card-footer">
+    <div class="meta">
+      <span>Copy 2/3</span>
+      <span>Kube Cluster Clash</span>
+    </div>
+  </div>
+</div>
+
+
+<div class="card card-type-upgrade">
+  <div class="card-header">
+    <span class="tag">Upgrade</span>
+    <span class="card-name">Disaster Recovery Plan</span>
+  </div>
+  <div class="stats">
+    <div class="stat">
+      <span class="stat-label">Cost</span>
+      <span class="stat-value">4</span>
+    </div>
+    <div class="stat">
+      <span class="stat-label">SLO</span>
+      <span class="stat-value">—</span>
+    </div>
+    <div class="stat">
+      <span class="stat-label">Repair</span>
+      <span class="stat-value">discard this instead and set Resilience to 2.</span>
+    </div>
+  </div>
+  <div class="card-body">
+    <p><strong>Prerequisite:</strong> Requires Storage</p>
+    <p>If your Resilience would drop below 0</p>
+  </div>
+  <div class="card-footer">
+    <div class="meta">
+      <span>Copy 3/3</span>
+      <span>Kube Cluster Clash</span>
+    </div>
+  </div>
+</div>
+
+
+<div class="card card-type-workload">
+  <div class="card-header">
+    <span class="tag">Workload</span>
+    <span class="card-name">Stateless API Service</span>
+  </div>
+  <div class="stats">
+    <div class="stat">
+      <span class="stat-label">Cost</span>
+      <span class="stat-value">2</span>
+    </div>
+    <div class="stat">
+      <span class="stat-label">SLO</span>
+      <span class="stat-value">2</span>
+    </div>
+    <div class="stat">
+      <span class="stat-label">Repair</span>
+      <span class="stat-value">2 tokens to clear Incident</span>
+    </div>
+  </div>
+  <div class="card-body">
+    <p><strong>Prerequisite:</strong> Requires 2 Nodes</p>
+    <p>Provides +1 Resource during Refresh while incident-free.</p>
+  </div>
+  <div class="card-footer">
+    <div class="meta">
+      <span>Copy 1/5</span>
+      <span>Kube Cluster Clash</span>
+    </div>
+  </div>
+</div>
+
+
+<div class="card card-type-workload">
+  <div class="card-header">
+    <span class="tag">Workload</span>
+    <span class="card-name">Stateless API Service</span>
+  </div>
+  <div class="stats">
+    <div class="stat">
+      <span class="stat-label">Cost</span>
+      <span class="stat-value">2</span>
+    </div>
+    <div class="stat">
+      <span class="stat-label">SLO</span>
+      <span class="stat-value">2</span>
+    </div>
+    <div class="stat">
+      <span class="stat-label">Repair</span>
+      <span class="stat-value">2 tokens to clear Incident</span>
+    </div>
+  </div>
+  <div class="card-body">
+    <p><strong>Prerequisite:</strong> Requires 2 Nodes</p>
+    <p>Provides +1 Resource during Refresh while incident-free.</p>
+  </div>
+  <div class="card-footer">
+    <div class="meta">
+      <span>Copy 2/5</span>
+      <span>Kube Cluster Clash</span>
+    </div>
+  </div>
+</div>
+
+
+<div class="card card-type-workload">
+  <div class="card-header">
+    <span class="tag">Workload</span>
+    <span class="card-name">Stateless API Service</span>
+  </div>
+  <div class="stats">
+    <div class="stat">
+      <span class="stat-label">Cost</span>
+      <span class="stat-value">2</span>
+    </div>
+    <div class="stat">
+      <span class="stat-label">SLO</span>
+      <span class="stat-value">2</span>
+    </div>
+    <div class="stat">
+      <span class="stat-label">Repair</span>
+      <span class="stat-value">2 tokens to clear Incident</span>
+    </div>
+  </div>
+  <div class="card-body">
+    <p><strong>Prerequisite:</strong> Requires 2 Nodes</p>
+    <p>Provides +1 Resource during Refresh while incident-free.</p>
+  </div>
+  <div class="card-footer">
+    <div class="meta">
+      <span>Copy 3/5</span>
+      <span>Kube Cluster Clash</span>
+    </div>
+  </div>
+</div>
+
+</section>
+<section class="sheet">
+
+<div class="card card-type-workload">
+  <div class="card-header">
+    <span class="tag">Workload</span>
+    <span class="card-name">Stateless API Service</span>
+  </div>
+  <div class="stats">
+    <div class="stat">
+      <span class="stat-label">Cost</span>
+      <span class="stat-value">2</span>
+    </div>
+    <div class="stat">
+      <span class="stat-label">SLO</span>
+      <span class="stat-value">2</span>
+    </div>
+    <div class="stat">
+      <span class="stat-label">Repair</span>
+      <span class="stat-value">2 tokens to clear Incident</span>
+    </div>
+  </div>
+  <div class="card-body">
+    <p><strong>Prerequisite:</strong> Requires 2 Nodes</p>
+    <p>Provides +1 Resource during Refresh while incident-free.</p>
+  </div>
+  <div class="card-footer">
+    <div class="meta">
+      <span>Copy 4/5</span>
+      <span>Kube Cluster Clash</span>
+    </div>
+  </div>
+</div>
+
+
+<div class="card card-type-workload">
+  <div class="card-header">
+    <span class="tag">Workload</span>
+    <span class="card-name">Stateless API Service</span>
+  </div>
+  <div class="stats">
+    <div class="stat">
+      <span class="stat-label">Cost</span>
+      <span class="stat-value">2</span>
+    </div>
+    <div class="stat">
+      <span class="stat-label">SLO</span>
+      <span class="stat-value">2</span>
+    </div>
+    <div class="stat">
+      <span class="stat-label">Repair</span>
+      <span class="stat-value">2 tokens to clear Incident</span>
+    </div>
+  </div>
+  <div class="card-body">
+    <p><strong>Prerequisite:</strong> Requires 2 Nodes</p>
+    <p>Provides +1 Resource during Refresh while incident-free.</p>
+  </div>
+  <div class="card-footer">
+    <div class="meta">
+      <span>Copy 5/5</span>
+      <span>Kube Cluster Clash</span>
+    </div>
+  </div>
+</div>
+
+
+<div class="card card-type-workload">
+  <div class="card-header">
+    <span class="tag">Workload</span>
+    <span class="card-name">Event Processor Queue</span>
+  </div>
+  <div class="stats">
+    <div class="stat">
+      <span class="stat-label">Cost</span>
+      <span class="stat-value">3</span>
+    </div>
+    <div class="stat">
+      <span class="stat-label">SLO</span>
+      <span class="stat-value">2</span>
+    </div>
+    <div class="stat">
+      <span class="stat-label">Repair</span>
+      <span class="stat-value">2 tokens to clear Incident</span>
+    </div>
+  </div>
+  <div class="card-body">
+    <p><strong>Prerequisite:</strong> Requires Networking</p>
+    <p>When deployed gain 2 Resource tokens.</p>
+  </div>
+  <div class="card-footer">
+    <div class="meta">
+      <span>Copy 1/3</span>
+      <span>Kube Cluster Clash</span>
+    </div>
+  </div>
+</div>
+
+
+<div class="card card-type-workload">
+  <div class="card-header">
+    <span class="tag">Workload</span>
+    <span class="card-name">Event Processor Queue</span>
+  </div>
+  <div class="stats">
+    <div class="stat">
+      <span class="stat-label">Cost</span>
+      <span class="stat-value">3</span>
+    </div>
+    <div class="stat">
+      <span class="stat-label">SLO</span>
+      <span class="stat-value">2</span>
+    </div>
+    <div class="stat">
+      <span class="stat-label">Repair</span>
+      <span class="stat-value">2 tokens to clear Incident</span>
+    </div>
+  </div>
+  <div class="card-body">
+    <p><strong>Prerequisite:</strong> Requires Networking</p>
+    <p>When deployed gain 2 Resource tokens.</p>
+  </div>
+  <div class="card-footer">
+    <div class="meta">
+      <span>Copy 2/3</span>
+      <span>Kube Cluster Clash</span>
+    </div>
+  </div>
+</div>
+
+
+<div class="card card-type-workload">
+  <div class="card-header">
+    <span class="tag">Workload</span>
+    <span class="card-name">Event Processor Queue</span>
+  </div>
+  <div class="stats">
+    <div class="stat">
+      <span class="stat-label">Cost</span>
+      <span class="stat-value">3</span>
+    </div>
+    <div class="stat">
+      <span class="stat-label">SLO</span>
+      <span class="stat-value">2</span>
+    </div>
+    <div class="stat">
+      <span class="stat-label">Repair</span>
+      <span class="stat-value">2 tokens to clear Incident</span>
+    </div>
+  </div>
+  <div class="card-body">
+    <p><strong>Prerequisite:</strong> Requires Networking</p>
+    <p>When deployed gain 2 Resource tokens.</p>
+  </div>
+  <div class="card-footer">
+    <div class="meta">
+      <span>Copy 3/3</span>
+      <span>Kube Cluster Clash</span>
+    </div>
+  </div>
+</div>
+
+
+<div class="card card-type-workload">
+  <div class="card-header">
+    <span class="tag">Workload</span>
+    <span class="card-name">Stateful Database Cluster</span>
+  </div>
+  <div class="stats">
+    <div class="stat">
+      <span class="stat-label">Cost</span>
+      <span class="stat-value">4</span>
+    </div>
+    <div class="stat">
+      <span class="stat-label">SLO</span>
+      <span class="stat-value">3</span>
+    </div>
+    <div class="stat">
+      <span class="stat-label">Repair</span>
+      <span class="stat-value">3 tokens to clear Incident</span>
+    </div>
+  </div>
+  <div class="card-body">
+    <p><strong>Prerequisite:</strong> Requires Storage</p>
+    <p>Add +1 SLO for each Persistent Volume Stack you control.</p>
+  </div>
+  <div class="card-footer">
+    <div class="meta">
+      <span>Copy 1/3</span>
+      <span>Kube Cluster Clash</span>
+    </div>
+  </div>
+</div>
+
+
+<div class="card card-type-workload">
+  <div class="card-header">
+    <span class="tag">Workload</span>
+    <span class="card-name">Stateful Database Cluster</span>
+  </div>
+  <div class="stats">
+    <div class="stat">
+      <span class="stat-label">Cost</span>
+      <span class="stat-value">4</span>
+    </div>
+    <div class="stat">
+      <span class="stat-label">SLO</span>
+      <span class="stat-value">3</span>
+    </div>
+    <div class="stat">
+      <span class="stat-label">Repair</span>
+      <span class="stat-value">3 tokens to clear Incident</span>
+    </div>
+  </div>
+  <div class="card-body">
+    <p><strong>Prerequisite:</strong> Requires Storage</p>
+    <p>Add +1 SLO for each Persistent Volume Stack you control.</p>
+  </div>
+  <div class="card-footer">
+    <div class="meta">
+      <span>Copy 2/3</span>
+      <span>Kube Cluster Clash</span>
+    </div>
+  </div>
+</div>
+
+
+<div class="card card-type-workload">
+  <div class="card-header">
+    <span class="tag">Workload</span>
+    <span class="card-name">Stateful Database Cluster</span>
+  </div>
+  <div class="stats">
+    <div class="stat">
+      <span class="stat-label">Cost</span>
+      <span class="stat-value">4</span>
+    </div>
+    <div class="stat">
+      <span class="stat-label">SLO</span>
+      <span class="stat-value">3</span>
+    </div>
+    <div class="stat">
+      <span class="stat-label">Repair</span>
+      <span class="stat-value">3 tokens to clear Incident</span>
+    </div>
+  </div>
+  <div class="card-body">
+    <p><strong>Prerequisite:</strong> Requires Storage</p>
+    <p>Add +1 SLO for each Persistent Volume Stack you control.</p>
+  </div>
+  <div class="card-footer">
+    <div class="meta">
+      <span>Copy 3/3</span>
+      <span>Kube Cluster Clash</span>
+    </div>
+  </div>
+</div>
+
+
+<div class="card card-type-workload">
+  <div class="card-header">
+    <span class="tag">Workload</span>
+    <span class="card-name">Machine Learning Platform</span>
+  </div>
+  <div class="stats">
+    <div class="stat">
+      <span class="stat-label">Cost</span>
+      <span class="stat-value">5</span>
+    </div>
+    <div class="stat">
+      <span class="stat-label">SLO</span>
+      <span class="stat-value">4</span>
+    </div>
+    <div class="stat">
+      <span class="stat-label">Repair</span>
+      <span class="stat-value">3 tokens to clear Incident</span>
+    </div>
+  </div>
+  <div class="card-body">
+    <p><strong>Prerequisite:</strong> Requires GPU Accelerator Node</p>
+    <p>Opponents pay +1 Resource to target you with Attacks.</p>
+  </div>
+  <div class="card-footer">
+    <div class="meta">
+      <span>Copy 1/2</span>
+      <span>Kube Cluster Clash</span>
+    </div>
+  </div>
+</div>
+
+</section>
+<section class="sheet">
+
+<div class="card card-type-workload">
+  <div class="card-header">
+    <span class="tag">Workload</span>
+    <span class="card-name">Machine Learning Platform</span>
+  </div>
+  <div class="stats">
+    <div class="stat">
+      <span class="stat-label">Cost</span>
+      <span class="stat-value">5</span>
+    </div>
+    <div class="stat">
+      <span class="stat-label">SLO</span>
+      <span class="stat-value">4</span>
+    </div>
+    <div class="stat">
+      <span class="stat-label">Repair</span>
+      <span class="stat-value">3 tokens to clear Incident</span>
+    </div>
+  </div>
+  <div class="card-body">
+    <p><strong>Prerequisite:</strong> Requires GPU Accelerator Node</p>
+    <p>Opponents pay +1 Resource to target you with Attacks.</p>
+  </div>
+  <div class="card-footer">
+    <div class="meta">
+      <span>Copy 2/2</span>
+      <span>Kube Cluster Clash</span>
+    </div>
+  </div>
+</div>
+
+
+<div class="card card-type-workload">
+  <div class="card-header">
+    <span class="tag">Workload</span>
+    <span class="card-name">Batch ETL Pipeline</span>
+  </div>
+  <div class="stats">
+    <div class="stat">
+      <span class="stat-label">Cost</span>
+      <span class="stat-value">3</span>
+    </div>
+    <div class="stat">
+      <span class="stat-label">SLO</span>
+      <span class="stat-value">2</span>
+    </div>
+    <div class="stat">
+      <span class="stat-label">Repair</span>
+      <span class="stat-value">2 tokens to clear Incident</span>
+    </div>
+  </div>
+  <div class="card-body">
+    <p><strong>Prerequisite:</strong> Requires Node</p>
+    <p>At end of turn you may discard 1 card to gain 2 Resources.</p>
+  </div>
+  <div class="card-footer">
+    <div class="meta">
+      <span>Copy 1/3</span>
+      <span>Kube Cluster Clash</span>
+    </div>
+  </div>
+</div>
+
+
+<div class="card card-type-workload">
+  <div class="card-header">
+    <span class="tag">Workload</span>
+    <span class="card-name">Batch ETL Pipeline</span>
+  </div>
+  <div class="stats">
+    <div class="stat">
+      <span class="stat-label">Cost</span>
+      <span class="stat-value">3</span>
+    </div>
+    <div class="stat">
+      <span class="stat-label">SLO</span>
+      <span class="stat-value">2</span>
+    </div>
+    <div class="stat">
+      <span class="stat-label">Repair</span>
+      <span class="stat-value">2 tokens to clear Incident</span>
+    </div>
+  </div>
+  <div class="card-body">
+    <p><strong>Prerequisite:</strong> Requires Node</p>
+    <p>At end of turn you may discard 1 card to gain 2 Resources.</p>
+  </div>
+  <div class="card-footer">
+    <div class="meta">
+      <span>Copy 2/3</span>
+      <span>Kube Cluster Clash</span>
+    </div>
+  </div>
+</div>
+
+
+<div class="card card-type-workload">
+  <div class="card-header">
+    <span class="tag">Workload</span>
+    <span class="card-name">Batch ETL Pipeline</span>
+  </div>
+  <div class="stats">
+    <div class="stat">
+      <span class="stat-label">Cost</span>
+      <span class="stat-value">3</span>
+    </div>
+    <div class="stat">
+      <span class="stat-label">SLO</span>
+      <span class="stat-value">2</span>
+    </div>
+    <div class="stat">
+      <span class="stat-label">Repair</span>
+      <span class="stat-value">2 tokens to clear Incident</span>
+    </div>
+  </div>
+  <div class="card-body">
+    <p><strong>Prerequisite:</strong> Requires Node</p>
+    <p>At end of turn you may discard 1 card to gain 2 Resources.</p>
+  </div>
+  <div class="card-footer">
+    <div class="meta">
+      <span>Copy 3/3</span>
+      <span>Kube Cluster Clash</span>
+    </div>
+  </div>
+</div>
+
+
+<div class="card card-type-workload">
+  <div class="card-header">
+    <span class="tag">Workload</span>
+    <span class="card-name">Realtime Analytics Dashboard</span>
+  </div>
+  <div class="stats">
+    <div class="stat">
+      <span class="stat-label">Cost</span>
+      <span class="stat-value">4</span>
+    </div>
+    <div class="stat">
+      <span class="stat-label">SLO</span>
+      <span class="stat-value">3</span>
+    </div>
+    <div class="stat">
+      <span class="stat-label">Repair</span>
+      <span class="stat-value">2 tokens to clear Incident</span>
+    </div>
+  </div>
+  <div class="card-body">
+    <p><strong>Prerequisite:</strong> Requires Networking</p>
+    <p>When deployed draw 2 cards; keep 1 and discard the other.</p>
+  </div>
+  <div class="card-footer">
+    <div class="meta">
+      <span>Copy 1/2</span>
+      <span>Kube Cluster Clash</span>
+    </div>
+  </div>
+</div>
+
+
+<div class="card card-type-workload">
+  <div class="card-header">
+    <span class="tag">Workload</span>
+    <span class="card-name">Realtime Analytics Dashboard</span>
+  </div>
+  <div class="stats">
+    <div class="stat">
+      <span class="stat-label">Cost</span>
+      <span class="stat-value">4</span>
+    </div>
+    <div class="stat">
+      <span class="stat-label">SLO</span>
+      <span class="stat-value">3</span>
+    </div>
+    <div class="stat">
+      <span class="stat-label">Repair</span>
+      <span class="stat-value">2 tokens to clear Incident</span>
+    </div>
+  </div>
+  <div class="card-body">
+    <p><strong>Prerequisite:</strong> Requires Networking</p>
+    <p>When deployed draw 2 cards; keep 1 and discard the other.</p>
+  </div>
+  <div class="card-footer">
+    <div class="meta">
+      <span>Copy 2/2</span>
+      <span>Kube Cluster Clash</span>
+    </div>
+  </div>
+</div>
+
+
+<div class="card card-type-workload">
+  <div class="card-header">
+    <span class="tag">Workload</span>
+    <span class="card-name">Internal Tools Suite</span>
+  </div>
+  <div class="stats">
+    <div class="stat">
+      <span class="stat-label">Cost</span>
+      <span class="stat-value">2</span>
+    </div>
+    <div class="stat">
+      <span class="stat-label">SLO</span>
+      <span class="stat-value">1</span>
+    </div>
+    <div class="stat">
+      <span class="stat-label">Repair</span>
+      <span class="stat-value">1 token to clear Incident</span>
+    </div>
+  </div>
+  <div class="card-body">
+    <p><strong>Prerequisite:</strong> Requires Control Plane</p>
+    <p>Gain +1 Resilience when deployed.</p>
+  </div>
+  <div class="card-footer">
+    <div class="meta">
+      <span>Copy 1/3</span>
+      <span>Kube Cluster Clash</span>
+    </div>
+  </div>
+</div>
+
+
+<div class="card card-type-workload">
+  <div class="card-header">
+    <span class="tag">Workload</span>
+    <span class="card-name">Internal Tools Suite</span>
+  </div>
+  <div class="stats">
+    <div class="stat">
+      <span class="stat-label">Cost</span>
+      <span class="stat-value">2</span>
+    </div>
+    <div class="stat">
+      <span class="stat-label">SLO</span>
+      <span class="stat-value">1</span>
+    </div>
+    <div class="stat">
+      <span class="stat-label">Repair</span>
+      <span class="stat-value">1 token to clear Incident</span>
+    </div>
+  </div>
+  <div class="card-body">
+    <p><strong>Prerequisite:</strong> Requires Control Plane</p>
+    <p>Gain +1 Resilience when deployed.</p>
+  </div>
+  <div class="card-footer">
+    <div class="meta">
+      <span>Copy 2/3</span>
+      <span>Kube Cluster Clash</span>
+    </div>
+  </div>
+</div>
+
+
+<div class="card card-type-workload">
+  <div class="card-header">
+    <span class="tag">Workload</span>
+    <span class="card-name">Internal Tools Suite</span>
+  </div>
+  <div class="stats">
+    <div class="stat">
+      <span class="stat-label">Cost</span>
+      <span class="stat-value">2</span>
+    </div>
+    <div class="stat">
+      <span class="stat-label">SLO</span>
+      <span class="stat-value">1</span>
+    </div>
+    <div class="stat">
+      <span class="stat-label">Repair</span>
+      <span class="stat-value">1 token to clear Incident</span>
+    </div>
+  </div>
+  <div class="card-body">
+    <p><strong>Prerequisite:</strong> Requires Control Plane</p>
+    <p>Gain +1 Resilience when deployed.</p>
+  </div>
+  <div class="card-footer">
+    <div class="meta">
+      <span>Copy 3/3</span>
+      <span>Kube Cluster Clash</span>
+    </div>
+  </div>
+</div>
+
+</section>
+<section class="sheet">
+
+<div class="card card-type-attack">
+  <div class="card-header">
+    <span class="tag">Attack</span>
+    <span class="card-name">DDoS Burst</span>
+  </div>
+  <div class="stats">
+    <div class="stat">
+      <span class="stat-label">Cost</span>
+      <span class="stat-value">3</span>
+    </div>
+    <div class="stat">
+      <span class="stat-label">SLO</span>
+      <span class="stat-value">—</span>
+    </div>
+    <div class="stat">
+      <span class="stat-label">Repair</span>
+      <span class="stat-value">Target pays 2 tokens per Incident</span>
+    </div>
+  </div>
+  <div class="card-body">
+    
+    <p>Place 2 Incidents across target Nodes; they lose Resources gained this turn.</p>
+  </div>
+  <div class="card-footer">
+    <div class="meta">
+      <span>Copy 1/4</span>
+      <span>Kube Cluster Clash</span>
+    </div>
+  </div>
+</div>
+
+
+<div class="card card-type-attack">
+  <div class="card-header">
+    <span class="tag">Attack</span>
+    <span class="card-name">DDoS Burst</span>
+  </div>
+  <div class="stats">
+    <div class="stat">
+      <span class="stat-label">Cost</span>
+      <span class="stat-value">3</span>
+    </div>
+    <div class="stat">
+      <span class="stat-label">SLO</span>
+      <span class="stat-value">—</span>
+    </div>
+    <div class="stat">
+      <span class="stat-label">Repair</span>
+      <span class="stat-value">Target pays 2 tokens per Incident</span>
+    </div>
+  </div>
+  <div class="card-body">
+    
+    <p>Place 2 Incidents across target Nodes; they lose Resources gained this turn.</p>
+  </div>
+  <div class="card-footer">
+    <div class="meta">
+      <span>Copy 2/4</span>
+      <span>Kube Cluster Clash</span>
+    </div>
+  </div>
+</div>
+
+
+<div class="card card-type-attack">
+  <div class="card-header">
+    <span class="tag">Attack</span>
+    <span class="card-name">DDoS Burst</span>
+  </div>
+  <div class="stats">
+    <div class="stat">
+      <span class="stat-label">Cost</span>
+      <span class="stat-value">3</span>
+    </div>
+    <div class="stat">
+      <span class="stat-label">SLO</span>
+      <span class="stat-value">—</span>
+    </div>
+    <div class="stat">
+      <span class="stat-label">Repair</span>
+      <span class="stat-value">Target pays 2 tokens per Incident</span>
+    </div>
+  </div>
+  <div class="card-body">
+    
+    <p>Place 2 Incidents across target Nodes; they lose Resources gained this turn.</p>
+  </div>
+  <div class="card-footer">
+    <div class="meta">
+      <span>Copy 3/4</span>
+      <span>Kube Cluster Clash</span>
+    </div>
+  </div>
+</div>
+
+
+<div class="card card-type-attack">
+  <div class="card-header">
+    <span class="tag">Attack</span>
+    <span class="card-name">DDoS Burst</span>
+  </div>
+  <div class="stats">
+    <div class="stat">
+      <span class="stat-label">Cost</span>
+      <span class="stat-value">3</span>
+    </div>
+    <div class="stat">
+      <span class="stat-label">SLO</span>
+      <span class="stat-value">—</span>
+    </div>
+    <div class="stat">
+      <span class="stat-label">Repair</span>
+      <span class="stat-value">Target pays 2 tokens per Incident</span>
+    </div>
+  </div>
+  <div class="card-body">
+    
+    <p>Place 2 Incidents across target Nodes; they lose Resources gained this turn.</p>
+  </div>
+  <div class="card-footer">
+    <div class="meta">
+      <span>Copy 4/4</span>
+      <span>Kube Cluster Clash</span>
+    </div>
+  </div>
+</div>
+
+
+<div class="card card-type-attack">
+  <div class="card-header">
+    <span class="tag">Attack</span>
+    <span class="card-name">Supply Chain Compromise</span>
+  </div>
+  <div class="stats">
+    <div class="stat">
+      <span class="stat-label">Cost</span>
+      <span class="stat-value">4</span>
+    </div>
+    <div class="stat">
+      <span class="stat-label">SLO</span>
+      <span class="stat-value">—</span>
+    </div>
+    <div class="stat">
+      <span class="stat-label">Repair</span>
+      <span class="stat-value">Target pays 3 tokens to clear Incident</span>
+    </div>
+  </div>
+  <div class="card-body">
+    
+    <p>Steal an Automation or Upgrade card; place 1 Incident on new card.</p>
+  </div>
+  <div class="card-footer">
+    <div class="meta">
+      <span>Copy 1/2</span>
+      <span>Kube Cluster Clash</span>
+    </div>
+  </div>
+</div>
+
+
+<div class="card card-type-attack">
+  <div class="card-header">
+    <span class="tag">Attack</span>
+    <span class="card-name">Supply Chain Compromise</span>
+  </div>
+  <div class="stats">
+    <div class="stat">
+      <span class="stat-label">Cost</span>
+      <span class="stat-value">4</span>
+    </div>
+    <div class="stat">
+      <span class="stat-label">SLO</span>
+      <span class="stat-value">—</span>
+    </div>
+    <div class="stat">
+      <span class="stat-label">Repair</span>
+      <span class="stat-value">Target pays 3 tokens to clear Incident</span>
+    </div>
+  </div>
+  <div class="card-body">
+    
+    <p>Steal an Automation or Upgrade card; place 1 Incident on new card.</p>
+  </div>
+  <div class="card-footer">
+    <div class="meta">
+      <span>Copy 2/2</span>
+      <span>Kube Cluster Clash</span>
+    </div>
+  </div>
+</div>
+
+
+<div class="card card-type-attack">
+  <div class="card-header">
+    <span class="tag">Attack</span>
+    <span class="card-name">Rogue CronJob</span>
+  </div>
+  <div class="stats">
+    <div class="stat">
+      <span class="stat-label">Cost</span>
+      <span class="stat-value">2</span>
+    </div>
+    <div class="stat">
+      <span class="stat-label">SLO</span>
+      <span class="stat-value">—</span>
+    </div>
+    <div class="stat">
+      <span class="stat-label">Repair</span>
+      <span class="stat-value">Target pays 2 tokens to clear Incident</span>
+    </div>
+  </div>
+  <div class="card-body">
+    
+    <p>Place 1 Incident on a Workload; it provides no SLO until cleared.</p>
+  </div>
+  <div class="card-footer">
+    <div class="meta">
+      <span>Copy 1/2</span>
+      <span>Kube Cluster Clash</span>
+    </div>
+  </div>
+</div>
+
+
+<div class="card card-type-attack">
+  <div class="card-header">
+    <span class="tag">Attack</span>
+    <span class="card-name">Rogue CronJob</span>
+  </div>
+  <div class="stats">
+    <div class="stat">
+      <span class="stat-label">Cost</span>
+      <span class="stat-value">2</span>
+    </div>
+    <div class="stat">
+      <span class="stat-label">SLO</span>
+      <span class="stat-value">—</span>
+    </div>
+    <div class="stat">
+      <span class="stat-label">Repair</span>
+      <span class="stat-value">Target pays 2 tokens to clear Incident</span>
+    </div>
+  </div>
+  <div class="card-body">
+    
+    <p>Place 1 Incident on a Workload; it provides no SLO until cleared.</p>
+  </div>
+  <div class="card-footer">
+    <div class="meta">
+      <span>Copy 2/2</span>
+      <span>Kube Cluster Clash</span>
+    </div>
+  </div>
+</div>
+
+
+<div class="card card-type-attack">
+  <div class="card-header">
+    <span class="tag">Attack</span>
+    <span class="card-name">Budget Freeze</span>
+  </div>
+  <div class="stats">
+    <div class="stat">
+      <span class="stat-label">Cost</span>
+      <span class="stat-value">3</span>
+    </div>
+    <div class="stat">
+      <span class="stat-label">SLO</span>
+      <span class="stat-value">—</span>
+    </div>
+    <div class="stat">
+      <span class="stat-label">Repair</span>
+      <span class="stat-value">Cannot be repaired; Incident clears automatically after skip</span>
+    </div>
+  </div>
+  <div class="card-body">
+    
+    <p>Target skips their next Plan phase and loses 2 Resources.</p>
+  </div>
+  <div class="card-footer">
+    <div class="meta">
+      <span>Copy 1/3</span>
+      <span>Kube Cluster Clash</span>
+    </div>
+  </div>
+</div>
+
+</section>
+<section class="sheet">
+
+<div class="card card-type-attack">
+  <div class="card-header">
+    <span class="tag">Attack</span>
+    <span class="card-name">Budget Freeze</span>
+  </div>
+  <div class="stats">
+    <div class="stat">
+      <span class="stat-label">Cost</span>
+      <span class="stat-value">3</span>
+    </div>
+    <div class="stat">
+      <span class="stat-label">SLO</span>
+      <span class="stat-value">—</span>
+    </div>
+    <div class="stat">
+      <span class="stat-label">Repair</span>
+      <span class="stat-value">Cannot be repaired; Incident clears automatically after skip</span>
+    </div>
+  </div>
+  <div class="card-body">
+    
+    <p>Target skips their next Plan phase and loses 2 Resources.</p>
+  </div>
+  <div class="card-footer">
+    <div class="meta">
+      <span>Copy 2/3</span>
+      <span>Kube Cluster Clash</span>
+    </div>
+  </div>
+</div>
+
+
+<div class="card card-type-attack">
+  <div class="card-header">
+    <span class="tag">Attack</span>
+    <span class="card-name">Budget Freeze</span>
+  </div>
+  <div class="stats">
+    <div class="stat">
+      <span class="stat-label">Cost</span>
+      <span class="stat-value">3</span>
+    </div>
+    <div class="stat">
+      <span class="stat-label">SLO</span>
+      <span class="stat-value">—</span>
+    </div>
+    <div class="stat">
+      <span class="stat-label">Repair</span>
+      <span class="stat-value">Cannot be repaired; Incident clears automatically after skip</span>
+    </div>
+  </div>
+  <div class="card-body">
+    
+    <p>Target skips their next Plan phase and loses 2 Resources.</p>
+  </div>
+  <div class="card-footer">
+    <div class="meta">
+      <span>Copy 3/3</span>
+      <span>Kube Cluster Clash</span>
+    </div>
+  </div>
+</div>
+
+
+<div class="card card-type-attack">
+  <div class="card-header">
+    <span class="tag">Attack</span>
+    <span class="card-name">Compliance Audit</span>
+  </div>
+  <div class="stats">
+    <div class="stat">
+      <span class="stat-label">Cost</span>
+      <span class="stat-value">2</span>
+    </div>
+    <div class="stat">
+      <span class="stat-label">SLO</span>
+      <span class="stat-value">—</span>
+    </div>
+    <div class="stat">
+      <span class="stat-label">Repair</span>
+      <span class="stat-value">No repair required</span>
+    </div>
+  </div>
+  <div class="card-body">
+    
+    <p>Target must discard an Automation or reveal a hand without Attacks.</p>
+  </div>
+  <div class="card-footer">
+    <div class="meta">
+      <span>Copy 1/2</span>
+      <span>Kube Cluster Clash</span>
+    </div>
+  </div>
+</div>
+
+
+<div class="card card-type-attack">
+  <div class="card-header">
+    <span class="tag">Attack</span>
+    <span class="card-name">Compliance Audit</span>
+  </div>
+  <div class="stats">
+    <div class="stat">
+      <span class="stat-label">Cost</span>
+      <span class="stat-value">2</span>
+    </div>
+    <div class="stat">
+      <span class="stat-label">SLO</span>
+      <span class="stat-value">—</span>
+    </div>
+    <div class="stat">
+      <span class="stat-label">Repair</span>
+      <span class="stat-value">No repair required</span>
+    </div>
+  </div>
+  <div class="card-body">
+    
+    <p>Target must discard an Automation or reveal a hand without Attacks.</p>
+  </div>
+  <div class="card-footer">
+    <div class="meta">
+      <span>Copy 2/2</span>
+      <span>Kube Cluster Clash</span>
+    </div>
+  </div>
+</div>
+
+
+<div class="card card-type-attack">
+  <div class="card-header">
+    <span class="tag">Attack</span>
+    <span class="card-name">Zombie Pod Swarm</span>
+  </div>
+  <div class="stats">
+    <div class="stat">
+      <span class="stat-label">Cost</span>
+      <span class="stat-value">4</span>
+    </div>
+    <div class="stat">
+      <span class="stat-label">SLO</span>
+      <span class="stat-value">—</span>
+    </div>
+    <div class="stat">
+      <span class="stat-label">Repair</span>
+      <span class="stat-value">Target pays 3 tokens to clear Incident</span>
+    </div>
+  </div>
+  <div class="card-body">
+    
+    <p>Remove 1 Resilience and place an Incident on target Control Plane.</p>
+  </div>
+  <div class="card-footer">
+    <div class="meta">
+      <span>Copy 1/3</span>
+      <span>Kube Cluster Clash</span>
+    </div>
+  </div>
+</div>
+
+
+<div class="card card-type-attack">
+  <div class="card-header">
+    <span class="tag">Attack</span>
+    <span class="card-name">Zombie Pod Swarm</span>
+  </div>
+  <div class="stats">
+    <div class="stat">
+      <span class="stat-label">Cost</span>
+      <span class="stat-value">4</span>
+    </div>
+    <div class="stat">
+      <span class="stat-label">SLO</span>
+      <span class="stat-value">—</span>
+    </div>
+    <div class="stat">
+      <span class="stat-label">Repair</span>
+      <span class="stat-value">Target pays 3 tokens to clear Incident</span>
+    </div>
+  </div>
+  <div class="card-body">
+    
+    <p>Remove 1 Resilience and place an Incident on target Control Plane.</p>
+  </div>
+  <div class="card-footer">
+    <div class="meta">
+      <span>Copy 2/3</span>
+      <span>Kube Cluster Clash</span>
+    </div>
+  </div>
+</div>
+
+
+<div class="card card-type-attack">
+  <div class="card-header">
+    <span class="tag">Attack</span>
+    <span class="card-name">Zombie Pod Swarm</span>
+  </div>
+  <div class="stats">
+    <div class="stat">
+      <span class="stat-label">Cost</span>
+      <span class="stat-value">4</span>
+    </div>
+    <div class="stat">
+      <span class="stat-label">SLO</span>
+      <span class="stat-value">—</span>
+    </div>
+    <div class="stat">
+      <span class="stat-label">Repair</span>
+      <span class="stat-value">Target pays 3 tokens to clear Incident</span>
+    </div>
+  </div>
+  <div class="card-body">
+    
+    <p>Remove 1 Resilience and place an Incident on target Control Plane.</p>
+  </div>
+  <div class="card-footer">
+    <div class="meta">
+      <span>Copy 3/3</span>
+      <span>Kube Cluster Clash</span>
+    </div>
+  </div>
+</div>
+
+
+<div class="card card-type-response">
+  <div class="card-header">
+    <span class="tag">Response</span>
+    <span class="card-name">Incident Response Runbook</span>
+  </div>
+  <div class="stats">
+    <div class="stat">
+      <span class="stat-label">Cost</span>
+      <span class="stat-value">1</span>
+    </div>
+    <div class="stat">
+      <span class="stat-label">SLO</span>
+      <span class="stat-value">—</span>
+    </div>
+    <div class="stat">
+      <span class="stat-label">Repair</span>
+      <span class="stat-value">-</span>
+    </div>
+  </div>
+  <div class="card-body">
+    
+    <p>Cancel an Attack that targets you and draw a card.</p>
+  </div>
+  <div class="card-footer">
+    <div class="meta">
+      <span>Copy 1/3</span>
+      <span>Kube Cluster Clash</span>
+    </div>
+  </div>
+</div>
+
+
+<div class="card card-type-response">
+  <div class="card-header">
+    <span class="tag">Response</span>
+    <span class="card-name">Incident Response Runbook</span>
+  </div>
+  <div class="stats">
+    <div class="stat">
+      <span class="stat-label">Cost</span>
+      <span class="stat-value">1</span>
+    </div>
+    <div class="stat">
+      <span class="stat-label">SLO</span>
+      <span class="stat-value">—</span>
+    </div>
+    <div class="stat">
+      <span class="stat-label">Repair</span>
+      <span class="stat-value">-</span>
+    </div>
+  </div>
+  <div class="card-body">
+    
+    <p>Cancel an Attack that targets you and draw a card.</p>
+  </div>
+  <div class="card-footer">
+    <div class="meta">
+      <span>Copy 2/3</span>
+      <span>Kube Cluster Clash</span>
+    </div>
+  </div>
+</div>
+
+</section>
+<section class="sheet">
+
+<div class="card card-type-response">
+  <div class="card-header">
+    <span class="tag">Response</span>
+    <span class="card-name">Incident Response Runbook</span>
+  </div>
+  <div class="stats">
+    <div class="stat">
+      <span class="stat-label">Cost</span>
+      <span class="stat-value">1</span>
+    </div>
+    <div class="stat">
+      <span class="stat-label">SLO</span>
+      <span class="stat-value">—</span>
+    </div>
+    <div class="stat">
+      <span class="stat-label">Repair</span>
+      <span class="stat-value">-</span>
+    </div>
+  </div>
+  <div class="card-body">
+    
+    <p>Cancel an Attack that targets you and draw a card.</p>
+  </div>
+  <div class="card-footer">
+    <div class="meta">
+      <span>Copy 3/3</span>
+      <span>Kube Cluster Clash</span>
+    </div>
+  </div>
+</div>
+
+
+<div class="card card-type-response">
+  <div class="card-header">
+    <span class="tag">Response</span>
+    <span class="card-name">Chaos Engineering Drill</span>
+  </div>
+  <div class="stats">
+    <div class="stat">
+      <span class="stat-label">Cost</span>
+      <span class="stat-value">2</span>
+    </div>
+    <div class="stat">
+      <span class="stat-label">SLO</span>
+      <span class="stat-value">—</span>
+    </div>
+    <div class="stat">
+      <span class="stat-label">Repair</span>
+      <span class="stat-value">-</span>
+    </div>
+  </div>
+  <div class="card-body">
+    
+    <p>Remove up to 2 Incidents from your cards.</p>
+  </div>
+  <div class="card-footer">
+    <div class="meta">
+      <span>Copy 1/3</span>
+      <span>Kube Cluster Clash</span>
+    </div>
+  </div>
+</div>
+
+
+<div class="card card-type-response">
+  <div class="card-header">
+    <span class="tag">Response</span>
+    <span class="card-name">Chaos Engineering Drill</span>
+  </div>
+  <div class="stats">
+    <div class="stat">
+      <span class="stat-label">Cost</span>
+      <span class="stat-value">2</span>
+    </div>
+    <div class="stat">
+      <span class="stat-label">SLO</span>
+      <span class="stat-value">—</span>
+    </div>
+    <div class="stat">
+      <span class="stat-label">Repair</span>
+      <span class="stat-value">-</span>
+    </div>
+  </div>
+  <div class="card-body">
+    
+    <p>Remove up to 2 Incidents from your cards.</p>
+  </div>
+  <div class="card-footer">
+    <div class="meta">
+      <span>Copy 2/3</span>
+      <span>Kube Cluster Clash</span>
+    </div>
+  </div>
+</div>
+
+
+<div class="card card-type-response">
+  <div class="card-header">
+    <span class="tag">Response</span>
+    <span class="card-name">Chaos Engineering Drill</span>
+  </div>
+  <div class="stats">
+    <div class="stat">
+      <span class="stat-label">Cost</span>
+      <span class="stat-value">2</span>
+    </div>
+    <div class="stat">
+      <span class="stat-label">SLO</span>
+      <span class="stat-value">—</span>
+    </div>
+    <div class="stat">
+      <span class="stat-label">Repair</span>
+      <span class="stat-value">-</span>
+    </div>
+  </div>
+  <div class="card-body">
+    
+    <p>Remove up to 2 Incidents from your cards.</p>
+  </div>
+  <div class="card-footer">
+    <div class="meta">
+      <span>Copy 3/3</span>
+      <span>Kube Cluster Clash</span>
+    </div>
+  </div>
+</div>
+
+
+<div class="card card-type-response">
+  <div class="card-header">
+    <span class="tag">Response</span>
+    <span class="card-name">Hotfix Brigade</span>
+  </div>
+  <div class="stats">
+    <div class="stat">
+      <span class="stat-label">Cost</span>
+      <span class="stat-value">2</span>
+    </div>
+    <div class="stat">
+      <span class="stat-label">SLO</span>
+      <span class="stat-value">—</span>
+    </div>
+    <div class="stat">
+      <span class="stat-label">Repair</span>
+      <span class="stat-value">-</span>
+    </div>
+  </div>
+  <div class="card-body">
+    
+    <p>Restore 2 Resilience.</p>
+  </div>
+  <div class="card-footer">
+    <div class="meta">
+      <span>Copy 1/3</span>
+      <span>Kube Cluster Clash</span>
+    </div>
+  </div>
+</div>
+
+
+<div class="card card-type-response">
+  <div class="card-header">
+    <span class="tag">Response</span>
+    <span class="card-name">Hotfix Brigade</span>
+  </div>
+  <div class="stats">
+    <div class="stat">
+      <span class="stat-label">Cost</span>
+      <span class="stat-value">2</span>
+    </div>
+    <div class="stat">
+      <span class="stat-label">SLO</span>
+      <span class="stat-value">—</span>
+    </div>
+    <div class="stat">
+      <span class="stat-label">Repair</span>
+      <span class="stat-value">-</span>
+    </div>
+  </div>
+  <div class="card-body">
+    
+    <p>Restore 2 Resilience.</p>
+  </div>
+  <div class="card-footer">
+    <div class="meta">
+      <span>Copy 2/3</span>
+      <span>Kube Cluster Clash</span>
+    </div>
+  </div>
+</div>
+
+
+<div class="card card-type-response">
+  <div class="card-header">
+    <span class="tag">Response</span>
+    <span class="card-name">Hotfix Brigade</span>
+  </div>
+  <div class="stats">
+    <div class="stat">
+      <span class="stat-label">Cost</span>
+      <span class="stat-value">2</span>
+    </div>
+    <div class="stat">
+      <span class="stat-label">SLO</span>
+      <span class="stat-value">—</span>
+    </div>
+    <div class="stat">
+      <span class="stat-label">Repair</span>
+      <span class="stat-value">-</span>
+    </div>
+  </div>
+  <div class="card-body">
+    
+    <p>Restore 2 Resilience.</p>
+  </div>
+  <div class="card-footer">
+    <div class="meta">
+      <span>Copy 3/3</span>
+      <span>Kube Cluster Clash</span>
+    </div>
+  </div>
+</div>
+
+
+<div class="card card-type-response">
+  <div class="card-header">
+    <span class="tag">Response</span>
+    <span class="card-name">Blue-Green Rollout</span>
+  </div>
+  <div class="stats">
+    <div class="stat">
+      <span class="stat-label">Cost</span>
+      <span class="stat-value">3</span>
+    </div>
+    <div class="stat">
+      <span class="stat-label">SLO</span>
+      <span class="stat-value">—</span>
+    </div>
+    <div class="stat">
+      <span class="stat-label">Repair</span>
+      <span class="stat-value">-</span>
+    </div>
+  </div>
+  <div class="card-body">
+    
+    <p>Play a Workload from your discard pile for free; it gains 1 Incident.</p>
+  </div>
+  <div class="card-footer">
+    <div class="meta">
+      <span>Copy 1/2</span>
+      <span>Kube Cluster Clash</span>
+    </div>
+  </div>
+</div>
+
+
+<div class="card card-type-response">
+  <div class="card-header">
+    <span class="tag">Response</span>
+    <span class="card-name">Blue-Green Rollout</span>
+  </div>
+  <div class="stats">
+    <div class="stat">
+      <span class="stat-label">Cost</span>
+      <span class="stat-value">3</span>
+    </div>
+    <div class="stat">
+      <span class="stat-label">SLO</span>
+      <span class="stat-value">—</span>
+    </div>
+    <div class="stat">
+      <span class="stat-label">Repair</span>
+      <span class="stat-value">-</span>
+    </div>
+  </div>
+  <div class="card-body">
+    
+    <p>Play a Workload from your discard pile for free; it gains 1 Incident.</p>
+  </div>
+  <div class="card-footer">
+    <div class="meta">
+      <span>Copy 2/2</span>
+      <span>Kube Cluster Clash</span>
+    </div>
+  </div>
+</div>
+
+</section>
+</main>
+</body>
+</html>
