@@ -1,0 +1,323 @@
+{
+  "cards": [
+    {
+      "id": "standard_node",
+      "name": "Standard Node",
+      "type": "Node",
+      "cost": 2,
+      "slo": 0,
+      "quantity": 7,
+      "prerequisite": "",
+      "effect": "Gain +2 Resilience max; provides capacity for one Workload.",
+      "repair": "1 token to clear Incident"
+    },
+    {
+      "id": "gpu_accelerator_node",
+      "name": "GPU Accelerator Node",
+      "type": "Node",
+      "cost": 4,
+      "slo": 0,
+      "quantity": 3,
+      "prerequisite": "Requires Control Plane",
+      "effect": "Gives +1 SLO to any Workload it hosts; draw a card when played.",
+      "repair": "2 tokens to clear Incident"
+    },
+    {
+      "id": "spot_node",
+      "name": "Spot Node",
+      "type": "Node",
+      "cost": 1,
+      "slo": 0,
+      "quantity": 4,
+      "prerequisite": "",
+      "effect": "Provides 1 capacity; if hit by an Incident discard it instead of repairing.",
+      "repair": "Cannot be repaired"
+    },
+    {
+      "id": "managed_control_plane",
+      "name": "Managed Control Plane",
+      "type": "Control Plane",
+      "cost": 3,
+      "slo": 0,
+      "quantity": 3,
+      "prerequisite": "",
+      "effect": "Unlocks playing Workloads; draw 1 card on deploy.",
+      "repair": "2 tokens to clear Incident"
+    },
+    {
+      "id": "high_availability_control_plane",
+      "name": "High-Availability Control Plane",
+      "type": "Control Plane",
+      "cost": 5,
+      "slo": 0,
+      "quantity": 2,
+      "prerequisite": "Requires Control Plane",
+      "effect": "Your Resilience cannot drop below 1 while this is incident-free.",
+      "repair": "3 tokens to clear Incident"
+    },
+    {
+      "id": "persistent_volume_stack",
+      "name": "Persistent Volume Stack",
+      "type": "Storage",
+      "cost": 3,
+      "slo": 0,
+      "quantity": 4,
+      "prerequisite": "Requires Node",
+      "effect": "Each Stateful Workload you control gains +1 SLO.",
+      "repair": "2 tokens to clear Incident"
+    },
+    {
+      "id": "service_mesh_gateway",
+      "name": "Service Mesh Gateway",
+      "type": "Networking",
+      "cost": 3,
+      "slo": 0,
+      "quantity": 3,
+      "prerequisite": "",
+      "effect": "When you play a Workload, gain 1 Resource token.",
+      "repair": "2 tokens to clear Incident"
+    },
+    {
+      "id": "edge_ingress_load_balancer",
+      "name": "Edge Ingress Load Balancer",
+      "type": "Networking",
+      "cost": 2,
+      "slo": 0,
+      "quantity": 3,
+      "prerequisite": "",
+      "effect": "Once per turn pay 1 Resource to draw a Commons Row card and discard it.",
+      "repair": "1 token to clear Incident"
+    },
+    {
+      "id": "observability_stack",
+      "name": "Observability Stack",
+      "type": "Automation",
+      "cost": 2,
+      "slo": 0,
+      "quantity": 4,
+      "prerequisite": "",
+      "effect": "At end of turn you may peek at top card of deck; you may keep or discard.",
+      "repair": "1 token to clear Incident"
+    },
+    {
+      "id": "gitops_pipeline",
+      "name": "GitOps Pipeline",
+      "type": "Automation",
+      "cost": 3,
+      "slo": 0,
+      "quantity": 3,
+      "prerequisite": "Requires Control Plane",
+      "effect": "During Deploy you may play one additional card for 1 less Resource.",
+      "repair": "2 tokens to clear Incident"
+    },
+    {
+      "id": "cluster_autoscaler",
+      "name": "Cluster Autoscaler",
+      "type": "Automation",
+      "cost": 3,
+      "slo": 0,
+      "quantity": 3,
+      "prerequisite": "Requires Node",
+      "effect": "Gain +1 Resource during Refresh for each 2 Nodes you control.",
+      "repair": "2 tokens to clear Incident"
+    },
+    {
+      "id": "disaster_recovery_plan",
+      "name": "Disaster Recovery Plan",
+      "type": "Upgrade",
+      "cost": 4,
+      "slo": 0,
+      "quantity": 3,
+      "prerequisite": "Requires Storage",
+      "effect": "If your Resilience would drop below 0, discard this instead and set Resilience to 2.",
+      "repair": "3 tokens to clear Incident"
+    },
+    {
+      "id": "stateless_api_service",
+      "name": "Stateless API Service",
+      "type": "Workload",
+      "cost": 2,
+      "slo": 2,
+      "quantity": 5,
+      "prerequisite": "Requires 2 Nodes",
+      "effect": "Provides +1 Resource during Refresh while incident-free.",
+      "repair": "2 tokens to clear Incident"
+    },
+    {
+      "id": "event_processor_queue",
+      "name": "Event Processor Queue",
+      "type": "Workload",
+      "cost": 3,
+      "slo": 2,
+      "quantity": 3,
+      "prerequisite": "Requires Networking",
+      "effect": "When deployed gain 2 Resource tokens.",
+      "repair": "2 tokens to clear Incident"
+    },
+    {
+      "id": "stateful_database_cluster",
+      "name": "Stateful Database Cluster",
+      "type": "Workload",
+      "cost": 4,
+      "slo": 3,
+      "quantity": 3,
+      "prerequisite": "Requires Storage",
+      "effect": "Add +1 SLO for each Persistent Volume Stack you control.",
+      "repair": "3 tokens to clear Incident"
+    },
+    {
+      "id": "machine_learning_platform",
+      "name": "Machine Learning Platform",
+      "type": "Workload",
+      "cost": 5,
+      "slo": 4,
+      "quantity": 2,
+      "prerequisite": "Requires GPU Accelerator Node",
+      "effect": "Opponents pay +1 Resource to target you with Attacks.",
+      "repair": "3 tokens to clear Incident"
+    },
+    {
+      "id": "batch_etl_pipeline",
+      "name": "Batch ETL Pipeline",
+      "type": "Workload",
+      "cost": 3,
+      "slo": 2,
+      "quantity": 3,
+      "prerequisite": "Requires Node",
+      "effect": "At end of turn you may discard 1 card to gain 2 Resources.",
+      "repair": "2 tokens to clear Incident"
+    },
+    {
+      "id": "realtime_analytics_dashboard",
+      "name": "Realtime Analytics Dashboard",
+      "type": "Workload",
+      "cost": 4,
+      "slo": 3,
+      "quantity": 2,
+      "prerequisite": "Requires Networking",
+      "effect": "When deployed draw 2 cards; keep 1 and discard the other.",
+      "repair": "2 tokens to clear Incident"
+    },
+    {
+      "id": "internal_tools_suite",
+      "name": "Internal Tools Suite",
+      "type": "Workload",
+      "cost": 2,
+      "slo": 1,
+      "quantity": 3,
+      "prerequisite": "Requires Control Plane",
+      "effect": "Gain +1 Resilience when deployed.",
+      "repair": "1 token to clear Incident"
+    },
+    {
+      "id": "ddos_burst",
+      "name": "DDoS Burst",
+      "type": "Attack",
+      "cost": 3,
+      "slo": 0,
+      "quantity": 4,
+      "prerequisite": "",
+      "effect": "Place 2 Incidents across target Nodes; they lose Resources gained this turn.",
+      "repair": "Target pays 2 tokens per Incident"
+    },
+    {
+      "id": "supply_chain_compromise",
+      "name": "Supply Chain Compromise",
+      "type": "Attack",
+      "cost": 4,
+      "slo": 0,
+      "quantity": 2,
+      "prerequisite": "",
+      "effect": "Steal an Automation or Upgrade card; place 1 Incident on new card.",
+      "repair": "Target pays 3 tokens to clear Incident"
+    },
+    {
+      "id": "rogue_cronjob",
+      "name": "Rogue CronJob",
+      "type": "Attack",
+      "cost": 2,
+      "slo": 0,
+      "quantity": 2,
+      "prerequisite": "",
+      "effect": "Place 1 Incident on a Workload; it provides no SLO until cleared.",
+      "repair": "Target pays 2 tokens to clear Incident"
+    },
+    {
+      "id": "budget_freeze",
+      "name": "Budget Freeze",
+      "type": "Attack",
+      "cost": 3,
+      "slo": 0,
+      "quantity": 3,
+      "prerequisite": "",
+      "effect": "Target skips their next Plan phase and loses 2 Resources.",
+      "repair": "Cannot be repaired; Incident clears automatically after skip"
+    },
+    {
+      "id": "compliance_audit",
+      "name": "Compliance Audit",
+      "type": "Attack",
+      "cost": 2,
+      "slo": 0,
+      "quantity": 2,
+      "prerequisite": "",
+      "effect": "Target must discard an Automation or reveal a hand without Attacks.",
+      "repair": "No repair required"
+    },
+    {
+      "id": "zombie_pod_swarm",
+      "name": "Zombie Pod Swarm",
+      "type": "Attack",
+      "cost": 4,
+      "slo": 0,
+      "quantity": 3,
+      "prerequisite": "",
+      "effect": "Remove 1 Resilience and place an Incident on target Control Plane.",
+      "repair": "Target pays 3 tokens to clear Incident"
+    },
+    {
+      "id": "incident_response_runbook",
+      "name": "Incident Response Runbook",
+      "type": "Response",
+      "cost": 1,
+      "slo": 0,
+      "quantity": 3,
+      "prerequisite": "",
+      "effect": "Cancel an Attack that targets you and draw a card.",
+      "repair": "-"
+    },
+    {
+      "id": "chaos_engineering_drill",
+      "name": "Chaos Engineering Drill",
+      "type": "Response",
+      "cost": 2,
+      "slo": 0,
+      "quantity": 3,
+      "prerequisite": "",
+      "effect": "Remove up to 2 Incidents from your cards.",
+      "repair": "-"
+    },
+    {
+      "id": "hotfix_brigade",
+      "name": "Hotfix Brigade",
+      "type": "Response",
+      "cost": 2,
+      "slo": 0,
+      "quantity": 3,
+      "prerequisite": "",
+      "effect": "Restore 2 Resilience.",
+      "repair": "-"
+    },
+    {
+      "id": "blue_green_rollout",
+      "name": "Blue-Green Rollout",
+      "type": "Response",
+      "cost": 3,
+      "slo": 0,
+      "quantity": 2,
+      "prerequisite": "",
+      "effect": "Play a Workload from your discard pile for free; it gains 1 Incident.",
+      "repair": "-"
+    }
+  ]
+}

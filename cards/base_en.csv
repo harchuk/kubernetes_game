@@ -1,16 +1,16 @@
-name,type,cost,slo,quantity,prerequisite,effect,repair
+name,type,cost,slo,quantity,prerequisite,effect,repair_cost
 Standard Node,Node,2,0,7,,Gain +2 Resilience max; provides capacity for one Workload.,1 token to clear Incident
 GPU Accelerator Node,Node,4,0,3,Requires Control Plane,Gives +1 SLO to any Workload it hosts; draw a card when played.,2 tokens to clear Incident
 Spot Node,Node,1,0,4,,Provides 1 capacity; if hit by an Incident discard it instead of repairing.,Cannot be repaired
 Managed Control Plane,Control Plane,3,0,3,,Unlocks playing Workloads; draw 1 card on deploy.,2 tokens to clear Incident
 High-Availability Control Plane,Control Plane,5,0,2,Requires Control Plane,Your Resilience cannot drop below 1 while this is incident-free.,3 tokens to clear Incident
 Persistent Volume Stack,Storage,3,0,4,Requires Node,Each Stateful Workload you control gains +1 SLO.,2 tokens to clear Incident
-Service Mesh Gateway,Networking,3,0,3,,"When you play a Workload, gain 1 Resource token.",2 tokens to clear Incident
+Service Mesh Gateway,Networking,3,0,3,,When you play a Workload, gain 1 Resource token.,2 tokens to clear Incident
 Edge Ingress Load Balancer,Networking,2,0,3,,Once per turn pay 1 Resource to draw a Commons Row card and discard it.,1 token to clear Incident
 Observability Stack,Automation,2,0,4,,At end of turn you may peek at top card of deck; you may keep or discard.,1 token to clear Incident
 GitOps Pipeline,Automation,3,0,3,Requires Control Plane,During Deploy you may play one additional card for 1 less Resource.,2 tokens to clear Incident
 Cluster Autoscaler,Automation,3,0,3,Requires Node,Gain +1 Resource during Refresh for each 2 Nodes you control.,2 tokens to clear Incident
-Disaster Recovery Plan,Upgrade,4,0,3,Requires Storage,"If your Resilience would drop below 0, discard this instead and set Resilience to 2.",3 tokens to clear Incident
+Disaster Recovery Plan,Upgrade,4,0,3,Requires Storage,If your Resilience would drop below 0, discard this instead and set Resilience to 2.,3 tokens to clear Incident
 Stateless API Service,Workload,2,2,5,Requires 2 Nodes,Provides +1 Resource during Refresh while incident-free.,2 tokens to clear Incident
 Event Processor Queue,Workload,3,2,3,Requires Networking,When deployed gain 2 Resource tokens.,2 tokens to clear Incident
 Stateful Database Cluster,Workload,4,3,3,Requires Storage,Add +1 SLO for each Persistent Volume Stack you control.,3 tokens to clear Incident

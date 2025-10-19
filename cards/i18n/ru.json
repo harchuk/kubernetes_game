@@ -1,0 +1,176 @@
+{
+  "standard_node": {
+    "name": "Стандартная нода",
+    "effect": "Повышает максимум устойчивости на 2; даёт вместимость для одной Workload.",
+    "prerequisite": "",
+    "repair": "1 ресурс за снятие инцидента"
+  },
+  "gpu_accelerator_node": {
+    "name": "Нода с GPU-ускорителем",
+    "effect": "Даёт +1 SLO любой вашей Workload на этой Node; при розыгрыше возьмите карту.",
+    "prerequisite": "Требует Control Plane",
+    "repair": "2 ресурса за снятие инцидента"
+  },
+  "spot_node": {
+    "name": "Спотовая нода",
+    "effect": "Предоставляет 1 вместимость; при получении инцидента сбросьте карту вместо ремонта.",
+    "prerequisite": "",
+    "repair": "Не ремонтируется"
+  },
+  "managed_control_plane": {
+    "name": "Управляемый контрольный план",
+    "effect": "Открывает возможность разыгрывать Workloads; при розыгрыше возьмите карту.",
+    "prerequisite": "",
+    "repair": "2 ресурса за снятие инцидента"
+  },
+  "high_availability_control_plane": {
+    "name": "Отказоустойчивый контрольный план",
+    "effect": "Пока карта без инцидентов, ваша устойчивость не может упасть ниже 1.",
+    "prerequisite": "Требует Control Plane",
+    "repair": "3 ресурса за снятие инцидента"
+  },
+  "persistent_volume_stack": {
+    "name": "Стек постоянных томов",
+    "effect": "Каждая ваша stateful Workload получает +1 SLO.",
+    "prerequisite": "Требует Node",
+    "repair": "2 ресурса за снятие инцидента"
+  },
+  "service_mesh_gateway": {
+    "name": "Шлюз сервисной сетки",
+    "effect": "При розыгрыше Workload получите 1 ресурс.",
+    "prerequisite": "",
+    "repair": "2 ресурса за снятие инцидента"
+  },
+  "edge_ingress_load_balancer": {
+    "name": "Пограничный балансировщик нагрузки",
+    "effect": "Раз в ход заплатите 1 ресурс, чтобы взять карту из Общего пула и сразу сбросить её.",
+    "prerequisite": "",
+    "repair": "1 ресурс за снятие инцидента"
+  },
+  "observability_stack": {
+    "name": "Стек наблюдаемости",
+    "effect": "В конце хода можете посмотреть верхнюю карту колоды и оставить или сбросить её.",
+    "prerequisite": "",
+    "repair": "1 ресурс за снятие инцидента"
+  },
+  "gitops_pipeline": {
+    "name": "GitOps-конвейер",
+    "effect": "Во время Deploy можете сыграть дополнительную карту со скидкой 1 ресурс.",
+    "prerequisite": "Требует Control Plane",
+    "repair": "2 ресурса за снятие инцидента"
+  },
+  "cluster_autoscaler": {
+    "name": "Автоскейлер кластера",
+    "effect": "Во время Refresh получите +1 ресурс за каждые 2 Nodes.",
+    "prerequisite": "Требует Node",
+    "repair": "2 ресурса за снятие инцидента"
+  },
+  "disaster_recovery_plan": {
+    "name": "План аварийного восстановления",
+    "effect": "Если устойчивость должна упасть ниже 0, сбросьте карту и установите устойчивость на 2.",
+    "prerequisite": "Требует Storage",
+    "repair": "3 ресурса за снятие инцидента"
+  },
+  "stateless_api_service": {
+    "name": "Бесстейтовый API-сервис",
+    "effect": "Пока карта без инцидентов, во время Refresh получайте +1 ресурс.",
+    "prerequisite": "Требует 2 Nodes",
+    "repair": "2 ресурса за снятие инцидента"
+  },
+  "event_processor_queue": {
+    "name": "Очередь обработки событий",
+    "effect": "При розыгрыше получите 2 ресурса.",
+    "prerequisite": "Требует Networking",
+    "repair": "2 ресурса за снятие инцидента"
+  },
+  "stateful_database_cluster": {
+    "name": "Кластер stateful-базы данных",
+    "effect": "Получает +1 SLO за каждый ваш Persistent Volume Stack.",
+    "prerequisite": "Требует Storage",
+    "repair": "3 ресурса за снятие инцидента"
+  },
+  "machine_learning_platform": {
+    "name": "Платформа машинного обучения",
+    "effect": "Противники платят +1 ресурс, чтобы сыграть Attack против вас.",
+    "prerequisite": "Требует GPU Accelerator Node",
+    "repair": "3 ресурса за снятие инцидента"
+  },
+  "batch_etl_pipeline": {
+    "name": "Пакетный ETL-конвейер",
+    "effect": "В конце хода можете сбросить карту, чтобы получить 2 ресурса.",
+    "prerequisite": "Требует Node",
+    "repair": "2 ресурса за снятие инцидента"
+  },
+  "realtime_analytics_dashboard": {
+    "name": "Панель realtime-аналитики",
+    "effect": "При розыгрыше возьмите 2 карты: одну оставьте, вторую сбросьте.",
+    "prerequisite": "Требует Networking",
+    "repair": "2 ресурса за снятие инцидента"
+  },
+  "internal_tools_suite": {
+    "name": "Пакет внутренних инструментов",
+    "effect": "При розыгрыше получите +1 к устойчивости.",
+    "prerequisite": "Требует Control Plane",
+    "repair": "1 ресурс за снятие инцидента"
+  },
+  "ddos_burst": {
+    "name": "Всплеск DDoS",
+    "effect": "Разместите 2 инцидента на Nodes цели; она теряет ресурсы, полученные в этот ход.",
+    "prerequisite": "",
+    "repair": "Цель платит 2 ресурса за каждый инцидент"
+  },
+  "supply_chain_compromise": {
+    "name": "Компрометация цепочки поставок",
+    "effect": "Заберите у цели карту Automation или Upgrade; разместите 1 инцидент на новой карте.",
+    "prerequisite": "",
+    "repair": "Цель платит 3 ресурса за снятие инцидента"
+  },
+  "rogue_cronjob": {
+    "name": "Сбойный CronJob",
+    "effect": "Разместите 1 инцидент на Workload; она не даёт SLO до ремонта.",
+    "prerequisite": "",
+    "repair": "Цель платит 2 ресурса за снятие инцидента"
+  },
+  "budget_freeze": {
+    "name": "Заморозка бюджета",
+    "effect": "Цель пропускает следующую фазу Plan и теряет 2 ресурса.",
+    "prerequisite": "",
+    "repair": "Не ремонтируется; инцидент снимается после пропуска"
+  },
+  "compliance_audit": {
+    "name": "Аудит соответствия",
+    "effect": "Цель должна сбросить карту Automation или показать руку без Attack.",
+    "prerequisite": "",
+    "repair": "Ремонт не требуется"
+  },
+  "zombie_pod_swarm": {
+    "name": "Рой зомби-подов",
+    "effect": "Цель теряет 1 устойчивость и получает инцидент на Control Plane.",
+    "prerequisite": "",
+    "repair": "Цель платит 3 ресурса за снятие инцидента"
+  },
+  "incident_response_runbook": {
+    "name": "Плейбук реагирования на инциденты",
+    "effect": "Отмените Attack, нацеленную на вас, и возьмите карту.",
+    "prerequisite": "",
+    "repair": "-"
+  },
+  "chaos_engineering_drill": {
+    "name": "Учения по Chaos Engineering",
+    "effect": "Удалите до 2 инцидентов со своих карт.",
+    "prerequisite": "",
+    "repair": "-"
+  },
+  "hotfix_brigade": {
+    "name": "Горячая бригада",
+    "effect": "Восстановите 2 единицы устойчивости.",
+    "prerequisite": "",
+    "repair": "-"
+  },
+  "blue_green_rollout": {
+    "name": "Blue-Green релиз",
+    "effect": "Разыграйте Workload из сброса бесплатно; она получает 1 инцидент.",
+    "prerequisite": "",
+    "repair": "-"
+  }
+}
