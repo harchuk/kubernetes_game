@@ -186,20 +186,20 @@ main {
 .card {
     position: relative;
     box-sizing: border-box;
-    border-radius: 0.28in;
-    padding: 0.28in 0.26in;
-    background: linear-gradient(160deg, rgba(255, 255, 255, 0.98), rgba(248, 250, 252, 0.85));
+    border-radius: 0.26in;
+    padding: 0.24in 0.22in;
+    background: linear-gradient(160deg, rgba(255, 255, 255, 0.97), rgba(236, 242, 247, 0.9));
     display: flex;
     flex-direction: column;
-    justify-content: space-between;
-    box-shadow: 0 0.12in 0.45in rgba(15, 23, 42, 0.32);
+    justify-content: center;
+    box-shadow: 0 0.12in 0.38in rgba(15, 23, 42, 0.28);
     overflow: hidden;
     border: 1px solid rgba(15, 23, 42, 0.12);
 }
 .card::before {
     content: '';
     position: absolute;
-    inset: 0.18in;
+    inset: 0.16in;
     border-radius: 0.18in;
     border: 1px solid rgba(15, 23, 42, 0.08);
     pointer-events: none;
@@ -207,26 +207,27 @@ main {
 .card::after {
     content: '';
     position: absolute;
-    width: 85%;
-    height: 85%;
+    width: 88%;
+    height: 88%;
     top: 50%;
     left: 50%;
-    transform: translate(-50%, -50%) rotate(6deg);
-    background: radial-gradient(circle at top left, rgba(255,255,255,0.85), transparent 65%),
-                linear-gradient(120deg, rgba(255,255,255,0.0), rgba(148, 163, 184, 0.12));
+    transform: translate(-50%, -50%) rotate(5deg);
+    background: radial-gradient(circle at top left, rgba(255,255,255,0.82), transparent 68%),
+                linear-gradient(120deg, rgba(255,255,255,0.0), rgba(148, 163, 184, 0.14));
     border-radius: 2in;
     pointer-events: none;
 }
 .card-content {
     position: relative;
     z-index: 1;
-    display: flex;
-    flex-direction: column;
+    display: grid;
+    grid-template-rows: auto auto auto 1fr auto;
+    row-gap: 0.14in;
     height: 100%;
 }
 .card-top {
-    display: flex;
-    justify-content: space-between;
+    display: grid;
+    grid-template-columns: auto 1fr auto;
     align-items: center;
     gap: 0.12in;
 }
@@ -278,25 +279,24 @@ main {
     font-weight: 700;
 }
 .card-name {
-    margin: 0.14in 0 0.1in;
-    font-size: 1.08rem;
-    line-height: 1.15;
+    margin: 0;
+    font-size: 0.98rem;
+    line-height: 1.18;
     color: #0f172a;
 }
 .stat-row {
     display: flex;
-    gap: 0.18in;
-    margin-bottom: 0.16in;
+    gap: 0.12in;
 }
 .stat-chip {
     display: flex;
     flex-direction: column;
-    padding: 0.08in 0.16in;
-    border-radius: 0.18in;
+    padding: 0.06in 0.14in;
+    border-radius: 0.16in;
     background: rgba(15, 23, 42, 0.04);
     border: 1px solid rgba(15, 23, 42, 0.08);
-    min-width: 1.1in;
-    box-shadow: inset 0 0 0 1px rgba(255,255,255,0.6);
+    min-width: 1.05in;
+    box-shadow: inset 0 0 0 1px rgba(255,255,255,0.55);
 }
 .stat-label {
     font-size: 0.48rem;
@@ -305,24 +305,25 @@ main {
     color: rgba(15, 23, 42, 0.65);
 }
 .stat-value {
-    font-size: 0.75rem;
+    font-size: 0.72rem;
     font-weight: 700;
     color: #0f172a;
 }
 .body-panel {
     position: relative;
-    border-radius: 0.2in;
-    padding: 0.18in 0.2in;
-    background: linear-gradient(160deg, rgba(255,255,255,0.82), rgba(241,245,249,0.95));
+    border-radius: 0.18in;
+    padding: 0.16in 0.18in;
+    background: linear-gradient(160deg, rgba(255,255,255,0.85), rgba(238,242,247,0.95));
     border: 1px solid rgba(15, 23, 42, 0.08);
-    box-shadow: inset 0 0.08in 0.22in rgba(15, 23, 42, 0.08);
-    flex: 1 1 auto;
-    font-size: 0.7rem;
-    line-height: 1.45;
+    box-shadow: inset 0 0.06in 0.16in rgba(15, 23, 42, 0.08);
+    font-size: 0.66rem;
+    line-height: 1.4;
     color: #1e293b;
+    overflow-wrap: anywhere;
+    hyphens: auto;
 }
 .body-panel p {
-    margin: 0 0 0.14in;
+    margin: 0 0 0.12in;
 }
 .body-panel p:last-child {
     margin-bottom: 0;
@@ -334,8 +335,7 @@ main {
     display: flex;
     justify-content: space-between;
     align-items: center;
-    margin-top: 0.16in;
-    font-size: 0.55rem;
+    font-size: 0.52rem;
     letter-spacing: 0.04em;
     color: rgba(15, 23, 42, 0.68);
 }
