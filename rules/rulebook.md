@@ -1,104 +1,103 @@
-# Kubernetes Cluster Clash — Rulebook
+# Kubernetes Cluster Clash — Правила
 
-## Theme and Goal
-You are a platform engineer racing to stand up the most resilient Kubernetes cluster in a competitive market. Harvest resources, deploy workloads, and sabotage rival clusters with outages, exploits, and budget cuts. The first engineer to hit the published Service Level Objectives (SLOs) wins — unless their cluster collapses in spectacular fashion.
+## Тематика и цель
+Вы — инженер платформенной команды, который стремится запустить самый устойчивый Kubernetes-кластер в конкурентной среде. Собирайте ресурсы, разворачивайте инфраструктуру, запускайте рабочие нагрузки и устраивайте саботаж соседям с помощью сбоев, эксплойтов и секвестров бюджета. Первый игрок, достигший заявленных SLO (Service Level Objectives) и удержавший кластер в живом состоянии, побеждает — если только его система не рухнет раньше.
 
-## Components
-- 90-card main deck (see `cards/card_list.csv`).
-- 4 cluster board sheets (use `playmats/player_cluster_aid.md`).
-- 60 Resource tokens (generic currency representing CPU/Memory/Budget).
-- 12 Resilience cubes (track cluster health).
-- 20 Incident markers (track ongoing outages or exploits).
-- 1 First Player marker.
-- Rulebook and Quick Reference sheet.
+## Компоненты
+- 90 карт основного набора (см. `cards/card_list.csv`).
+- 4 планшета игрока (используйте `playmats/player_cluster_aid.md`).
+- 60 жетонов ресурсов (универсальная валюта: CPU/память/бюджет).
+- 12 кубиков стабильности (отслеживают «Устойчивость» кластера).
+- 20 маркеров инцидентов.
+- 1 маркер первого игрока.
+- Правила и памятка.
 
-> Prototype note: substitute poker chips or coins for tokens and cubes.
+> Прототип: замените жетоны фишками или монетами, кубики — любыми маркерами.
 
-## Glossary
-- **Cluster Board**: Personal tableau that holds Nodes, Control Plane, Workloads, and Support cards you have played.
-- **SLO Track**: Built into the cluster board; reaching 12 SLO points wins the game.
-- **Incident**: Negative effect marker placed by Attack cards that stays until cleared.
-- **Resilience**: Your cluster's health. If it drops below zero, you are eliminated.
+## Глоссарий
+- **Планшет кластера**: персональная зона, где лежат Ноды, Контрольный план, Рабочие нагрузки и поддерживающие карты.
+- **Трек SLO**: масштаб на планшете игрока; достижение 12 очков SLO приносит победу.
+- **Инцидент**: отрицательный маркер, который кладут карты-Атаки; действует, пока не устранён.
+- **Устойчивость**: «здоровье» вашего кластера. Если показатель уходит в минус, игрок выбывает.
 
-## Setup
-1. Shuffle the main deck and deal each player 5 cards.
-2. Give each player: 1 cluster board, 5 Resource tokens, 3 Resilience cubes set to value 6 on their board.
-3. Place remaining tokens and cubes in a supply within reach.
-4. Randomly select the first player; give them the marker.
-5. Reveal 3 cards from the top of the deck to form the **Commons Row** market. Refill this row at the end of each turn.
+## Подготовка к игре
+1. Перемешайте колоду и сдайте каждому игроку по 5 карт.
+2. Каждый получает планшет кластера, 5 жетонов ресурсов и 3 кубика устойчивости, установленные на значении 6.
+3. Остальные жетоны и кубики сформируйте в общий запас.
+4. Случайно определите первого игрока и выдайте ему маркер.
+5. Откройте 3 верхние карты колоды — это рынок **Общего пула**. В конце каждого хода восполняйте его до трёх карт.
 
-## Turn Structure
-Play proceeds clockwise. On your turn resolve phases in order:
+## Ход игрока
+Игра идёт по часовой стрелке. Во время своего хода игрок проходит этапы в порядке:
 
-1. **Refresh**
-   - Remove 1 Incident marker from one card you control (optional).
-   - Draw up to a hand of 5 cards.
-   - Gain 2 Resource tokens from the supply.
+1. **Обновление**
+   - По желанию снимите 1 маркер инцидента с любой собственной карты.
+   - Доберите карты до 5 на руке.
+   - Получите из запаса 2 жетона ресурсов.
 
-2. **Plan (optional)**
-   - You may discard any number of cards to gain 1 Resource token each.
+2. **Планирование (по желанию)**
+   - Сбросьте любое количество карт, получив за каждую +1 ресурс.
 
-3. **Deploy**
-   - Play cards from your hand by paying their Resource cost.
-   - You may purchase cards from the Commons Row by paying their cost, placing them directly into your hand, then immediately continuing your Deploy phase.
-   - Infrastructure cards (Nodes, Control Plane, Storage, Networking) enter your Cluster Board.
-   - Automation and Upgrade cards typically grant ongoing abilities.
-   - Workload cards enter your Workload area and contribute SLO points.
+3. **Развёртывание**
+   - Разыгрывайте карты с руки, оплачивая их стоимость ресурсами.
+   - Можно покупать карты с рынка Общего пула: оплатите стоимость, возьмите карту в руку и продолжайте фазу.
+   - Карты инфраструктуры (Ноды, Контрольный план, Хранилище, Сеть) выкладываются на планшет.
+   - Автоматизация и Улучшения дают постоянные эффекты.
+   - Рабочие нагрузки кладутся в зону нагрузок и добавляют очки SLO.
 
-4. **Incidents**
-   - Resolve any Incident markers on your cards. Most reduce Resilience or disable cards until cleared.
+4. **Инциденты**
+   - Разрешите эффекты маркеров инцидентов на своих картах. Обычно они снижают Устойчивость или блокируют способности.
 
-5. **Sabotage (optional)**
-   - You may play 1 Attack card from your hand, targeting another player whose Resilience is above 0. Pay its cost, apply its effect, and place Incident markers if instructed.
+5. **Саботаж (по желанию)**
+   - Можете сыграть 1 карту Атаки на другого игрока, чья Устойчивость выше 0. Оплатите стоимость, примените эффект и разместите маркеры инцидентов, если указано.
 
-6. **Stabilize**
-   - You may pay the specified Repair cost on cards to remove Incident markers.
-   - Check your SLO total. If you have reached 12 or more, and your Resilience is above 0, your cluster is live and you win at the end of the round.
-   - If your Resilience drops below 0, your cluster fails. Discard your hand, flip your board: you are out of the game.
+6. **Стабилизация**
+   - Оплатите стоимость ремонта, чтобы снять инциденты с карт.
+   - Проверьте сумму SLO. Достигнув 12+ очков (15 в дуэли) и сохранив положительную Устойчивость, объявите о победе в конце раунда.
+   - Если Устойчивость упала ниже 0, ваш кластер рухнул. Сбросьте руку, переверните планшет и выбывайте из партии.
 
-7. **End Step**
-   - Discard down to 7 cards.
-   - Refill the Commons Row to 3 cards.
+7. **Завершение**
+   - Сбросьте карты до лимита в 7.
+   - Восполните рынок Общего пула до трёх карт.
 
-## Card Types
+## Типы карт
 
-| Card Type       | Zone           | Typical Effect                                     |
-|-----------------|----------------|----------------------------------------------------|
-| Node            | Infrastructure | Provides capacity, increases Resilience baseline.  |
-| Control Plane   | Infrastructure | Enables playing advanced cards and SLO scoring.    |
-| Storage         | Infrastructure | Provides stability for Stateful workloads.         |
-| Networking      | Infrastructure | Increases attack defense and market access.        |
-| Workload        | Workload area  | Grants SLO points and may have ongoing effects.    |
-| Automation      | Cluster board  | Grants ongoing effects or resource discounts.      |
-| Upgrade         | Cluster board  | One-time boosts, improved defenses, victory points.|
-| Attack          | Opponent board | Adds Incidents, steals resources, reduces SLO.     |
-| Response        | Instant discard| Cancels Attacks or mitigates damage.               |
+| Тип карты        | Зона              | Типичные эффекты                                        |
+|------------------|-------------------|---------------------------------------------------------|
+| Нода             | Инфраструктура    | Даёт вместимость, повышает базовую Устойчивость.       |
+| Контрольный план | Инфраструктура    | Открывает доступ к сложным картам и набору SLO.         |
+| Хранилище        | Инфраструктура    | Поддержка стейтфул-нагрузок, бонусы к их очкам.         |
+| Сеть             | Инфраструктура    | Повышает защиту от атак и расширяет рынок.              |
+| Нагрузка         | Зона нагрузок     | Добавляет очки SLO и может иметь постоянные эффекты.   |
+| Автоматизация    | Планшет кластера  | Даёт постоянные бонусы и скидки.                        |
+| Улучшение        | Планшет кластера  | Разовые усиления, защита, дополнительные очки.          |
+| Атака            | Планшет соперника | Создаёт инциденты, ворует ресурсы, снижает SLO.         |
+| Ответ            | Сброс             | Отменяет атаки или смягчает их последствия.             |
 
-## Building Your Cluster
-- You must control at least **1 Control Plane** and **2 Nodes** before you can play Workload cards.
-- Each Node increases your Resilience maximum by 2 (move cube).
-- The first Control Plane you play triggers a free draw.
-- Workloads add SLO points equal to the value shown on the card. Track on the SLO track.
-- Some cards have **Prerequisites** (e.g., "Requires Networking"). You must meet them to play the card.
+## Постройка кластера
+- Требуется минимум **1 Контрольный план** и **2 Ноды**, чтобы разыгрывать Нагрузки.
+- Каждая Нода увеличивает максимум Устойчивости на 2 (переместите кубик).
+- Первая разыгранная карта Контрольного плана позволяет добрать карту.
+- Нагрузки добавляют очки SLO, показанные на карте. Отслеживайте их на планшете.
+- Некоторые карты имеют **Требования** (например, «Требуется Сеть»). Их нужно выполнить до розыгрыша.
 
-## Attacking and Defending
-- Attack cards specify a target and effect. Place Incident markers on the target card or player board as instructed.
-- Multiple Incident markers can stack. Each Incident on a Node reduces your Resilience by 1 during the Incident phase.
-- When you play a Response card, resolve its text immediately then discard it.
-- You may use the Stabilize phase to remove Incidents. Some cards have custom repair costs.
+## Атака и защита
+- Карты-Атаки указывают цель и эффект. Разместите маркеры инцидентов на целевой карте или планшете, как описано.
+- На каждой карте может лежать несколько инцидентов. Каждый инцидент на Ноде уменьшает Устойчивость на 1 во время фазы инцидентов.
+- Карты-Ответы разыгрываются немедленно, после чего сбрасываются.
+- Во время Стабилизации можно платить стоимость ремонта и снимать маркеры. Некоторые карты имеют индивидуальные цены.
 
-## Winning the Game
-- At the end of any round in which a player has 12+ SLO points and positive Resilience, they win.
-- If all other players are eliminated, the surviving player wins immediately.
-- In a 2-player game, reaching 15 SLO points is required for victory to ensure a longer duel.
+## Победа в игре
+- В конце раунда, в котором игрок набрал 12+ очков SLO и сохранил положительную Устойчивость, он побеждает.
+- Если все соперники выбыли, оставшийся игрок выигрывает автоматически.
+- В партии на двоих для победы требуется 15 очков SLO, чтобы дуэль была более напряжённой.
 
-## Solo and Co-op Variant
-- Reveal the top card of the deck each round to simulate an automated attacker called **Chaos Monkey**.
-- Chaos Monkey triggers Attack cards against the leading player or discards the card if not an Attack.
-- Solo players must reach 15 SLO points before Resilience hits 0.
+## Соло и кооперативный режим
+- Каждый раунд открывайте верхнюю карту колоды для виртуального атакующего **Chaos Monkey**.
+- Если карта — Атака, потревоженный игрок получает эффект; иначе карта сбрасывается без действий.
+- В одиночной игре нужно набрать 15 очков SLO до того, как Устойчивость упадёт до 0.
 
-## Designer Notes
-- Emphasize tempo: players should decide between expanding infrastructure and disrupting others.
-- Encourage trading: allow table deals to pause attacks or share temporary alliances.
-- Keep downtime low by limiting mandatory triggered abilities.
-
+## Заметки дизайнера
+- Игроки должны постоянно выбирать между ростом инфраструктуры и саботажем соседей.
+- Поощряйте сделками и переговорами временное перемирие и обмен ресурсами.
+- Сокращайте время простоя: избегайте сложных обязательных триггеров.

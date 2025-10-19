@@ -1,26 +1,26 @@
-# Player Cluster Aid
+# Памятка игрока
 
 ```
 ┌───────────────────────────────────────────────┐
-│               CLUSTER OVERVIEW               │
+│             ОБЗОР ВАШЕГО КЛАСТЕРА             │
 ├───────────────────────────┬───────────────────┤
-│ Infrastructure Slots      │ Workload Slots    │
-│ [Node][Node][Node]        │ [Service][Service]│
-│ [Control][Storage][Net]   │ [Service][Service]│
+│ Слоты инфраструктуры      │ Слоты нагрузок    │
+│ [Нода][Нода][Нода]        │ [Сервис][Сервис]  │
+│ [Контр.][Хранилище][Сеть] │ [Сервис][Сервис]  │
 ├───────────────────────────┴───────────────────┤
-│ Automation / Upgrades                         │
+│ Автоматизация / Улучшения                     │
 │ [      ][      ][      ][      ]              │
 ├───────────────────────────────────────────────┤
-│ SLO Track (12)  [][][][][][][][][][]          │
-│ Resilience Track (start at 6) 6 [][][]        │
-│ Incident Staging Area   [ ][ ][ ]             │
+│ Трек SLO (12)  [][][][][][][][][][]           │
+│ Трек устойчивости (старт 6) 6 [][][]          │
+│ Зона инцидентов   [ ][ ][ ]                   │
 └───────────────────────────────────────────────┘
 ```
 
-## Usage
-- Place Nodes and Control Plane in the top-left grid.
-- Place Storage and Networking support cards in the remaining infrastructure slots.
-- Lay Workloads in the right column; tuck supporting cards beneath their host Node if space is tight.
-- Track SLO with a cube on the bottom track; hitting 12 wins (15 in duel mode).
-- Track Resilience by moving a cube up or down the side track.
-- Keep Incident markers in the staging area to remind you to resolve them during the Incident phase.
+## Использование
+- Ноды и Контрольный план размещайте в левом верхнем блоке.
+- Хранилище и Сеть кладите в оставшиеся слоты инфраструктуры.
+- Нагрузки располагайте справа; при нехватке места подложите поддерживающие карты под Ноды.
+- Отслеживайте SLO кубиком на нижнем треке: 12 очков (15 в дуэли) приносят победу.
+- Двигайте кубик устойчивости вверх/вниз при изменении показателя.
+- Держите маркеры инцидентов в зоне напоминания, чтобы не забыть их устранить.

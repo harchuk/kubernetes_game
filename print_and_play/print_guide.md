@@ -1,24 +1,24 @@
-# Print & Play Guide
+# Руководство по печати
 
-## Card Sheets
-- Export `cards/card_list.csv` to your preferred layout tool (Nandeck, nanDECK, Component Studio, etc.).
-- Suggested card size: 63 × 88 mm (standard poker).
-- Use light blue borders for Infrastructure, green for Workloads, red for Attacks, and yellow for Responses.
+## Карточные листы
+- Экспортируйте `cards/card_list.csv` в любимый софт верстки (nanDECK, Component Studio и др.).
+- Рекомендуемый размер карт: 63 × 88 мм (стандартный покер).
+- Цвета рамок: голубой для инфраструктуры, зелёный для нагрузок, красный для атак, жёлтый для ответов.
 
-### Fast HTML Export
-- Run `./tools/generate_card_sheets.py` to build ready-to-print HTML sheets at `cards/cards_print.html` (9 cards per sheet).
-- Open the HTML file in a browser, set print scale to 100%, margins to none (or 0.5 in if required), and export to PDF.
-- Use double-sided printing with the short edge as the flip if you add custom backs.
+### Быстрый HTML-экспорт
+- Выполните `./tools/generate_card_sheets.py`, чтобы сформировать HTML-листы `cards/cards_print.html` (9 карт на лист).
+- Откройте файл в браузере, выставьте масштаб печати 100%, поля — «нет» (или 0,5" при необходимости) и сохраните в PDF.
+- Для двусторонней печати с рубашками используйте переворот по короткой стороне.
 
-## Tokens and Markers
-- Use coins, cubes, or cut-out circles for Resources (60 total needed).
-- Resilience can be tracked with a single cube on the track printed on each Player Aid.
-- Incident markers can be red cubes, glass beads, or card sleeves turned sideways.
+## Жетоны и маркеры
+- В качестве ресурсов используйте монеты, кубики или жетоны (нужно 60 шт.).
+- Устойчивость отслеживается одним кубиком на планшете игрока.
+- Маркеры инцидентов подойдут из красных кубиков, стеклянных камней или перевёрнутых протекторов.
 
-## Player Aids
-- Print `playmats/player_cluster_aid.md` on A4/Letter. Laminate for repeated dry erase use.
+## Памятки игроков
+- Распечатайте `playmats/player_cluster_aid.md` на формате A4/Letter. Ламинирование позволит использовать маркеры.
 
-## Assembly Tips
-- Shuffle Attack and Response cards thoroughly; they form a single deck together with all other cards.
-- Sleeve prototype cards to mask paper thickness differences.
-- Keep the Commons Row near the deck with space for a discard pile and an Incident marker supply.
+## Советы по сборке
+- Тщательно перетасуйте Атаки и Ответы; они входят в общую колоду.
+- Спрячьте бумажную текстуру, вложив карты в протекторы.
+- Держите рядом с колодой рынок из трёх карт, сброс и запас маркеров инцидентов.

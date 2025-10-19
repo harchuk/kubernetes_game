@@ -1,25 +1,25 @@
-# Quick Reference
+# Памятка
 
-## Turn Phases
-1. **Refresh** – Remove 1 Incident, draw to 5, gain 2 Resources.
-2. **Plan** – Discard any cards for +1 Resource each (optional).
-3. **Deploy** – Play or buy cards, pay costs, follow prerequisites.
-4. **Incidents** – Resolve ongoing Incident text.
-5. **Sabotage** – Play 1 Attack card (optional).
-6. **Stabilize** – Repair, check SLO victory, eliminate if Resilience < 0.
-7. **End Step** – Discard to 7, refill Commons Row.
+## Этапы хода
+1. **Обновление** – Снимите 1 инцидент (опционально), доберите до 5 карт, получите 2 ресурса.
+2. **Планирование** – Сбрасывайте карты за +1 ресурс каждая (по желанию).
+3. **Развёртывание** – Играйте и покупайте карты, соблюдая требования и оплачивая стоимость.
+4. **Инциденты** – Разрешите все негативные эффекты.
+5. **Саботаж** – Сыграйте одну Атаку (по желанию).
+6. **Стабилизация** – Ремонтируйте, проверяйте SLO, выбывайте при отрицательной устойчивости.
+7. **Завершение** – Сбросьте лишние карты до 7, восстановите рынок.
 
-## Build Requirements
-- Need 1 Control Plane + 2 Nodes before any Workload.
-- Keep Resilience > 0 to stay in the game.
-- Hit 12 SLO (15 in duel) and survive the round to win.
+## Требования к построению
+- Нужны 1 Контрольный план и 2 Ноды, чтобы выводить Нагрузки.
+- Удерживайте Устойчивость > 0, иначе выбываете.
+- Победа: 12 SLO (15 в дуэли) и положительная Устойчивость до конца раунда.
 
-## Common Costs
-- Clear Node Incident: 1 Resource.
-- Clear Control Plane Incident: 2 Resources.
-- If a card has a custom repair cost, use that number instead.
+## Частые стоимости
+- Ремонт Ноды: 1 ресурс.
+- Ремонт Контрольного плана: 2 ресурса.
+- Если на карте указана своя цена ремонта, используйте её.
 
-## Table Etiquette
-- Announce Attacks before resolving effects.
-- Track SLO and Resilience with cubes on your board.
-- Shuffle discarded Responses back into deck when empty.
+## За столом
+- Объявляйте атаки до применения эффектов.
+- Отслеживайте SLO и Устойчивость кубиками на планшете.
+- Когда колода кончается, перемешайте сброс Ответов и продолжайте.

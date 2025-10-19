@@ -1,30 +1,30 @@
-name,type,cost,slo,quantity,prerequisite,effect,repair_cost
-Standard Node,Node,2,0,7,,Gain +2 Resilience max; provides capacity for one Workload.,1 token to clear Incident
-GPU Accelerator Node,Node,4,0,3,Requires Control Plane,Gives +1 SLO to any Workload it hosts; draw a card when played.,2 tokens to clear Incident
-Spot Node,Node,1,0,4,,Provides 1 capacity; if hit by an Incident discard it instead of repairing.,Cannot be repaired
-Managed Control Plane,Control Plane,3,0,3,,Unlocks playing Workloads; draw 1 card on deploy.,2 tokens to clear Incident
-High-Availability Control Plane,Control Plane,5,0,2,Requires Control Plane,Your Resilience cannot drop below 1 while this is incident-free.,3 tokens to clear Incident
-Persistent Volume Stack,Storage,3,0,4,Requires Node,Each Stateful Workload you control gains +1 SLO.,2 tokens to clear Incident
-Service Mesh Gateway,Networking,3,0,3,,When you play a Workload, gain 1 Resource token.,2 tokens to clear Incident
-Edge Ingress Load Balancer,Networking,2,0,3,,Once per turn pay 1 Resource to draw a Commons Row card and discard it.,1 token to clear Incident
-Observability Stack,Automation,2,0,4,,At end of turn you may peek at top card of deck; you may keep or discard.,1 token to clear Incident
-GitOps Pipeline,Automation,3,0,3,Requires Control Plane,During Deploy you may play one additional card for 1 less Resource.,2 tokens to clear Incident
-Cluster Autoscaler,Automation,3,0,3,Requires Node,Gain +1 Resource during Refresh for each 2 Nodes you control.,2 tokens to clear Incident
-Disaster Recovery Plan,Upgrade,4,0,3,Requires Storage,If your Resilience would drop below 0, discard this instead and set Resilience to 2.,3 tokens to clear Incident
-Stateless API Service,Workload,2,2,5,Requires 2 Nodes,Provides +1 Resource during Refresh while incident-free.,2 tokens to clear Incident
-Event Processor Queue,Workload,3,2,3,Requires Networking,When deployed gain 2 Resource tokens.,2 tokens to clear Incident
-Stateful Database Cluster,Workload,4,3,3,Requires Storage,Add +1 SLO for each Persistent Volume Stack you control.,3 tokens to clear Incident
-Machine Learning Platform,Workload,5,4,2,Requires GPU Accelerator Node,Opponents pay +1 Resource to target you with Attacks.,3 tokens to clear Incident
-Batch ETL Pipeline,Workload,3,2,3,Requires Node,At end of turn you may discard 1 card to gain 2 Resources.,2 tokens to clear Incident
-Realtime Analytics Dashboard,Workload,4,3,2,Requires Networking,When deployed draw 2 cards; keep 1 and discard the other.,2 tokens to clear Incident
-Internal Tools Suite,Workload,2,1,3,Requires Control Plane,Gain +1 Resilience when deployed.,1 token to clear Incident
-DDoS Burst,Attack,3,0,4,,Place 2 Incidents across target Nodes; they lose Resources gained this turn.,Target pays 2 tokens per Incident
-Supply Chain Compromise,Attack,4,0,2,,Steal an Automation or Upgrade card; place 1 Incident on new card.,Target pays 3 tokens to clear Incident
-Rogue CronJob,Attack,2,0,2,,Place 1 Incident on a Workload; it provides no SLO until cleared.,Target pays 2 tokens to clear Incident
-Budget Freeze,Attack,3,0,3,,Target skips their next Plan phase and loses 2 Resources.,Cannot be repaired; Incident clears automatically after skip
-Compliance Audit,Attack,2,0,2,,Target must discard an Automation or reveal a hand without Attacks.,No repair required
-Zombie Pod Swarm,Attack,4,0,3,,Remove 1 Resilience and place an Incident on target Control Plane.,Target pays 3 tokens to clear Incident
-Incident Response Runbook,Response,1,0,3,,Cancel an Attack that targets you and draw a card.,-
-Chaos Engineering Drill,Response,2,0,3,,Remove up to 2 Incidents from your cards.,-
-Hotfix Brigade,Response,2,0,3,,Restore 2 Resilience.,-
-Blue-Green Rollout,Response,3,0,2,,Play a Workload from your discard pile for free; it gains 1 Incident.,-
+название,тип,стоимость,slo,количество,требование,эффект,стоимость_ремонта
+Стандартная нода,Нода,2,0,7,,Увеличивает максимум устойчивости на 2; даёт вместимость для одной нагрузки.,1 ресурс за снятие инцидента
+Нода с GPU-ускорителем,Нода,4,0,3,Требует Контрольного плана,Даёт +1 SLO любой вашей нагрузке на этой ноде; при розыгрыше возьмите карту.,2 ресурса за снятие инцидента
+Спотовая нода,Нода,1,0,4,,Предоставляет 1 вместимость; при получении инцидента сбросьте её вместо ремонта.,Не ремонтируется
+Управляемый контрольный план,Контрольный план,3,0,3,,Открывает возможность разыгрывать Нагрузки; при розыгрыше возьмите карту.,2 ресурса за снятие инцидента
+Отказоустойчивый контрольный план,Контрольный план,5,0,2,Требует Контрольного плана,Пока карта без инцидентов, ваша устойчивость не может упасть ниже 1.,3 ресурса за снятие инцидента
+Стек постоянных томов,Хранилище,3,0,4,Требует Ноду,Каждая ваша стейтфул-нагрузка получает +1 SLO.,2 ресурса за снятие инцидента
+Шлюз сервисной сетки,Сеть,3,0,3,,При розыгрыше Нагрузки получите 1 ресурс.,2 ресурса за снятие инцидента
+Пограничный балансировщик нагрузки,Сеть,2,0,3,,Раз в ход заплатите 1 ресурс, чтобы взять карту из Общего пула и сразу сбросить её.,1 ресурс за снятие инцидента
+Стек наблюдаемости,Автоматизация,2,0,4,,В конце хода можете посмотреть верхнюю карту колоды и оставить или сбросить её.,1 ресурс за снятие инцидента
+GitOps-конвейер,Автоматизация,3,0,3,Требует Контрольного плана,Во время Развёртывания можете сыграть дополнительную карту со скидкой 1 ресурс.,2 ресурса за снятие инцидента
+Автоскейлер кластера,Автоматизация,3,0,3,Требует Ноду,Во время Обновления получите +1 ресурс за каждые 2 Ноды.,2 ресурса за снятие инцидента
+План аварийного восстановления,Улучшение,4,0,3,Требует Хранилище,Если устойчивость должна упасть ниже 0, сбросьте эту карту и установите устойчивость на 2.,3 ресурса за снятие инцидента
+Бесстейтовый API-сервис,Нагрузка,2,2,5,Требует 2 Ноды,Пока карта без инцидентов, во время Обновления получайте +1 ресурс.,2 ресурса за снятие инцидента
+Очередь обработки событий,Нагрузка,3,2,3,Требует Сеть,При розыгрыше получите 2 ресурса.,2 ресурса за снятие инцидента
+Кластер stateful-базы данных,Нагрузка,4,3,3,Требует Хранилище,Получает +1 SLO за каждый ваш Стек постоянных томов.,3 ресурса за снятие инцидента
+Платформа машинного обучения,Нагрузка,5,4,2,Требует Ноду с GPU-ускорителем,Противники платят +1 ресурс, чтобы сыграть Атаку против вас.,3 ресурса за снятие инцидента
+Пакетный ETL-конвейер,Нагрузка,3,2,3,Требует Ноду,В конце хода можете сбросить карту, чтобы получить 2 ресурса.,2 ресурса за снятие инцидента
+Панель realtime-аналитики,Нагрузка,4,3,2,Требует Сеть,При розыгрыше возьмите 2 карты: одну оставьте, вторую сбросьте.,2 ресурса за снятие инцидента
+Пакет внутренних инструментов,Нагрузка,2,1,3,Требует Контрольного плана,При розыгрыше получите +1 к устойчивости.,1 ресурс за снятие инцидента
+Всплеск DDoS,Атака,3,0,4,,Разместите 2 инцидента на Нодах цели; она теряет ресурсы, полученные в этот ход.,Цель платит 2 ресурса за каждый инцидент
+Компрометация цепочки поставок,Атака,4,0,2,,Заберите у цели карту Автоматизации или Улучшения; разместите 1 инцидент на новой карте.,Цель платит 3 ресурса за снятие инцидента
+Сбойный CronJob,Атака,2,0,2,,Разместите 1 инцидент на Нагрузке; она не даёт SLO до ремонта.,Цель платит 2 ресурса за снятие инцидента
+Заморозка бюджета,Атака,3,0,3,,Цель пропускает следующую фазу Планирования и теряет 2 ресурса.,Не ремонтируется; инцидент снимается после пропуска
+Аудит соответствия,Атака,2,0,2,,Цель должна сбросить карту Автоматизации или показать руку без Атак.,Ремонт не требуется
+Рой зомби-подов,Атака,4,0,3,,Цель теряет 1 устойчивость и получает инцидент на Контрольном плане.,Цель платит 3 ресурса за снятие инцидента
+Плейбук реагирования на инциденты,Ответ,1,0,3,,Отмените атаку, нацеленную на вас, и возьмите карту.,-
+Учения по Chaos Engineering,Ответ,2,0,3,,Удалите до 2 инцидентов со своих карт.,-
+Горячая бригада,Ответ,2,0,3,,Восстановите 2 единицы устойчивости.,-
+Blue-Green релиз,Ответ,3,0,2,,Разыграйте Нагрузку из сброса бесплатно; она получает 1 инцидент.,-

@@ -1,19 +1,19 @@
 # Kubernetes Cluster Clash
 
-Kubernetes Cluster Clash is a competitive tabletop card game where cloud-native engineers race to assemble resilient Kubernetes clusters while sabotaging their rivals. Balance your resources, automate your infrastructure, and survive outages to be crowned Cluster Champion.
+Kubernetes Cluster Clash — соревновательная настольная карточная игра, в которой инженеры по платформам собирают устойчивые Kubernetes-кластеры и мешают соседям. Управляйте ресурсами, автоматизируйте инфраструктуру и переживите инциденты, чтобы стать Чемпионом кластера.
 
-## Project Structure
+## Структура проекта
 
-- `rules/` - printable rules reference and designer notes.
-- `cards/` - card list exports for printing and prototyping.
-- `playmats/` - optional player aids for tracking cluster state.
-- `print_and_play/` - ready-to-print artefacts generated from source files.
-- `tools/` - helper scripts for generating printable sheets.
+- `rules/` — правила и дизайнерские заметки.
+- `cards/` — список карт для печати и прототипирования.
+- `playmats/` — вспомогательные планшеты игроков.
+- `print_and_play/` — материалы для печати «сделай сам».
+- `tools/` — вспомогательные скрипты для генерации карточек.
 
-## Status
+## Статус
 
-Game materials are under active development. See `rules/rulebook.md` for how to play and `cards/card_list.csv` for the current card set.
+Материалы игры находятся в активной разработке. Смотрите `rules/rulebook.md` для полного описания и `cards/card_list.csv` для актуального набора карт.
 
-## Generating Card Sheets
+## Генерация карточек
 
-Run `./tools/generate_card_sheets.py` to build `cards/cards_print.html`, then print the file to PDF from your browser with scaling set to 100%.
+Выполните `./tools/generate_card_sheets.py`, чтобы создать файл `cards/cards_print.html`, затем распечатайте его в PDF из браузера со 100% масштабом.

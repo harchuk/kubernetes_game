@@ -1,18 +1,18 @@
 
 <!DOCTYPE html>
-<html lang="en">
+<html lang="ru">
 <head>
 <meta charset="utf-8" />
-<title>Kubernetes Cluster Clash — Card Fronts</title>
+<title>Kubernetes Cluster Clash — Листы карточек</title>
 <style>
 @page {
     size: letter;
     margin: 0.5in;
 }
 body {
-    font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;
+    font-family: 'Segoe UI', 'Helvetica Neue', Helvetica, Arial, sans-serif;
     margin: 0;
-    background: #f8fafc;
+    background: radial-gradient(circle at top, #e0f2fe 0%, #f8fafc 60%);
     color: #0f172a;
 }
 main {
@@ -23,3010 +23,2620 @@ main {
     grid-template-columns: repeat(3, 2.5in);
     grid-auto-rows: 3.5in;
     gap: 0.3in;
-    margin-bottom: 0.5in;
+    margin-bottom: 0.6in;
     page-break-after: always;
 }
 .sheet:last-of-type {
     page-break-after: auto;
 }
 .card {
+    position: relative;
     box-sizing: border-box;
-    border: 3px solid #0f172a;
-    border-radius: 0.2in;
-    padding: 0.2in;
-    background: white;
+    border: 3px solid var(--accent, #0f172a);
+    border-radius: 0.25in;
+    padding: 0.22in;
+    background: linear-gradient(135deg, var(--accent-soft, #e2e8f0) 0%, #ffffff 70%);
     display: flex;
     flex-direction: column;
     justify-content: space-between;
-    box-shadow: 0 0 0.08in rgba(15, 23, 42, 0.2);
+    box-shadow: 0 0.12in 0.35in rgba(15, 23, 42, 0.28);
+    overflow: hidden;
 }
-.card-header {
+.card::after {
+    content: '';
+    position: absolute;
+    inset: 0.15in;
+    border-radius: 0.18in;
+    border: 1px dashed rgba(15, 23, 42, 0.08);
+    pointer-events: none;
+}
+.card-top {
+    position: relative;
     display: flex;
     justify-content: space-between;
-    align-items: flex-start;
-    font-weight: 700;
-    text-transform: uppercase;
-    font-size: 0.6rem;
+    align-items: center;
+    z-index: 1;
 }
 .card-name {
-    font-size: 0.95rem;
-    text-transform: none;
+    position: relative;
+    z-index: 1;
+    margin: 0.12in 0 0.08in;
+    font-size: 1.05rem;
+    line-height: 1.1;
     color: #0f172a;
+    text-transform: none;
 }
 .tag {
-    padding: 0.05in 0.12in;
+    padding: 0.05in 0.16in;
     border-radius: 999px;
-    color: white;
+    color: #ffffff;
     font-weight: 700;
-    font-size: 0.5rem;
+    font-size: 0.55rem;
     letter-spacing: 0.05em;
+    text-transform: uppercase;
 }
-.stats {
-    display: flex;
-    justify-content: flex-start;
-    gap: 0.2in;
-    margin: 0.1in 0;
+.cost-badge {
+    padding: 0.04in 0.16in;
+    border-radius: 999px;
+    color: #ffffff;
+    font-weight: 700;
     font-size: 0.6rem;
+    letter-spacing: 0.03em;
+    display: inline-flex;
+    align-items: center;
+    gap: 0.08in;
 }
-.stat {
+.stat-row {
     display: flex;
-    flex-direction: column;
+    gap: 0.15in;
+    margin: 0 0 0.12in;
+    z-index: 1;
 }
-.stat-label {
+.chip {
+    background: rgba(15, 23, 42, 0.05);
+    border: 1px solid rgba(15, 23, 42, 0.12);
+    border-radius: 0.16in;
+    padding: 0.04in 0.16in;
+    font-size: 0.62rem;
+    display: flex;
+    gap: 0.1in;
+    align-items: baseline;
+}
+.chip-label {
     font-weight: 600;
-    letter-spacing: 0.04em;
-    color: #475569;
+    letter-spacing: 0.05em;
+    text-transform: uppercase;
+    color: rgba(15, 23, 42, 0.7);
 }
-.stat-value {
-    font-size: 0.8rem;
+.chip-value {
     font-weight: 700;
     color: #0f172a;
 }
 .card-body {
+    position: relative;
+    z-index: 1;
     flex: 1 1 auto;
-    font-size: 0.62rem;
-    line-height: 1.35;
+    font-size: 0.68rem;
+    line-height: 1.4;
     color: #1e293b;
+    background: rgba(255, 255, 255, 0.65);
+    border-radius: 0.18in;
+    padding: 0.14in 0.18in;
+    box-shadow: inset 0 0 0 1px rgba(15, 23, 42, 0.07);
 }
-.card-body strong {
+.card-body p {
+    margin: 0 0 0.12in;
+}
+.card-body p:last-child {
+    margin-bottom: 0;
+}
+.prereq strong {
     color: #0f172a;
 }
 .card-footer {
-    font-size: 0.55rem;
-    color: #475569;
-}
-.meta {
+    position: relative;
+    z-index: 1;
+    margin-top: 0.12in;
+    font-size: 0.58rem;
+    color: rgba(15, 23, 42, 0.7);
     display: flex;
     justify-content: space-between;
-    font-size: 0.5rem;
-    color: #475569;
 }
 .placeholder {
     border: 2px dashed #cbd5f5;
     background: #e2e8f0;
+    border-radius: 0.2in;
 }
-.card-type-node { border-color: #3b82f6; }
-.card-type-node .tag { background: #3b82f6; }
-.card-type-control-plane { border-color: #2563eb; }
-.card-type-control-plane .tag { background: #2563eb; }
-.card-type-storage { border-color: #0ea5e9; }
-.card-type-storage .tag { background: #0ea5e9; }
-.card-type-networking { border-color: #6366f1; }
-.card-type-networking .tag { background: #6366f1; }
-.card-type-automation { border-color: #14b8a6; }
-.card-type-automation .tag { background: #14b8a6; }
-.card-type-upgrade { border-color: #0f766e; }
-.card-type-upgrade .tag { background: #0f766e; }
-.card-type-workload { border-color: #22c55e; }
-.card-type-workload .tag { background: #22c55e; }
-.card-type-attack { border-color: #ef4444; }
-.card-type-attack .tag { background: #ef4444; }
-.card-type-response { border-color: #f59e0b; }
-.card-type-response .tag { background: #f59e0b; }
+.card-type-нода { --accent: #1d4ed8; --accent-soft: #dbeafe; border-color: #1d4ed8; }
+.card-type-нода .tag { background: #1d4ed8; box-shadow: 0 0.04in 0.12in rgba(15,23,42,0.18); }
+.card-type-нода .cost-badge { background: #1d4ed8; box-shadow: 0 0.04in 0.12in rgba(15,23,42,0.18); }
+.card-type-нода .chip { border-color: rgba(15, 23, 42, 0.08); box-shadow: inset 0 0 0 1px rgba(255,255,255,0.4); background: linear-gradient(135deg, rgba(255,255,255,0.85) 0%, #dbeafe 100%); }
+.card-type-контрольный-план { --accent: #1e3a8a; --accent-soft: #e0e7ff; border-color: #1e3a8a; }
+.card-type-контрольный-план .tag { background: #1e3a8a; box-shadow: 0 0.04in 0.12in rgba(15,23,42,0.18); }
+.card-type-контрольный-план .cost-badge { background: #1e3a8a; box-shadow: 0 0.04in 0.12in rgba(15,23,42,0.18); }
+.card-type-контрольный-план .chip { border-color: rgba(15, 23, 42, 0.08); box-shadow: inset 0 0 0 1px rgba(255,255,255,0.4); background: linear-gradient(135deg, rgba(255,255,255,0.85) 0%, #e0e7ff 100%); }
+.card-type-хранилище { --accent: #0ea5e9; --accent-soft: #cffafe; border-color: #0ea5e9; }
+.card-type-хранилище .tag { background: #0ea5e9; box-shadow: 0 0.04in 0.12in rgba(15,23,42,0.18); }
+.card-type-хранилище .cost-badge { background: #0ea5e9; box-shadow: 0 0.04in 0.12in rgba(15,23,42,0.18); }
+.card-type-хранилище .chip { border-color: rgba(15, 23, 42, 0.08); box-shadow: inset 0 0 0 1px rgba(255,255,255,0.4); background: linear-gradient(135deg, rgba(255,255,255,0.85) 0%, #cffafe 100%); }
+.card-type-сеть { --accent: #6366f1; --accent-soft: #e0e7ff; border-color: #6366f1; }
+.card-type-сеть .tag { background: #6366f1; box-shadow: 0 0.04in 0.12in rgba(15,23,42,0.18); }
+.card-type-сеть .cost-badge { background: #6366f1; box-shadow: 0 0.04in 0.12in rgba(15,23,42,0.18); }
+.card-type-сеть .chip { border-color: rgba(15, 23, 42, 0.08); box-shadow: inset 0 0 0 1px rgba(255,255,255,0.4); background: linear-gradient(135deg, rgba(255,255,255,0.85) 0%, #e0e7ff 100%); }
+.card-type-автоматизация { --accent: #14b8a6; --accent-soft: #ccfbf1; border-color: #14b8a6; }
+.card-type-автоматизация .tag { background: #14b8a6; box-shadow: 0 0.04in 0.12in rgba(15,23,42,0.18); }
+.card-type-автоматизация .cost-badge { background: #14b8a6; box-shadow: 0 0.04in 0.12in rgba(15,23,42,0.18); }
+.card-type-автоматизация .chip { border-color: rgba(15, 23, 42, 0.08); box-shadow: inset 0 0 0 1px rgba(255,255,255,0.4); background: linear-gradient(135deg, rgba(255,255,255,0.85) 0%, #ccfbf1 100%); }
+.card-type-улучшение { --accent: #0f766e; --accent-soft: #d1fae5; border-color: #0f766e; }
+.card-type-улучшение .tag { background: #0f766e; box-shadow: 0 0.04in 0.12in rgba(15,23,42,0.18); }
+.card-type-улучшение .cost-badge { background: #0f766e; box-shadow: 0 0.04in 0.12in rgba(15,23,42,0.18); }
+.card-type-улучшение .chip { border-color: rgba(15, 23, 42, 0.08); box-shadow: inset 0 0 0 1px rgba(255,255,255,0.4); background: linear-gradient(135deg, rgba(255,255,255,0.85) 0%, #d1fae5 100%); }
+.card-type-нагрузка { --accent: #22c55e; --accent-soft: #dcfce7; border-color: #22c55e; }
+.card-type-нагрузка .tag { background: #22c55e; box-shadow: 0 0.04in 0.12in rgba(15,23,42,0.18); }
+.card-type-нагрузка .cost-badge { background: #22c55e; box-shadow: 0 0.04in 0.12in rgba(15,23,42,0.18); }
+.card-type-нагрузка .chip { border-color: rgba(15, 23, 42, 0.08); box-shadow: inset 0 0 0 1px rgba(255,255,255,0.4); background: linear-gradient(135deg, rgba(255,255,255,0.85) 0%, #dcfce7 100%); }
+.card-type-атака { --accent: #ef4444; --accent-soft: #fee2e2; border-color: #ef4444; }
+.card-type-атака .tag { background: #ef4444; box-shadow: 0 0.04in 0.12in rgba(15,23,42,0.18); }
+.card-type-атака .cost-badge { background: #ef4444; box-shadow: 0 0.04in 0.12in rgba(15,23,42,0.18); }
+.card-type-атака .chip { border-color: rgba(15, 23, 42, 0.08); box-shadow: inset 0 0 0 1px rgba(255,255,255,0.4); background: linear-gradient(135deg, rgba(255,255,255,0.85) 0%, #fee2e2 100%); }
+.card-type-ответ { --accent: #f59e0b; --accent-soft: #fef3c7; border-color: #f59e0b; }
+.card-type-ответ .tag { background: #f59e0b; box-shadow: 0 0.04in 0.12in rgba(15,23,42,0.18); }
+.card-type-ответ .cost-badge { background: #f59e0b; box-shadow: 0 0.04in 0.12in rgba(15,23,42,0.18); }
+.card-type-ответ .chip { border-color: rgba(15, 23, 42, 0.08); box-shadow: inset 0 0 0 1px rgba(255,255,255,0.4); background: linear-gradient(135deg, rgba(255,255,255,0.85) 0%, #fef3c7 100%); }
 </style>
 </head>
 <body>
 <main>
-<header style="margin-bottom:0.4in;">
-  <h1 style="margin:0;font-size:1.1rem;text-transform:uppercase;letter-spacing:0.12em;color:#1e293b;">Kubernetes Cluster Clash — Card Fronts</h1>
-  <p style="margin:0.2rem 0 0;font-size:0.65rem;color:#475569;">Total cards: 90 &nbsp;•&nbsp; Sheets: 10</p>
+<header style="margin-bottom:0.45in;">
+  <h1 style="margin:0;font-size:1.15rem;letter-spacing:0.1em;text-transform:uppercase;color:#1e293b;">Kubernetes Cluster Clash — Листы карточек</h1>
+  <p style="margin:0.2rem 0 0;font-size:0.65rem;color:#475569;">Всего карт: 90 &nbsp;•&nbsp; Листов: 10</p>
 </header>
 <section class="sheet">
 
-<div class="card card-type-node">
-  <div class="card-header">
-    <span class="tag">Node</span>
-    <span class="card-name">Standard Node</span>
+<div class="card card-type-нода">
+  <div class="card-top">
+    <span class="tag">Нода</span>
+    <span class="cost-badge">⚙ 2</span>
   </div>
-  <div class="stats">
-    <div class="stat">
-      <span class="stat-label">Cost</span>
-      <span class="stat-value">2</span>
+  <h2 class="card-name">Стандартная нода</h2>
+  <div class="stat-row">
+    <div class="chip">
+      <span class="chip-label">SLO</span>
+      <span class="chip-value">—</span>
     </div>
-    <div class="stat">
-      <span class="stat-label">SLO</span>
-      <span class="stat-value">—</span>
-    </div>
-    <div class="stat">
-      <span class="stat-label">Repair</span>
-      <span class="stat-value">1 token to clear Incident</span>
+    <div class="chip">
+      <span class="chip-label">Ремонт</span>
+      <span class="chip-value">1 ресурс за снятие инцидента</span>
     </div>
   </div>
   <div class="card-body">
     
-    <p>Gain +2 Resilience max; provides capacity for one Workload.</p>
+    <p>Увеличивает максимум устойчивости на 2; даёт вместимость для одной нагрузки.</p>
   </div>
   <div class="card-footer">
-    <div class="meta">
-      <span>Copy 1/7</span>
-      <span>Kube Cluster Clash</span>
-    </div>
+      <span>Копия 1/7</span>
+      <span>Kubernetes Cluster Clash</span>
   </div>
 </div>
 
 
-<div class="card card-type-node">
-  <div class="card-header">
-    <span class="tag">Node</span>
-    <span class="card-name">Standard Node</span>
+<div class="card card-type-нода">
+  <div class="card-top">
+    <span class="tag">Нода</span>
+    <span class="cost-badge">⚙ 2</span>
   </div>
-  <div class="stats">
-    <div class="stat">
-      <span class="stat-label">Cost</span>
-      <span class="stat-value">2</span>
+  <h2 class="card-name">Стандартная нода</h2>
+  <div class="stat-row">
+    <div class="chip">
+      <span class="chip-label">SLO</span>
+      <span class="chip-value">—</span>
     </div>
-    <div class="stat">
-      <span class="stat-label">SLO</span>
-      <span class="stat-value">—</span>
-    </div>
-    <div class="stat">
-      <span class="stat-label">Repair</span>
-      <span class="stat-value">1 token to clear Incident</span>
+    <div class="chip">
+      <span class="chip-label">Ремонт</span>
+      <span class="chip-value">1 ресурс за снятие инцидента</span>
     </div>
   </div>
   <div class="card-body">
     
-    <p>Gain +2 Resilience max; provides capacity for one Workload.</p>
+    <p>Увеличивает максимум устойчивости на 2; даёт вместимость для одной нагрузки.</p>
   </div>
   <div class="card-footer">
-    <div class="meta">
-      <span>Copy 2/7</span>
-      <span>Kube Cluster Clash</span>
-    </div>
+      <span>Копия 2/7</span>
+      <span>Kubernetes Cluster Clash</span>
   </div>
 </div>
 
 
-<div class="card card-type-node">
-  <div class="card-header">
-    <span class="tag">Node</span>
-    <span class="card-name">Standard Node</span>
+<div class="card card-type-нода">
+  <div class="card-top">
+    <span class="tag">Нода</span>
+    <span class="cost-badge">⚙ 2</span>
   </div>
-  <div class="stats">
-    <div class="stat">
-      <span class="stat-label">Cost</span>
-      <span class="stat-value">2</span>
+  <h2 class="card-name">Стандартная нода</h2>
+  <div class="stat-row">
+    <div class="chip">
+      <span class="chip-label">SLO</span>
+      <span class="chip-value">—</span>
     </div>
-    <div class="stat">
-      <span class="stat-label">SLO</span>
-      <span class="stat-value">—</span>
-    </div>
-    <div class="stat">
-      <span class="stat-label">Repair</span>
-      <span class="stat-value">1 token to clear Incident</span>
+    <div class="chip">
+      <span class="chip-label">Ремонт</span>
+      <span class="chip-value">1 ресурс за снятие инцидента</span>
     </div>
   </div>
   <div class="card-body">
     
-    <p>Gain +2 Resilience max; provides capacity for one Workload.</p>
+    <p>Увеличивает максимум устойчивости на 2; даёт вместимость для одной нагрузки.</p>
   </div>
   <div class="card-footer">
-    <div class="meta">
-      <span>Copy 3/7</span>
-      <span>Kube Cluster Clash</span>
-    </div>
+      <span>Копия 3/7</span>
+      <span>Kubernetes Cluster Clash</span>
   </div>
 </div>
 
 
-<div class="card card-type-node">
-  <div class="card-header">
-    <span class="tag">Node</span>
-    <span class="card-name">Standard Node</span>
+<div class="card card-type-нода">
+  <div class="card-top">
+    <span class="tag">Нода</span>
+    <span class="cost-badge">⚙ 2</span>
   </div>
-  <div class="stats">
-    <div class="stat">
-      <span class="stat-label">Cost</span>
-      <span class="stat-value">2</span>
+  <h2 class="card-name">Стандартная нода</h2>
+  <div class="stat-row">
+    <div class="chip">
+      <span class="chip-label">SLO</span>
+      <span class="chip-value">—</span>
     </div>
-    <div class="stat">
-      <span class="stat-label">SLO</span>
-      <span class="stat-value">—</span>
-    </div>
-    <div class="stat">
-      <span class="stat-label">Repair</span>
-      <span class="stat-value">1 token to clear Incident</span>
+    <div class="chip">
+      <span class="chip-label">Ремонт</span>
+      <span class="chip-value">1 ресурс за снятие инцидента</span>
     </div>
   </div>
   <div class="card-body">
     
-    <p>Gain +2 Resilience max; provides capacity for one Workload.</p>
+    <p>Увеличивает максимум устойчивости на 2; даёт вместимость для одной нагрузки.</p>
   </div>
   <div class="card-footer">
-    <div class="meta">
-      <span>Copy 4/7</span>
-      <span>Kube Cluster Clash</span>
-    </div>
+      <span>Копия 4/7</span>
+      <span>Kubernetes Cluster Clash</span>
   </div>
 </div>
 
 
-<div class="card card-type-node">
-  <div class="card-header">
-    <span class="tag">Node</span>
-    <span class="card-name">Standard Node</span>
+<div class="card card-type-нода">
+  <div class="card-top">
+    <span class="tag">Нода</span>
+    <span class="cost-badge">⚙ 2</span>
   </div>
-  <div class="stats">
-    <div class="stat">
-      <span class="stat-label">Cost</span>
-      <span class="stat-value">2</span>
+  <h2 class="card-name">Стандартная нода</h2>
+  <div class="stat-row">
+    <div class="chip">
+      <span class="chip-label">SLO</span>
+      <span class="chip-value">—</span>
     </div>
-    <div class="stat">
-      <span class="stat-label">SLO</span>
-      <span class="stat-value">—</span>
-    </div>
-    <div class="stat">
-      <span class="stat-label">Repair</span>
-      <span class="stat-value">1 token to clear Incident</span>
+    <div class="chip">
+      <span class="chip-label">Ремонт</span>
+      <span class="chip-value">1 ресурс за снятие инцидента</span>
     </div>
   </div>
   <div class="card-body">
     
-    <p>Gain +2 Resilience max; provides capacity for one Workload.</p>
+    <p>Увеличивает максимум устойчивости на 2; даёт вместимость для одной нагрузки.</p>
   </div>
   <div class="card-footer">
-    <div class="meta">
-      <span>Copy 5/7</span>
-      <span>Kube Cluster Clash</span>
-    </div>
+      <span>Копия 5/7</span>
+      <span>Kubernetes Cluster Clash</span>
   </div>
 </div>
 
 
-<div class="card card-type-node">
-  <div class="card-header">
-    <span class="tag">Node</span>
-    <span class="card-name">Standard Node</span>
+<div class="card card-type-нода">
+  <div class="card-top">
+    <span class="tag">Нода</span>
+    <span class="cost-badge">⚙ 2</span>
   </div>
-  <div class="stats">
-    <div class="stat">
-      <span class="stat-label">Cost</span>
-      <span class="stat-value">2</span>
+  <h2 class="card-name">Стандартная нода</h2>
+  <div class="stat-row">
+    <div class="chip">
+      <span class="chip-label">SLO</span>
+      <span class="chip-value">—</span>
     </div>
-    <div class="stat">
-      <span class="stat-label">SLO</span>
-      <span class="stat-value">—</span>
-    </div>
-    <div class="stat">
-      <span class="stat-label">Repair</span>
-      <span class="stat-value">1 token to clear Incident</span>
+    <div class="chip">
+      <span class="chip-label">Ремонт</span>
+      <span class="chip-value">1 ресурс за снятие инцидента</span>
     </div>
   </div>
   <div class="card-body">
     
-    <p>Gain +2 Resilience max; provides capacity for one Workload.</p>
+    <p>Увеличивает максимум устойчивости на 2; даёт вместимость для одной нагрузки.</p>
   </div>
   <div class="card-footer">
-    <div class="meta">
-      <span>Copy 6/7</span>
-      <span>Kube Cluster Clash</span>
-    </div>
+      <span>Копия 6/7</span>
+      <span>Kubernetes Cluster Clash</span>
   </div>
 </div>
 
 
-<div class="card card-type-node">
-  <div class="card-header">
-    <span class="tag">Node</span>
-    <span class="card-name">Standard Node</span>
+<div class="card card-type-нода">
+  <div class="card-top">
+    <span class="tag">Нода</span>
+    <span class="cost-badge">⚙ 2</span>
   </div>
-  <div class="stats">
-    <div class="stat">
-      <span class="stat-label">Cost</span>
-      <span class="stat-value">2</span>
+  <h2 class="card-name">Стандартная нода</h2>
+  <div class="stat-row">
+    <div class="chip">
+      <span class="chip-label">SLO</span>
+      <span class="chip-value">—</span>
     </div>
-    <div class="stat">
-      <span class="stat-label">SLO</span>
-      <span class="stat-value">—</span>
-    </div>
-    <div class="stat">
-      <span class="stat-label">Repair</span>
-      <span class="stat-value">1 token to clear Incident</span>
+    <div class="chip">
+      <span class="chip-label">Ремонт</span>
+      <span class="chip-value">1 ресурс за снятие инцидента</span>
     </div>
   </div>
   <div class="card-body">
     
-    <p>Gain +2 Resilience max; provides capacity for one Workload.</p>
+    <p>Увеличивает максимум устойчивости на 2; даёт вместимость для одной нагрузки.</p>
   </div>
   <div class="card-footer">
-    <div class="meta">
-      <span>Copy 7/7</span>
-      <span>Kube Cluster Clash</span>
-    </div>
+      <span>Копия 7/7</span>
+      <span>Kubernetes Cluster Clash</span>
   </div>
 </div>
 
 
-<div class="card card-type-node">
-  <div class="card-header">
-    <span class="tag">Node</span>
-    <span class="card-name">GPU Accelerator Node</span>
+<div class="card card-type-нода">
+  <div class="card-top">
+    <span class="tag">Нода</span>
+    <span class="cost-badge">⚙ 4</span>
   </div>
-  <div class="stats">
-    <div class="stat">
-      <span class="stat-label">Cost</span>
-      <span class="stat-value">4</span>
+  <h2 class="card-name">Нода с GPU-ускорителем</h2>
+  <div class="stat-row">
+    <div class="chip">
+      <span class="chip-label">SLO</span>
+      <span class="chip-value">—</span>
     </div>
-    <div class="stat">
-      <span class="stat-label">SLO</span>
-      <span class="stat-value">—</span>
-    </div>
-    <div class="stat">
-      <span class="stat-label">Repair</span>
-      <span class="stat-value">2 tokens to clear Incident</span>
+    <div class="chip">
+      <span class="chip-label">Ремонт</span>
+      <span class="chip-value">2 ресурса за снятие инцидента</span>
     </div>
   </div>
   <div class="card-body">
-    <p><strong>Prerequisite:</strong> Requires Control Plane</p>
-    <p>Gives +1 SLO to any Workload it hosts; draw a card when played.</p>
+    <p class="prereq"><strong>Требование:</strong> Требует Контрольного плана</p>
+    <p>Даёт +1 SLO любой вашей нагрузке на этой ноде; при розыгрыше возьмите карту.</p>
   </div>
   <div class="card-footer">
-    <div class="meta">
-      <span>Copy 1/3</span>
-      <span>Kube Cluster Clash</span>
-    </div>
+      <span>Копия 1/3</span>
+      <span>Kubernetes Cluster Clash</span>
   </div>
 </div>
 
 
-<div class="card card-type-node">
-  <div class="card-header">
-    <span class="tag">Node</span>
-    <span class="card-name">GPU Accelerator Node</span>
+<div class="card card-type-нода">
+  <div class="card-top">
+    <span class="tag">Нода</span>
+    <span class="cost-badge">⚙ 4</span>
   </div>
-  <div class="stats">
-    <div class="stat">
-      <span class="stat-label">Cost</span>
-      <span class="stat-value">4</span>
+  <h2 class="card-name">Нода с GPU-ускорителем</h2>
+  <div class="stat-row">
+    <div class="chip">
+      <span class="chip-label">SLO</span>
+      <span class="chip-value">—</span>
     </div>
-    <div class="stat">
-      <span class="stat-label">SLO</span>
-      <span class="stat-value">—</span>
-    </div>
-    <div class="stat">
-      <span class="stat-label">Repair</span>
-      <span class="stat-value">2 tokens to clear Incident</span>
+    <div class="chip">
+      <span class="chip-label">Ремонт</span>
+      <span class="chip-value">2 ресурса за снятие инцидента</span>
     </div>
   </div>
   <div class="card-body">
-    <p><strong>Prerequisite:</strong> Requires Control Plane</p>
-    <p>Gives +1 SLO to any Workload it hosts; draw a card when played.</p>
+    <p class="prereq"><strong>Требование:</strong> Требует Контрольного плана</p>
+    <p>Даёт +1 SLO любой вашей нагрузке на этой ноде; при розыгрыше возьмите карту.</p>
   </div>
   <div class="card-footer">
-    <div class="meta">
-      <span>Copy 2/3</span>
-      <span>Kube Cluster Clash</span>
-    </div>
+      <span>Копия 2/3</span>
+      <span>Kubernetes Cluster Clash</span>
   </div>
 </div>
 
 </section>
 <section class="sheet">
 
-<div class="card card-type-node">
-  <div class="card-header">
-    <span class="tag">Node</span>
-    <span class="card-name">GPU Accelerator Node</span>
+<div class="card card-type-нода">
+  <div class="card-top">
+    <span class="tag">Нода</span>
+    <span class="cost-badge">⚙ 4</span>
   </div>
-  <div class="stats">
-    <div class="stat">
-      <span class="stat-label">Cost</span>
-      <span class="stat-value">4</span>
+  <h2 class="card-name">Нода с GPU-ускорителем</h2>
+  <div class="stat-row">
+    <div class="chip">
+      <span class="chip-label">SLO</span>
+      <span class="chip-value">—</span>
     </div>
-    <div class="stat">
-      <span class="stat-label">SLO</span>
-      <span class="stat-value">—</span>
-    </div>
-    <div class="stat">
-      <span class="stat-label">Repair</span>
-      <span class="stat-value">2 tokens to clear Incident</span>
+    <div class="chip">
+      <span class="chip-label">Ремонт</span>
+      <span class="chip-value">2 ресурса за снятие инцидента</span>
     </div>
   </div>
   <div class="card-body">
-    <p><strong>Prerequisite:</strong> Requires Control Plane</p>
-    <p>Gives +1 SLO to any Workload it hosts; draw a card when played.</p>
+    <p class="prereq"><strong>Требование:</strong> Требует Контрольного плана</p>
+    <p>Даёт +1 SLO любой вашей нагрузке на этой ноде; при розыгрыше возьмите карту.</p>
   </div>
   <div class="card-footer">
-    <div class="meta">
-      <span>Copy 3/3</span>
-      <span>Kube Cluster Clash</span>
-    </div>
+      <span>Копия 3/3</span>
+      <span>Kubernetes Cluster Clash</span>
   </div>
 </div>
 
 
-<div class="card card-type-node">
-  <div class="card-header">
-    <span class="tag">Node</span>
-    <span class="card-name">Spot Node</span>
+<div class="card card-type-нода">
+  <div class="card-top">
+    <span class="tag">Нода</span>
+    <span class="cost-badge">⚙ 1</span>
   </div>
-  <div class="stats">
-    <div class="stat">
-      <span class="stat-label">Cost</span>
-      <span class="stat-value">1</span>
+  <h2 class="card-name">Спотовая нода</h2>
+  <div class="stat-row">
+    <div class="chip">
+      <span class="chip-label">SLO</span>
+      <span class="chip-value">—</span>
     </div>
-    <div class="stat">
-      <span class="stat-label">SLO</span>
-      <span class="stat-value">—</span>
-    </div>
-    <div class="stat">
-      <span class="stat-label">Repair</span>
-      <span class="stat-value">Cannot be repaired</span>
+    <div class="chip">
+      <span class="chip-label">Ремонт</span>
+      <span class="chip-value">Не ремонтируется</span>
     </div>
   </div>
   <div class="card-body">
     
-    <p>Provides 1 capacity; if hit by an Incident discard it instead of repairing.</p>
+    <p>Предоставляет 1 вместимость; при получении инцидента сбросьте её вместо ремонта.</p>
   </div>
   <div class="card-footer">
-    <div class="meta">
-      <span>Copy 1/4</span>
-      <span>Kube Cluster Clash</span>
-    </div>
+      <span>Копия 1/4</span>
+      <span>Kubernetes Cluster Clash</span>
   </div>
 </div>
 
 
-<div class="card card-type-node">
-  <div class="card-header">
-    <span class="tag">Node</span>
-    <span class="card-name">Spot Node</span>
+<div class="card card-type-нода">
+  <div class="card-top">
+    <span class="tag">Нода</span>
+    <span class="cost-badge">⚙ 1</span>
   </div>
-  <div class="stats">
-    <div class="stat">
-      <span class="stat-label">Cost</span>
-      <span class="stat-value">1</span>
+  <h2 class="card-name">Спотовая нода</h2>
+  <div class="stat-row">
+    <div class="chip">
+      <span class="chip-label">SLO</span>
+      <span class="chip-value">—</span>
     </div>
-    <div class="stat">
-      <span class="stat-label">SLO</span>
-      <span class="stat-value">—</span>
-    </div>
-    <div class="stat">
-      <span class="stat-label">Repair</span>
-      <span class="stat-value">Cannot be repaired</span>
+    <div class="chip">
+      <span class="chip-label">Ремонт</span>
+      <span class="chip-value">Не ремонтируется</span>
     </div>
   </div>
   <div class="card-body">
     
-    <p>Provides 1 capacity; if hit by an Incident discard it instead of repairing.</p>
+    <p>Предоставляет 1 вместимость; при получении инцидента сбросьте её вместо ремонта.</p>
   </div>
   <div class="card-footer">
-    <div class="meta">
-      <span>Copy 2/4</span>
-      <span>Kube Cluster Clash</span>
-    </div>
+      <span>Копия 2/4</span>
+      <span>Kubernetes Cluster Clash</span>
   </div>
 </div>
 
 
-<div class="card card-type-node">
-  <div class="card-header">
-    <span class="tag">Node</span>
-    <span class="card-name">Spot Node</span>
+<div class="card card-type-нода">
+  <div class="card-top">
+    <span class="tag">Нода</span>
+    <span class="cost-badge">⚙ 1</span>
   </div>
-  <div class="stats">
-    <div class="stat">
-      <span class="stat-label">Cost</span>
-      <span class="stat-value">1</span>
+  <h2 class="card-name">Спотовая нода</h2>
+  <div class="stat-row">
+    <div class="chip">
+      <span class="chip-label">SLO</span>
+      <span class="chip-value">—</span>
     </div>
-    <div class="stat">
-      <span class="stat-label">SLO</span>
-      <span class="stat-value">—</span>
-    </div>
-    <div class="stat">
-      <span class="stat-label">Repair</span>
-      <span class="stat-value">Cannot be repaired</span>
+    <div class="chip">
+      <span class="chip-label">Ремонт</span>
+      <span class="chip-value">Не ремонтируется</span>
     </div>
   </div>
   <div class="card-body">
     
-    <p>Provides 1 capacity; if hit by an Incident discard it instead of repairing.</p>
+    <p>Предоставляет 1 вместимость; при получении инцидента сбросьте её вместо ремонта.</p>
   </div>
   <div class="card-footer">
-    <div class="meta">
-      <span>Copy 3/4</span>
-      <span>Kube Cluster Clash</span>
-    </div>
+      <span>Копия 3/4</span>
+      <span>Kubernetes Cluster Clash</span>
   </div>
 </div>
 
 
-<div class="card card-type-node">
-  <div class="card-header">
-    <span class="tag">Node</span>
-    <span class="card-name">Spot Node</span>
+<div class="card card-type-нода">
+  <div class="card-top">
+    <span class="tag">Нода</span>
+    <span class="cost-badge">⚙ 1</span>
   </div>
-  <div class="stats">
-    <div class="stat">
-      <span class="stat-label">Cost</span>
-      <span class="stat-value">1</span>
+  <h2 class="card-name">Спотовая нода</h2>
+  <div class="stat-row">
+    <div class="chip">
+      <span class="chip-label">SLO</span>
+      <span class="chip-value">—</span>
     </div>
-    <div class="stat">
-      <span class="stat-label">SLO</span>
-      <span class="stat-value">—</span>
-    </div>
-    <div class="stat">
-      <span class="stat-label">Repair</span>
-      <span class="stat-value">Cannot be repaired</span>
+    <div class="chip">
+      <span class="chip-label">Ремонт</span>
+      <span class="chip-value">Не ремонтируется</span>
     </div>
   </div>
   <div class="card-body">
     
-    <p>Provides 1 capacity; if hit by an Incident discard it instead of repairing.</p>
+    <p>Предоставляет 1 вместимость; при получении инцидента сбросьте её вместо ремонта.</p>
   </div>
   <div class="card-footer">
-    <div class="meta">
-      <span>Copy 4/4</span>
-      <span>Kube Cluster Clash</span>
-    </div>
+      <span>Копия 4/4</span>
+      <span>Kubernetes Cluster Clash</span>
   </div>
 </div>
 
 
-<div class="card card-type-control-plane">
-  <div class="card-header">
-    <span class="tag">Control Plane</span>
-    <span class="card-name">Managed Control Plane</span>
+<div class="card card-type-контрольный-план">
+  <div class="card-top">
+    <span class="tag">Контрольный план</span>
+    <span class="cost-badge">⚙ 3</span>
   </div>
-  <div class="stats">
-    <div class="stat">
-      <span class="stat-label">Cost</span>
-      <span class="stat-value">3</span>
+  <h2 class="card-name">Управляемый контрольный план</h2>
+  <div class="stat-row">
+    <div class="chip">
+      <span class="chip-label">SLO</span>
+      <span class="chip-value">—</span>
     </div>
-    <div class="stat">
-      <span class="stat-label">SLO</span>
-      <span class="stat-value">—</span>
-    </div>
-    <div class="stat">
-      <span class="stat-label">Repair</span>
-      <span class="stat-value">2 tokens to clear Incident</span>
+    <div class="chip">
+      <span class="chip-label">Ремонт</span>
+      <span class="chip-value">2 ресурса за снятие инцидента</span>
     </div>
   </div>
   <div class="card-body">
     
-    <p>Unlocks playing Workloads; draw 1 card on deploy.</p>
+    <p>Открывает возможность разыгрывать Нагрузки; при розыгрыше возьмите карту.</p>
   </div>
   <div class="card-footer">
-    <div class="meta">
-      <span>Copy 1/3</span>
-      <span>Kube Cluster Clash</span>
-    </div>
+      <span>Копия 1/3</span>
+      <span>Kubernetes Cluster Clash</span>
   </div>
 </div>
 
 
-<div class="card card-type-control-plane">
-  <div class="card-header">
-    <span class="tag">Control Plane</span>
-    <span class="card-name">Managed Control Plane</span>
+<div class="card card-type-контрольный-план">
+  <div class="card-top">
+    <span class="tag">Контрольный план</span>
+    <span class="cost-badge">⚙ 3</span>
   </div>
-  <div class="stats">
-    <div class="stat">
-      <span class="stat-label">Cost</span>
-      <span class="stat-value">3</span>
+  <h2 class="card-name">Управляемый контрольный план</h2>
+  <div class="stat-row">
+    <div class="chip">
+      <span class="chip-label">SLO</span>
+      <span class="chip-value">—</span>
     </div>
-    <div class="stat">
-      <span class="stat-label">SLO</span>
-      <span class="stat-value">—</span>
-    </div>
-    <div class="stat">
-      <span class="stat-label">Repair</span>
-      <span class="stat-value">2 tokens to clear Incident</span>
+    <div class="chip">
+      <span class="chip-label">Ремонт</span>
+      <span class="chip-value">2 ресурса за снятие инцидента</span>
     </div>
   </div>
   <div class="card-body">
     
-    <p>Unlocks playing Workloads; draw 1 card on deploy.</p>
+    <p>Открывает возможность разыгрывать Нагрузки; при розыгрыше возьмите карту.</p>
   </div>
   <div class="card-footer">
-    <div class="meta">
-      <span>Copy 2/3</span>
-      <span>Kube Cluster Clash</span>
-    </div>
+      <span>Копия 2/3</span>
+      <span>Kubernetes Cluster Clash</span>
   </div>
 </div>
 
 
-<div class="card card-type-control-plane">
-  <div class="card-header">
-    <span class="tag">Control Plane</span>
-    <span class="card-name">Managed Control Plane</span>
+<div class="card card-type-контрольный-план">
+  <div class="card-top">
+    <span class="tag">Контрольный план</span>
+    <span class="cost-badge">⚙ 3</span>
   </div>
-  <div class="stats">
-    <div class="stat">
-      <span class="stat-label">Cost</span>
-      <span class="stat-value">3</span>
+  <h2 class="card-name">Управляемый контрольный план</h2>
+  <div class="stat-row">
+    <div class="chip">
+      <span class="chip-label">SLO</span>
+      <span class="chip-value">—</span>
     </div>
-    <div class="stat">
-      <span class="stat-label">SLO</span>
-      <span class="stat-value">—</span>
-    </div>
-    <div class="stat">
-      <span class="stat-label">Repair</span>
-      <span class="stat-value">2 tokens to clear Incident</span>
+    <div class="chip">
+      <span class="chip-label">Ремонт</span>
+      <span class="chip-value">2 ресурса за снятие инцидента</span>
     </div>
   </div>
   <div class="card-body">
     
-    <p>Unlocks playing Workloads; draw 1 card on deploy.</p>
+    <p>Открывает возможность разыгрывать Нагрузки; при розыгрыше возьмите карту.</p>
   </div>
   <div class="card-footer">
-    <div class="meta">
-      <span>Copy 3/3</span>
-      <span>Kube Cluster Clash</span>
-    </div>
+      <span>Копия 3/3</span>
+      <span>Kubernetes Cluster Clash</span>
   </div>
 </div>
 
 
-<div class="card card-type-control-plane">
-  <div class="card-header">
-    <span class="tag">Control Plane</span>
-    <span class="card-name">High-Availability Control Plane</span>
+<div class="card card-type-контрольный-план">
+  <div class="card-top">
+    <span class="tag">Контрольный план</span>
+    <span class="cost-badge">⚙ 5</span>
   </div>
-  <div class="stats">
-    <div class="stat">
-      <span class="stat-label">Cost</span>
-      <span class="stat-value">5</span>
+  <h2 class="card-name">Отказоустойчивый контрольный план</h2>
+  <div class="stat-row">
+    <div class="chip">
+      <span class="chip-label">SLO</span>
+      <span class="chip-value">—</span>
     </div>
-    <div class="stat">
-      <span class="stat-label">SLO</span>
-      <span class="stat-value">—</span>
-    </div>
-    <div class="stat">
-      <span class="stat-label">Repair</span>
-      <span class="stat-value">3 tokens to clear Incident</span>
+    <div class="chip">
+      <span class="chip-label">Ремонт</span>
+      <span class="chip-value">ваша устойчивость не может упасть ниже 1.</span>
     </div>
   </div>
   <div class="card-body">
-    <p><strong>Prerequisite:</strong> Requires Control Plane</p>
-    <p>Your Resilience cannot drop below 1 while this is incident-free.</p>
+    <p class="prereq"><strong>Требование:</strong> Требует Контрольного плана</p>
+    <p>Пока карта без инцидентов</p>
   </div>
   <div class="card-footer">
-    <div class="meta">
-      <span>Copy 1/2</span>
-      <span>Kube Cluster Clash</span>
-    </div>
+      <span>Копия 1/2</span>
+      <span>Kubernetes Cluster Clash</span>
   </div>
 </div>
 
 </section>
 <section class="sheet">
 
-<div class="card card-type-control-plane">
-  <div class="card-header">
-    <span class="tag">Control Plane</span>
-    <span class="card-name">High-Availability Control Plane</span>
+<div class="card card-type-контрольный-план">
+  <div class="card-top">
+    <span class="tag">Контрольный план</span>
+    <span class="cost-badge">⚙ 5</span>
   </div>
-  <div class="stats">
-    <div class="stat">
-      <span class="stat-label">Cost</span>
-      <span class="stat-value">5</span>
+  <h2 class="card-name">Отказоустойчивый контрольный план</h2>
+  <div class="stat-row">
+    <div class="chip">
+      <span class="chip-label">SLO</span>
+      <span class="chip-value">—</span>
     </div>
-    <div class="stat">
-      <span class="stat-label">SLO</span>
-      <span class="stat-value">—</span>
-    </div>
-    <div class="stat">
-      <span class="stat-label">Repair</span>
-      <span class="stat-value">3 tokens to clear Incident</span>
+    <div class="chip">
+      <span class="chip-label">Ремонт</span>
+      <span class="chip-value">ваша устойчивость не может упасть ниже 1.</span>
     </div>
   </div>
   <div class="card-body">
-    <p><strong>Prerequisite:</strong> Requires Control Plane</p>
-    <p>Your Resilience cannot drop below 1 while this is incident-free.</p>
+    <p class="prereq"><strong>Требование:</strong> Требует Контрольного плана</p>
+    <p>Пока карта без инцидентов</p>
   </div>
   <div class="card-footer">
-    <div class="meta">
-      <span>Copy 2/2</span>
-      <span>Kube Cluster Clash</span>
-    </div>
+      <span>Копия 2/2</span>
+      <span>Kubernetes Cluster Clash</span>
   </div>
 </div>
 
 
-<div class="card card-type-storage">
-  <div class="card-header">
-    <span class="tag">Storage</span>
-    <span class="card-name">Persistent Volume Stack</span>
+<div class="card card-type-хранилище">
+  <div class="card-top">
+    <span class="tag">Хранилище</span>
+    <span class="cost-badge">⚙ 3</span>
   </div>
-  <div class="stats">
-    <div class="stat">
-      <span class="stat-label">Cost</span>
-      <span class="stat-value">3</span>
+  <h2 class="card-name">Стек постоянных томов</h2>
+  <div class="stat-row">
+    <div class="chip">
+      <span class="chip-label">SLO</span>
+      <span class="chip-value">—</span>
     </div>
-    <div class="stat">
-      <span class="stat-label">SLO</span>
-      <span class="stat-value">—</span>
-    </div>
-    <div class="stat">
-      <span class="stat-label">Repair</span>
-      <span class="stat-value">2 tokens to clear Incident</span>
+    <div class="chip">
+      <span class="chip-label">Ремонт</span>
+      <span class="chip-value">2 ресурса за снятие инцидента</span>
     </div>
   </div>
   <div class="card-body">
-    <p><strong>Prerequisite:</strong> Requires Node</p>
-    <p>Each Stateful Workload you control gains +1 SLO.</p>
+    <p class="prereq"><strong>Требование:</strong> Требует Ноду</p>
+    <p>Каждая ваша стейтфул-нагрузка получает +1 SLO.</p>
   </div>
   <div class="card-footer">
-    <div class="meta">
-      <span>Copy 1/4</span>
-      <span>Kube Cluster Clash</span>
-    </div>
+      <span>Копия 1/4</span>
+      <span>Kubernetes Cluster Clash</span>
   </div>
 </div>
 
 
-<div class="card card-type-storage">
-  <div class="card-header">
-    <span class="tag">Storage</span>
-    <span class="card-name">Persistent Volume Stack</span>
+<div class="card card-type-хранилище">
+  <div class="card-top">
+    <span class="tag">Хранилище</span>
+    <span class="cost-badge">⚙ 3</span>
   </div>
-  <div class="stats">
-    <div class="stat">
-      <span class="stat-label">Cost</span>
-      <span class="stat-value">3</span>
+  <h2 class="card-name">Стек постоянных томов</h2>
+  <div class="stat-row">
+    <div class="chip">
+      <span class="chip-label">SLO</span>
+      <span class="chip-value">—</span>
     </div>
-    <div class="stat">
-      <span class="stat-label">SLO</span>
-      <span class="stat-value">—</span>
-    </div>
-    <div class="stat">
-      <span class="stat-label">Repair</span>
-      <span class="stat-value">2 tokens to clear Incident</span>
+    <div class="chip">
+      <span class="chip-label">Ремонт</span>
+      <span class="chip-value">2 ресурса за снятие инцидента</span>
     </div>
   </div>
   <div class="card-body">
-    <p><strong>Prerequisite:</strong> Requires Node</p>
-    <p>Each Stateful Workload you control gains +1 SLO.</p>
+    <p class="prereq"><strong>Требование:</strong> Требует Ноду</p>
+    <p>Каждая ваша стейтфул-нагрузка получает +1 SLO.</p>
   </div>
   <div class="card-footer">
-    <div class="meta">
-      <span>Copy 2/4</span>
-      <span>Kube Cluster Clash</span>
-    </div>
+      <span>Копия 2/4</span>
+      <span>Kubernetes Cluster Clash</span>
   </div>
 </div>
 
 
-<div class="card card-type-storage">
-  <div class="card-header">
-    <span class="tag">Storage</span>
-    <span class="card-name">Persistent Volume Stack</span>
+<div class="card card-type-хранилище">
+  <div class="card-top">
+    <span class="tag">Хранилище</span>
+    <span class="cost-badge">⚙ 3</span>
   </div>
-  <div class="stats">
-    <div class="stat">
-      <span class="stat-label">Cost</span>
-      <span class="stat-value">3</span>
+  <h2 class="card-name">Стек постоянных томов</h2>
+  <div class="stat-row">
+    <div class="chip">
+      <span class="chip-label">SLO</span>
+      <span class="chip-value">—</span>
     </div>
-    <div class="stat">
-      <span class="stat-label">SLO</span>
-      <span class="stat-value">—</span>
-    </div>
-    <div class="stat">
-      <span class="stat-label">Repair</span>
-      <span class="stat-value">2 tokens to clear Incident</span>
+    <div class="chip">
+      <span class="chip-label">Ремонт</span>
+      <span class="chip-value">2 ресурса за снятие инцидента</span>
     </div>
   </div>
   <div class="card-body">
-    <p><strong>Prerequisite:</strong> Requires Node</p>
-    <p>Each Stateful Workload you control gains +1 SLO.</p>
+    <p class="prereq"><strong>Требование:</strong> Требует Ноду</p>
+    <p>Каждая ваша стейтфул-нагрузка получает +1 SLO.</p>
   </div>
   <div class="card-footer">
-    <div class="meta">
-      <span>Copy 3/4</span>
-      <span>Kube Cluster Clash</span>
-    </div>
+      <span>Копия 3/4</span>
+      <span>Kubernetes Cluster Clash</span>
   </div>
 </div>
 
 
-<div class="card card-type-storage">
-  <div class="card-header">
-    <span class="tag">Storage</span>
-    <span class="card-name">Persistent Volume Stack</span>
+<div class="card card-type-хранилище">
+  <div class="card-top">
+    <span class="tag">Хранилище</span>
+    <span class="cost-badge">⚙ 3</span>
   </div>
-  <div class="stats">
-    <div class="stat">
-      <span class="stat-label">Cost</span>
-      <span class="stat-value">3</span>
+  <h2 class="card-name">Стек постоянных томов</h2>
+  <div class="stat-row">
+    <div class="chip">
+      <span class="chip-label">SLO</span>
+      <span class="chip-value">—</span>
     </div>
-    <div class="stat">
-      <span class="stat-label">SLO</span>
-      <span class="stat-value">—</span>
-    </div>
-    <div class="stat">
-      <span class="stat-label">Repair</span>
-      <span class="stat-value">2 tokens to clear Incident</span>
+    <div class="chip">
+      <span class="chip-label">Ремонт</span>
+      <span class="chip-value">2 ресурса за снятие инцидента</span>
     </div>
   </div>
   <div class="card-body">
-    <p><strong>Prerequisite:</strong> Requires Node</p>
-    <p>Each Stateful Workload you control gains +1 SLO.</p>
+    <p class="prereq"><strong>Требование:</strong> Требует Ноду</p>
+    <p>Каждая ваша стейтфул-нагрузка получает +1 SLO.</p>
   </div>
   <div class="card-footer">
-    <div class="meta">
-      <span>Copy 4/4</span>
-      <span>Kube Cluster Clash</span>
-    </div>
+      <span>Копия 4/4</span>
+      <span>Kubernetes Cluster Clash</span>
   </div>
 </div>
 
 
-<div class="card card-type-networking">
-  <div class="card-header">
-    <span class="tag">Networking</span>
-    <span class="card-name">Service Mesh Gateway</span>
+<div class="card card-type-сеть">
+  <div class="card-top">
+    <span class="tag">Сеть</span>
+    <span class="cost-badge">⚙ 3</span>
   </div>
-  <div class="stats">
-    <div class="stat">
-      <span class="stat-label">Cost</span>
-      <span class="stat-value">3</span>
+  <h2 class="card-name">Шлюз сервисной сетки</h2>
+  <div class="stat-row">
+    <div class="chip">
+      <span class="chip-label">SLO</span>
+      <span class="chip-value">—</span>
     </div>
-    <div class="stat">
-      <span class="stat-label">SLO</span>
-      <span class="stat-value">—</span>
-    </div>
-    <div class="stat">
-      <span class="stat-label">Repair</span>
-      <span class="stat-value">gain 1 Resource token.</span>
+    <div class="chip">
+      <span class="chip-label">Ремонт</span>
+      <span class="chip-value">2 ресурса за снятие инцидента</span>
     </div>
   </div>
   <div class="card-body">
     
-    <p>When you play a Workload</p>
+    <p>При розыгрыше Нагрузки получите 1 ресурс.</p>
   </div>
   <div class="card-footer">
-    <div class="meta">
-      <span>Copy 1/3</span>
-      <span>Kube Cluster Clash</span>
-    </div>
+      <span>Копия 1/3</span>
+      <span>Kubernetes Cluster Clash</span>
   </div>
 </div>
 
 
-<div class="card card-type-networking">
-  <div class="card-header">
-    <span class="tag">Networking</span>
-    <span class="card-name">Service Mesh Gateway</span>
+<div class="card card-type-сеть">
+  <div class="card-top">
+    <span class="tag">Сеть</span>
+    <span class="cost-badge">⚙ 3</span>
   </div>
-  <div class="stats">
-    <div class="stat">
-      <span class="stat-label">Cost</span>
-      <span class="stat-value">3</span>
+  <h2 class="card-name">Шлюз сервисной сетки</h2>
+  <div class="stat-row">
+    <div class="chip">
+      <span class="chip-label">SLO</span>
+      <span class="chip-value">—</span>
     </div>
-    <div class="stat">
-      <span class="stat-label">SLO</span>
-      <span class="stat-value">—</span>
-    </div>
-    <div class="stat">
-      <span class="stat-label">Repair</span>
-      <span class="stat-value">gain 1 Resource token.</span>
+    <div class="chip">
+      <span class="chip-label">Ремонт</span>
+      <span class="chip-value">2 ресурса за снятие инцидента</span>
     </div>
   </div>
   <div class="card-body">
     
-    <p>When you play a Workload</p>
+    <p>При розыгрыше Нагрузки получите 1 ресурс.</p>
   </div>
   <div class="card-footer">
-    <div class="meta">
-      <span>Copy 2/3</span>
-      <span>Kube Cluster Clash</span>
-    </div>
+      <span>Копия 2/3</span>
+      <span>Kubernetes Cluster Clash</span>
   </div>
 </div>
 
 
-<div class="card card-type-networking">
-  <div class="card-header">
-    <span class="tag">Networking</span>
-    <span class="card-name">Service Mesh Gateway</span>
+<div class="card card-type-сеть">
+  <div class="card-top">
+    <span class="tag">Сеть</span>
+    <span class="cost-badge">⚙ 3</span>
   </div>
-  <div class="stats">
-    <div class="stat">
-      <span class="stat-label">Cost</span>
-      <span class="stat-value">3</span>
+  <h2 class="card-name">Шлюз сервисной сетки</h2>
+  <div class="stat-row">
+    <div class="chip">
+      <span class="chip-label">SLO</span>
+      <span class="chip-value">—</span>
     </div>
-    <div class="stat">
-      <span class="stat-label">SLO</span>
-      <span class="stat-value">—</span>
-    </div>
-    <div class="stat">
-      <span class="stat-label">Repair</span>
-      <span class="stat-value">gain 1 Resource token.</span>
+    <div class="chip">
+      <span class="chip-label">Ремонт</span>
+      <span class="chip-value">2 ресурса за снятие инцидента</span>
     </div>
   </div>
   <div class="card-body">
     
-    <p>When you play a Workload</p>
+    <p>При розыгрыше Нагрузки получите 1 ресурс.</p>
   </div>
   <div class="card-footer">
-    <div class="meta">
-      <span>Copy 3/3</span>
-      <span>Kube Cluster Clash</span>
-    </div>
+      <span>Копия 3/3</span>
+      <span>Kubernetes Cluster Clash</span>
   </div>
 </div>
 
 
-<div class="card card-type-networking">
-  <div class="card-header">
-    <span class="tag">Networking</span>
-    <span class="card-name">Edge Ingress Load Balancer</span>
+<div class="card card-type-сеть">
+  <div class="card-top">
+    <span class="tag">Сеть</span>
+    <span class="cost-badge">⚙ 2</span>
   </div>
-  <div class="stats">
-    <div class="stat">
-      <span class="stat-label">Cost</span>
-      <span class="stat-value">2</span>
+  <h2 class="card-name">Пограничный балансировщик нагрузки</h2>
+  <div class="stat-row">
+    <div class="chip">
+      <span class="chip-label">SLO</span>
+      <span class="chip-value">—</span>
     </div>
-    <div class="stat">
-      <span class="stat-label">SLO</span>
-      <span class="stat-value">—</span>
-    </div>
-    <div class="stat">
-      <span class="stat-label">Repair</span>
-      <span class="stat-value">1 token to clear Incident</span>
+    <div class="chip">
+      <span class="chip-label">Ремонт</span>
+      <span class="chip-value">чтобы взять карту из Общего пула и сразу сбросить её.</span>
     </div>
   </div>
   <div class="card-body">
     
-    <p>Once per turn pay 1 Resource to draw a Commons Row card and discard it.</p>
+    <p>Раз в ход заплатите 1 ресурс</p>
   </div>
   <div class="card-footer">
-    <div class="meta">
-      <span>Copy 1/3</span>
-      <span>Kube Cluster Clash</span>
-    </div>
+      <span>Копия 1/3</span>
+      <span>Kubernetes Cluster Clash</span>
   </div>
 </div>
 
 </section>
 <section class="sheet">
 
-<div class="card card-type-networking">
-  <div class="card-header">
-    <span class="tag">Networking</span>
-    <span class="card-name">Edge Ingress Load Balancer</span>
+<div class="card card-type-сеть">
+  <div class="card-top">
+    <span class="tag">Сеть</span>
+    <span class="cost-badge">⚙ 2</span>
   </div>
-  <div class="stats">
-    <div class="stat">
-      <span class="stat-label">Cost</span>
-      <span class="stat-value">2</span>
+  <h2 class="card-name">Пограничный балансировщик нагрузки</h2>
+  <div class="stat-row">
+    <div class="chip">
+      <span class="chip-label">SLO</span>
+      <span class="chip-value">—</span>
     </div>
-    <div class="stat">
-      <span class="stat-label">SLO</span>
-      <span class="stat-value">—</span>
-    </div>
-    <div class="stat">
-      <span class="stat-label">Repair</span>
-      <span class="stat-value">1 token to clear Incident</span>
+    <div class="chip">
+      <span class="chip-label">Ремонт</span>
+      <span class="chip-value">чтобы взять карту из Общего пула и сразу сбросить её.</span>
     </div>
   </div>
   <div class="card-body">
     
-    <p>Once per turn pay 1 Resource to draw a Commons Row card and discard it.</p>
+    <p>Раз в ход заплатите 1 ресурс</p>
   </div>
   <div class="card-footer">
-    <div class="meta">
-      <span>Copy 2/3</span>
-      <span>Kube Cluster Clash</span>
-    </div>
+      <span>Копия 2/3</span>
+      <span>Kubernetes Cluster Clash</span>
   </div>
 </div>
 
 
-<div class="card card-type-networking">
-  <div class="card-header">
-    <span class="tag">Networking</span>
-    <span class="card-name">Edge Ingress Load Balancer</span>
+<div class="card card-type-сеть">
+  <div class="card-top">
+    <span class="tag">Сеть</span>
+    <span class="cost-badge">⚙ 2</span>
   </div>
-  <div class="stats">
-    <div class="stat">
-      <span class="stat-label">Cost</span>
-      <span class="stat-value">2</span>
+  <h2 class="card-name">Пограничный балансировщик нагрузки</h2>
+  <div class="stat-row">
+    <div class="chip">
+      <span class="chip-label">SLO</span>
+      <span class="chip-value">—</span>
     </div>
-    <div class="stat">
-      <span class="stat-label">SLO</span>
-      <span class="stat-value">—</span>
-    </div>
-    <div class="stat">
-      <span class="stat-label">Repair</span>
-      <span class="stat-value">1 token to clear Incident</span>
+    <div class="chip">
+      <span class="chip-label">Ремонт</span>
+      <span class="chip-value">чтобы взять карту из Общего пула и сразу сбросить её.</span>
     </div>
   </div>
   <div class="card-body">
     
-    <p>Once per turn pay 1 Resource to draw a Commons Row card and discard it.</p>
+    <p>Раз в ход заплатите 1 ресурс</p>
   </div>
   <div class="card-footer">
-    <div class="meta">
-      <span>Copy 3/3</span>
-      <span>Kube Cluster Clash</span>
-    </div>
+      <span>Копия 3/3</span>
+      <span>Kubernetes Cluster Clash</span>
   </div>
 </div>
 
 
-<div class="card card-type-automation">
-  <div class="card-header">
-    <span class="tag">Automation</span>
-    <span class="card-name">Observability Stack</span>
+<div class="card card-type-автоматизация">
+  <div class="card-top">
+    <span class="tag">Автоматизация</span>
+    <span class="cost-badge">⚙ 2</span>
   </div>
-  <div class="stats">
-    <div class="stat">
-      <span class="stat-label">Cost</span>
-      <span class="stat-value">2</span>
+  <h2 class="card-name">Стек наблюдаемости</h2>
+  <div class="stat-row">
+    <div class="chip">
+      <span class="chip-label">SLO</span>
+      <span class="chip-value">—</span>
     </div>
-    <div class="stat">
-      <span class="stat-label">SLO</span>
-      <span class="stat-value">—</span>
-    </div>
-    <div class="stat">
-      <span class="stat-label">Repair</span>
-      <span class="stat-value">1 token to clear Incident</span>
+    <div class="chip">
+      <span class="chip-label">Ремонт</span>
+      <span class="chip-value">1 ресурс за снятие инцидента</span>
     </div>
   </div>
   <div class="card-body">
     
-    <p>At end of turn you may peek at top card of deck; you may keep or discard.</p>
+    <p>В конце хода можете посмотреть верхнюю карту колоды и оставить или сбросить её.</p>
   </div>
   <div class="card-footer">
-    <div class="meta">
-      <span>Copy 1/4</span>
-      <span>Kube Cluster Clash</span>
-    </div>
+      <span>Копия 1/4</span>
+      <span>Kubernetes Cluster Clash</span>
   </div>
 </div>
 
 
-<div class="card card-type-automation">
-  <div class="card-header">
-    <span class="tag">Automation</span>
-    <span class="card-name">Observability Stack</span>
+<div class="card card-type-автоматизация">
+  <div class="card-top">
+    <span class="tag">Автоматизация</span>
+    <span class="cost-badge">⚙ 2</span>
   </div>
-  <div class="stats">
-    <div class="stat">
-      <span class="stat-label">Cost</span>
-      <span class="stat-value">2</span>
+  <h2 class="card-name">Стек наблюдаемости</h2>
+  <div class="stat-row">
+    <div class="chip">
+      <span class="chip-label">SLO</span>
+      <span class="chip-value">—</span>
     </div>
-    <div class="stat">
-      <span class="stat-label">SLO</span>
-      <span class="stat-value">—</span>
-    </div>
-    <div class="stat">
-      <span class="stat-label">Repair</span>
-      <span class="stat-value">1 token to clear Incident</span>
+    <div class="chip">
+      <span class="chip-label">Ремонт</span>
+      <span class="chip-value">1 ресурс за снятие инцидента</span>
     </div>
   </div>
   <div class="card-body">
     
-    <p>At end of turn you may peek at top card of deck; you may keep or discard.</p>
+    <p>В конце хода можете посмотреть верхнюю карту колоды и оставить или сбросить её.</p>
   </div>
   <div class="card-footer">
-    <div class="meta">
-      <span>Copy 2/4</span>
-      <span>Kube Cluster Clash</span>
-    </div>
+      <span>Копия 2/4</span>
+      <span>Kubernetes Cluster Clash</span>
   </div>
 </div>
 
 
-<div class="card card-type-automation">
-  <div class="card-header">
-    <span class="tag">Automation</span>
-    <span class="card-name">Observability Stack</span>
+<div class="card card-type-автоматизация">
+  <div class="card-top">
+    <span class="tag">Автоматизация</span>
+    <span class="cost-badge">⚙ 2</span>
   </div>
-  <div class="stats">
-    <div class="stat">
-      <span class="stat-label">Cost</span>
-      <span class="stat-value">2</span>
+  <h2 class="card-name">Стек наблюдаемости</h2>
+  <div class="stat-row">
+    <div class="chip">
+      <span class="chip-label">SLO</span>
+      <span class="chip-value">—</span>
     </div>
-    <div class="stat">
-      <span class="stat-label">SLO</span>
-      <span class="stat-value">—</span>
-    </div>
-    <div class="stat">
-      <span class="stat-label">Repair</span>
-      <span class="stat-value">1 token to clear Incident</span>
+    <div class="chip">
+      <span class="chip-label">Ремонт</span>
+      <span class="chip-value">1 ресурс за снятие инцидента</span>
     </div>
   </div>
   <div class="card-body">
     
-    <p>At end of turn you may peek at top card of deck; you may keep or discard.</p>
+    <p>В конце хода можете посмотреть верхнюю карту колоды и оставить или сбросить её.</p>
   </div>
   <div class="card-footer">
-    <div class="meta">
-      <span>Copy 3/4</span>
-      <span>Kube Cluster Clash</span>
-    </div>
+      <span>Копия 3/4</span>
+      <span>Kubernetes Cluster Clash</span>
   </div>
 </div>
 
 
-<div class="card card-type-automation">
-  <div class="card-header">
-    <span class="tag">Automation</span>
-    <span class="card-name">Observability Stack</span>
+<div class="card card-type-автоматизация">
+  <div class="card-top">
+    <span class="tag">Автоматизация</span>
+    <span class="cost-badge">⚙ 2</span>
   </div>
-  <div class="stats">
-    <div class="stat">
-      <span class="stat-label">Cost</span>
-      <span class="stat-value">2</span>
+  <h2 class="card-name">Стек наблюдаемости</h2>
+  <div class="stat-row">
+    <div class="chip">
+      <span class="chip-label">SLO</span>
+      <span class="chip-value">—</span>
     </div>
-    <div class="stat">
-      <span class="stat-label">SLO</span>
-      <span class="stat-value">—</span>
-    </div>
-    <div class="stat">
-      <span class="stat-label">Repair</span>
-      <span class="stat-value">1 token to clear Incident</span>
+    <div class="chip">
+      <span class="chip-label">Ремонт</span>
+      <span class="chip-value">1 ресурс за снятие инцидента</span>
     </div>
   </div>
   <div class="card-body">
     
-    <p>At end of turn you may peek at top card of deck; you may keep or discard.</p>
+    <p>В конце хода можете посмотреть верхнюю карту колоды и оставить или сбросить её.</p>
   </div>
   <div class="card-footer">
-    <div class="meta">
-      <span>Copy 4/4</span>
-      <span>Kube Cluster Clash</span>
-    </div>
+      <span>Копия 4/4</span>
+      <span>Kubernetes Cluster Clash</span>
   </div>
 </div>
 
 
-<div class="card card-type-automation">
-  <div class="card-header">
-    <span class="tag">Automation</span>
-    <span class="card-name">GitOps Pipeline</span>
+<div class="card card-type-автоматизация">
+  <div class="card-top">
+    <span class="tag">Автоматизация</span>
+    <span class="cost-badge">⚙ 3</span>
   </div>
-  <div class="stats">
-    <div class="stat">
-      <span class="stat-label">Cost</span>
-      <span class="stat-value">3</span>
+  <h2 class="card-name">GitOps-конвейер</h2>
+  <div class="stat-row">
+    <div class="chip">
+      <span class="chip-label">SLO</span>
+      <span class="chip-value">—</span>
     </div>
-    <div class="stat">
-      <span class="stat-label">SLO</span>
-      <span class="stat-value">—</span>
-    </div>
-    <div class="stat">
-      <span class="stat-label">Repair</span>
-      <span class="stat-value">2 tokens to clear Incident</span>
+    <div class="chip">
+      <span class="chip-label">Ремонт</span>
+      <span class="chip-value">2 ресурса за снятие инцидента</span>
     </div>
   </div>
   <div class="card-body">
-    <p><strong>Prerequisite:</strong> Requires Control Plane</p>
-    <p>During Deploy you may play one additional card for 1 less Resource.</p>
+    <p class="prereq"><strong>Требование:</strong> Требует Контрольного плана</p>
+    <p>Во время Развёртывания можете сыграть дополнительную карту со скидкой 1 ресурс.</p>
   </div>
   <div class="card-footer">
-    <div class="meta">
-      <span>Copy 1/3</span>
-      <span>Kube Cluster Clash</span>
-    </div>
+      <span>Копия 1/3</span>
+      <span>Kubernetes Cluster Clash</span>
   </div>
 </div>
 
 
-<div class="card card-type-automation">
-  <div class="card-header">
-    <span class="tag">Automation</span>
-    <span class="card-name">GitOps Pipeline</span>
+<div class="card card-type-автоматизация">
+  <div class="card-top">
+    <span class="tag">Автоматизация</span>
+    <span class="cost-badge">⚙ 3</span>
   </div>
-  <div class="stats">
-    <div class="stat">
-      <span class="stat-label">Cost</span>
-      <span class="stat-value">3</span>
+  <h2 class="card-name">GitOps-конвейер</h2>
+  <div class="stat-row">
+    <div class="chip">
+      <span class="chip-label">SLO</span>
+      <span class="chip-value">—</span>
     </div>
-    <div class="stat">
-      <span class="stat-label">SLO</span>
-      <span class="stat-value">—</span>
-    </div>
-    <div class="stat">
-      <span class="stat-label">Repair</span>
-      <span class="stat-value">2 tokens to clear Incident</span>
+    <div class="chip">
+      <span class="chip-label">Ремонт</span>
+      <span class="chip-value">2 ресурса за снятие инцидента</span>
     </div>
   </div>
   <div class="card-body">
-    <p><strong>Prerequisite:</strong> Requires Control Plane</p>
-    <p>During Deploy you may play one additional card for 1 less Resource.</p>
+    <p class="prereq"><strong>Требование:</strong> Требует Контрольного плана</p>
+    <p>Во время Развёртывания можете сыграть дополнительную карту со скидкой 1 ресурс.</p>
   </div>
   <div class="card-footer">
-    <div class="meta">
-      <span>Copy 2/3</span>
-      <span>Kube Cluster Clash</span>
-    </div>
+      <span>Копия 2/3</span>
+      <span>Kubernetes Cluster Clash</span>
   </div>
 </div>
 
 
-<div class="card card-type-automation">
-  <div class="card-header">
-    <span class="tag">Automation</span>
-    <span class="card-name">GitOps Pipeline</span>
+<div class="card card-type-автоматизация">
+  <div class="card-top">
+    <span class="tag">Автоматизация</span>
+    <span class="cost-badge">⚙ 3</span>
   </div>
-  <div class="stats">
-    <div class="stat">
-      <span class="stat-label">Cost</span>
-      <span class="stat-value">3</span>
+  <h2 class="card-name">GitOps-конвейер</h2>
+  <div class="stat-row">
+    <div class="chip">
+      <span class="chip-label">SLO</span>
+      <span class="chip-value">—</span>
     </div>
-    <div class="stat">
-      <span class="stat-label">SLO</span>
-      <span class="stat-value">—</span>
-    </div>
-    <div class="stat">
-      <span class="stat-label">Repair</span>
-      <span class="stat-value">2 tokens to clear Incident</span>
+    <div class="chip">
+      <span class="chip-label">Ремонт</span>
+      <span class="chip-value">2 ресурса за снятие инцидента</span>
     </div>
   </div>
   <div class="card-body">
-    <p><strong>Prerequisite:</strong> Requires Control Plane</p>
-    <p>During Deploy you may play one additional card for 1 less Resource.</p>
+    <p class="prereq"><strong>Требование:</strong> Требует Контрольного плана</p>
+    <p>Во время Развёртывания можете сыграть дополнительную карту со скидкой 1 ресурс.</p>
   </div>
   <div class="card-footer">
-    <div class="meta">
-      <span>Copy 3/3</span>
-      <span>Kube Cluster Clash</span>
-    </div>
+      <span>Копия 3/3</span>
+      <span>Kubernetes Cluster Clash</span>
   </div>
 </div>
 
 </section>
 <section class="sheet">
 
-<div class="card card-type-automation">
-  <div class="card-header">
-    <span class="tag">Automation</span>
-    <span class="card-name">Cluster Autoscaler</span>
+<div class="card card-type-автоматизация">
+  <div class="card-top">
+    <span class="tag">Автоматизация</span>
+    <span class="cost-badge">⚙ 3</span>
   </div>
-  <div class="stats">
-    <div class="stat">
-      <span class="stat-label">Cost</span>
-      <span class="stat-value">3</span>
+  <h2 class="card-name">Автоскейлер кластера</h2>
+  <div class="stat-row">
+    <div class="chip">
+      <span class="chip-label">SLO</span>
+      <span class="chip-value">—</span>
     </div>
-    <div class="stat">
-      <span class="stat-label">SLO</span>
-      <span class="stat-value">—</span>
-    </div>
-    <div class="stat">
-      <span class="stat-label">Repair</span>
-      <span class="stat-value">2 tokens to clear Incident</span>
+    <div class="chip">
+      <span class="chip-label">Ремонт</span>
+      <span class="chip-value">2 ресурса за снятие инцидента</span>
     </div>
   </div>
   <div class="card-body">
-    <p><strong>Prerequisite:</strong> Requires Node</p>
-    <p>Gain +1 Resource during Refresh for each 2 Nodes you control.</p>
+    <p class="prereq"><strong>Требование:</strong> Требует Ноду</p>
+    <p>Во время Обновления получите +1 ресурс за каждые 2 Ноды.</p>
   </div>
   <div class="card-footer">
-    <div class="meta">
-      <span>Copy 1/3</span>
-      <span>Kube Cluster Clash</span>
-    </div>
+      <span>Копия 1/3</span>
+      <span>Kubernetes Cluster Clash</span>
   </div>
 </div>
 
 
-<div class="card card-type-automation">
-  <div class="card-header">
-    <span class="tag">Automation</span>
-    <span class="card-name">Cluster Autoscaler</span>
+<div class="card card-type-автоматизация">
+  <div class="card-top">
+    <span class="tag">Автоматизация</span>
+    <span class="cost-badge">⚙ 3</span>
   </div>
-  <div class="stats">
-    <div class="stat">
-      <span class="stat-label">Cost</span>
-      <span class="stat-value">3</span>
+  <h2 class="card-name">Автоскейлер кластера</h2>
+  <div class="stat-row">
+    <div class="chip">
+      <span class="chip-label">SLO</span>
+      <span class="chip-value">—</span>
     </div>
-    <div class="stat">
-      <span class="stat-label">SLO</span>
-      <span class="stat-value">—</span>
-    </div>
-    <div class="stat">
-      <span class="stat-label">Repair</span>
-      <span class="stat-value">2 tokens to clear Incident</span>
+    <div class="chip">
+      <span class="chip-label">Ремонт</span>
+      <span class="chip-value">2 ресурса за снятие инцидента</span>
     </div>
   </div>
   <div class="card-body">
-    <p><strong>Prerequisite:</strong> Requires Node</p>
-    <p>Gain +1 Resource during Refresh for each 2 Nodes you control.</p>
+    <p class="prereq"><strong>Требование:</strong> Требует Ноду</p>
+    <p>Во время Обновления получите +1 ресурс за каждые 2 Ноды.</p>
   </div>
   <div class="card-footer">
-    <div class="meta">
-      <span>Copy 2/3</span>
-      <span>Kube Cluster Clash</span>
-    </div>
+      <span>Копия 2/3</span>
+      <span>Kubernetes Cluster Clash</span>
   </div>
 </div>
 
 
-<div class="card card-type-automation">
-  <div class="card-header">
-    <span class="tag">Automation</span>
-    <span class="card-name">Cluster Autoscaler</span>
+<div class="card card-type-автоматизация">
+  <div class="card-top">
+    <span class="tag">Автоматизация</span>
+    <span class="cost-badge">⚙ 3</span>
   </div>
-  <div class="stats">
-    <div class="stat">
-      <span class="stat-label">Cost</span>
-      <span class="stat-value">3</span>
+  <h2 class="card-name">Автоскейлер кластера</h2>
+  <div class="stat-row">
+    <div class="chip">
+      <span class="chip-label">SLO</span>
+      <span class="chip-value">—</span>
     </div>
-    <div class="stat">
-      <span class="stat-label">SLO</span>
-      <span class="stat-value">—</span>
-    </div>
-    <div class="stat">
-      <span class="stat-label">Repair</span>
-      <span class="stat-value">2 tokens to clear Incident</span>
+    <div class="chip">
+      <span class="chip-label">Ремонт</span>
+      <span class="chip-value">2 ресурса за снятие инцидента</span>
     </div>
   </div>
   <div class="card-body">
-    <p><strong>Prerequisite:</strong> Requires Node</p>
-    <p>Gain +1 Resource during Refresh for each 2 Nodes you control.</p>
+    <p class="prereq"><strong>Требование:</strong> Требует Ноду</p>
+    <p>Во время Обновления получите +1 ресурс за каждые 2 Ноды.</p>
   </div>
   <div class="card-footer">
-    <div class="meta">
-      <span>Copy 3/3</span>
-      <span>Kube Cluster Clash</span>
-    </div>
+      <span>Копия 3/3</span>
+      <span>Kubernetes Cluster Clash</span>
   </div>
 </div>
 
 
-<div class="card card-type-upgrade">
-  <div class="card-header">
-    <span class="tag">Upgrade</span>
-    <span class="card-name">Disaster Recovery Plan</span>
+<div class="card card-type-улучшение">
+  <div class="card-top">
+    <span class="tag">Улучшение</span>
+    <span class="cost-badge">⚙ 4</span>
   </div>
-  <div class="stats">
-    <div class="stat">
-      <span class="stat-label">Cost</span>
-      <span class="stat-value">4</span>
+  <h2 class="card-name">План аварийного восстановления</h2>
+  <div class="stat-row">
+    <div class="chip">
+      <span class="chip-label">SLO</span>
+      <span class="chip-value">—</span>
     </div>
-    <div class="stat">
-      <span class="stat-label">SLO</span>
-      <span class="stat-value">—</span>
-    </div>
-    <div class="stat">
-      <span class="stat-label">Repair</span>
-      <span class="stat-value">discard this instead and set Resilience to 2.</span>
+    <div class="chip">
+      <span class="chip-label">Ремонт</span>
+      <span class="chip-value">сбросьте эту карту и установите устойчивость на 2.</span>
     </div>
   </div>
   <div class="card-body">
-    <p><strong>Prerequisite:</strong> Requires Storage</p>
-    <p>If your Resilience would drop below 0</p>
+    <p class="prereq"><strong>Требование:</strong> Требует Хранилище</p>
+    <p>Если устойчивость должна упасть ниже 0</p>
   </div>
   <div class="card-footer">
-    <div class="meta">
-      <span>Copy 1/3</span>
-      <span>Kube Cluster Clash</span>
-    </div>
+      <span>Копия 1/3</span>
+      <span>Kubernetes Cluster Clash</span>
   </div>
 </div>
 
 
-<div class="card card-type-upgrade">
-  <div class="card-header">
-    <span class="tag">Upgrade</span>
-    <span class="card-name">Disaster Recovery Plan</span>
+<div class="card card-type-улучшение">
+  <div class="card-top">
+    <span class="tag">Улучшение</span>
+    <span class="cost-badge">⚙ 4</span>
   </div>
-  <div class="stats">
-    <div class="stat">
-      <span class="stat-label">Cost</span>
-      <span class="stat-value">4</span>
+  <h2 class="card-name">План аварийного восстановления</h2>
+  <div class="stat-row">
+    <div class="chip">
+      <span class="chip-label">SLO</span>
+      <span class="chip-value">—</span>
     </div>
-    <div class="stat">
-      <span class="stat-label">SLO</span>
-      <span class="stat-value">—</span>
-    </div>
-    <div class="stat">
-      <span class="stat-label">Repair</span>
-      <span class="stat-value">discard this instead and set Resilience to 2.</span>
+    <div class="chip">
+      <span class="chip-label">Ремонт</span>
+      <span class="chip-value">сбросьте эту карту и установите устойчивость на 2.</span>
     </div>
   </div>
   <div class="card-body">
-    <p><strong>Prerequisite:</strong> Requires Storage</p>
-    <p>If your Resilience would drop below 0</p>
+    <p class="prereq"><strong>Требование:</strong> Требует Хранилище</p>
+    <p>Если устойчивость должна упасть ниже 0</p>
   </div>
   <div class="card-footer">
-    <div class="meta">
-      <span>Copy 2/3</span>
-      <span>Kube Cluster Clash</span>
-    </div>
+      <span>Копия 2/3</span>
+      <span>Kubernetes Cluster Clash</span>
   </div>
 </div>
 
 
-<div class="card card-type-upgrade">
-  <div class="card-header">
-    <span class="tag">Upgrade</span>
-    <span class="card-name">Disaster Recovery Plan</span>
+<div class="card card-type-улучшение">
+  <div class="card-top">
+    <span class="tag">Улучшение</span>
+    <span class="cost-badge">⚙ 4</span>
   </div>
-  <div class="stats">
-    <div class="stat">
-      <span class="stat-label">Cost</span>
-      <span class="stat-value">4</span>
+  <h2 class="card-name">План аварийного восстановления</h2>
+  <div class="stat-row">
+    <div class="chip">
+      <span class="chip-label">SLO</span>
+      <span class="chip-value">—</span>
     </div>
-    <div class="stat">
-      <span class="stat-label">SLO</span>
-      <span class="stat-value">—</span>
-    </div>
-    <div class="stat">
-      <span class="stat-label">Repair</span>
-      <span class="stat-value">discard this instead and set Resilience to 2.</span>
+    <div class="chip">
+      <span class="chip-label">Ремонт</span>
+      <span class="chip-value">сбросьте эту карту и установите устойчивость на 2.</span>
     </div>
   </div>
   <div class="card-body">
-    <p><strong>Prerequisite:</strong> Requires Storage</p>
-    <p>If your Resilience would drop below 0</p>
+    <p class="prereq"><strong>Требование:</strong> Требует Хранилище</p>
+    <p>Если устойчивость должна упасть ниже 0</p>
   </div>
   <div class="card-footer">
-    <div class="meta">
-      <span>Copy 3/3</span>
-      <span>Kube Cluster Clash</span>
-    </div>
+      <span>Копия 3/3</span>
+      <span>Kubernetes Cluster Clash</span>
   </div>
 </div>
 
 
-<div class="card card-type-workload">
-  <div class="card-header">
-    <span class="tag">Workload</span>
-    <span class="card-name">Stateless API Service</span>
+<div class="card card-type-нагрузка">
+  <div class="card-top">
+    <span class="tag">Нагрузка</span>
+    <span class="cost-badge">⚙ 2</span>
   </div>
-  <div class="stats">
-    <div class="stat">
-      <span class="stat-label">Cost</span>
-      <span class="stat-value">2</span>
+  <h2 class="card-name">Бесстейтовый API-сервис</h2>
+  <div class="stat-row">
+    <div class="chip">
+      <span class="chip-label">SLO</span>
+      <span class="chip-value">2</span>
     </div>
-    <div class="stat">
-      <span class="stat-label">SLO</span>
-      <span class="stat-value">2</span>
-    </div>
-    <div class="stat">
-      <span class="stat-label">Repair</span>
-      <span class="stat-value">2 tokens to clear Incident</span>
+    <div class="chip">
+      <span class="chip-label">Ремонт</span>
+      <span class="chip-value">во время Обновления получайте +1 ресурс.</span>
     </div>
   </div>
   <div class="card-body">
-    <p><strong>Prerequisite:</strong> Requires 2 Nodes</p>
-    <p>Provides +1 Resource during Refresh while incident-free.</p>
+    <p class="prereq"><strong>Требование:</strong> Требует 2 Ноды</p>
+    <p>Пока карта без инцидентов</p>
   </div>
   <div class="card-footer">
-    <div class="meta">
-      <span>Copy 1/5</span>
-      <span>Kube Cluster Clash</span>
-    </div>
+      <span>Копия 1/5</span>
+      <span>Kubernetes Cluster Clash</span>
   </div>
 </div>
 
 
-<div class="card card-type-workload">
-  <div class="card-header">
-    <span class="tag">Workload</span>
-    <span class="card-name">Stateless API Service</span>
+<div class="card card-type-нагрузка">
+  <div class="card-top">
+    <span class="tag">Нагрузка</span>
+    <span class="cost-badge">⚙ 2</span>
   </div>
-  <div class="stats">
-    <div class="stat">
-      <span class="stat-label">Cost</span>
-      <span class="stat-value">2</span>
+  <h2 class="card-name">Бесстейтовый API-сервис</h2>
+  <div class="stat-row">
+    <div class="chip">
+      <span class="chip-label">SLO</span>
+      <span class="chip-value">2</span>
     </div>
-    <div class="stat">
-      <span class="stat-label">SLO</span>
-      <span class="stat-value">2</span>
-    </div>
-    <div class="stat">
-      <span class="stat-label">Repair</span>
-      <span class="stat-value">2 tokens to clear Incident</span>
+    <div class="chip">
+      <span class="chip-label">Ремонт</span>
+      <span class="chip-value">во время Обновления получайте +1 ресурс.</span>
     </div>
   </div>
   <div class="card-body">
-    <p><strong>Prerequisite:</strong> Requires 2 Nodes</p>
-    <p>Provides +1 Resource during Refresh while incident-free.</p>
+    <p class="prereq"><strong>Требование:</strong> Требует 2 Ноды</p>
+    <p>Пока карта без инцидентов</p>
   </div>
   <div class="card-footer">
-    <div class="meta">
-      <span>Copy 2/5</span>
-      <span>Kube Cluster Clash</span>
-    </div>
+      <span>Копия 2/5</span>
+      <span>Kubernetes Cluster Clash</span>
   </div>
 </div>
 
 
-<div class="card card-type-workload">
-  <div class="card-header">
-    <span class="tag">Workload</span>
-    <span class="card-name">Stateless API Service</span>
+<div class="card card-type-нагрузка">
+  <div class="card-top">
+    <span class="tag">Нагрузка</span>
+    <span class="cost-badge">⚙ 2</span>
   </div>
-  <div class="stats">
-    <div class="stat">
-      <span class="stat-label">Cost</span>
-      <span class="stat-value">2</span>
+  <h2 class="card-name">Бесстейтовый API-сервис</h2>
+  <div class="stat-row">
+    <div class="chip">
+      <span class="chip-label">SLO</span>
+      <span class="chip-value">2</span>
     </div>
-    <div class="stat">
-      <span class="stat-label">SLO</span>
-      <span class="stat-value">2</span>
-    </div>
-    <div class="stat">
-      <span class="stat-label">Repair</span>
-      <span class="stat-value">2 tokens to clear Incident</span>
+    <div class="chip">
+      <span class="chip-label">Ремонт</span>
+      <span class="chip-value">во время Обновления получайте +1 ресурс.</span>
     </div>
   </div>
   <div class="card-body">
-    <p><strong>Prerequisite:</strong> Requires 2 Nodes</p>
-    <p>Provides +1 Resource during Refresh while incident-free.</p>
+    <p class="prereq"><strong>Требование:</strong> Требует 2 Ноды</p>
+    <p>Пока карта без инцидентов</p>
   </div>
   <div class="card-footer">
-    <div class="meta">
-      <span>Copy 3/5</span>
-      <span>Kube Cluster Clash</span>
-    </div>
+      <span>Копия 3/5</span>
+      <span>Kubernetes Cluster Clash</span>
   </div>
 </div>
 
 </section>
 <section class="sheet">
 
-<div class="card card-type-workload">
-  <div class="card-header">
-    <span class="tag">Workload</span>
-    <span class="card-name">Stateless API Service</span>
+<div class="card card-type-нагрузка">
+  <div class="card-top">
+    <span class="tag">Нагрузка</span>
+    <span class="cost-badge">⚙ 2</span>
   </div>
-  <div class="stats">
-    <div class="stat">
-      <span class="stat-label">Cost</span>
-      <span class="stat-value">2</span>
+  <h2 class="card-name">Бесстейтовый API-сервис</h2>
+  <div class="stat-row">
+    <div class="chip">
+      <span class="chip-label">SLO</span>
+      <span class="chip-value">2</span>
     </div>
-    <div class="stat">
-      <span class="stat-label">SLO</span>
-      <span class="stat-value">2</span>
-    </div>
-    <div class="stat">
-      <span class="stat-label">Repair</span>
-      <span class="stat-value">2 tokens to clear Incident</span>
+    <div class="chip">
+      <span class="chip-label">Ремонт</span>
+      <span class="chip-value">во время Обновления получайте +1 ресурс.</span>
     </div>
   </div>
   <div class="card-body">
-    <p><strong>Prerequisite:</strong> Requires 2 Nodes</p>
-    <p>Provides +1 Resource during Refresh while incident-free.</p>
+    <p class="prereq"><strong>Требование:</strong> Требует 2 Ноды</p>
+    <p>Пока карта без инцидентов</p>
   </div>
   <div class="card-footer">
-    <div class="meta">
-      <span>Copy 4/5</span>
-      <span>Kube Cluster Clash</span>
-    </div>
+      <span>Копия 4/5</span>
+      <span>Kubernetes Cluster Clash</span>
   </div>
 </div>
 
 
-<div class="card card-type-workload">
-  <div class="card-header">
-    <span class="tag">Workload</span>
-    <span class="card-name">Stateless API Service</span>
+<div class="card card-type-нагрузка">
+  <div class="card-top">
+    <span class="tag">Нагрузка</span>
+    <span class="cost-badge">⚙ 2</span>
   </div>
-  <div class="stats">
-    <div class="stat">
-      <span class="stat-label">Cost</span>
-      <span class="stat-value">2</span>
+  <h2 class="card-name">Бесстейтовый API-сервис</h2>
+  <div class="stat-row">
+    <div class="chip">
+      <span class="chip-label">SLO</span>
+      <span class="chip-value">2</span>
     </div>
-    <div class="stat">
-      <span class="stat-label">SLO</span>
-      <span class="stat-value">2</span>
-    </div>
-    <div class="stat">
-      <span class="stat-label">Repair</span>
-      <span class="stat-value">2 tokens to clear Incident</span>
+    <div class="chip">
+      <span class="chip-label">Ремонт</span>
+      <span class="chip-value">во время Обновления получайте +1 ресурс.</span>
     </div>
   </div>
   <div class="card-body">
-    <p><strong>Prerequisite:</strong> Requires 2 Nodes</p>
-    <p>Provides +1 Resource during Refresh while incident-free.</p>
+    <p class="prereq"><strong>Требование:</strong> Требует 2 Ноды</p>
+    <p>Пока карта без инцидентов</p>
   </div>
   <div class="card-footer">
-    <div class="meta">
-      <span>Copy 5/5</span>
-      <span>Kube Cluster Clash</span>
-    </div>
+      <span>Копия 5/5</span>
+      <span>Kubernetes Cluster Clash</span>
   </div>
 </div>
 
 
-<div class="card card-type-workload">
-  <div class="card-header">
-    <span class="tag">Workload</span>
-    <span class="card-name">Event Processor Queue</span>
+<div class="card card-type-нагрузка">
+  <div class="card-top">
+    <span class="tag">Нагрузка</span>
+    <span class="cost-badge">⚙ 3</span>
   </div>
-  <div class="stats">
-    <div class="stat">
-      <span class="stat-label">Cost</span>
-      <span class="stat-value">3</span>
+  <h2 class="card-name">Очередь обработки событий</h2>
+  <div class="stat-row">
+    <div class="chip">
+      <span class="chip-label">SLO</span>
+      <span class="chip-value">2</span>
     </div>
-    <div class="stat">
-      <span class="stat-label">SLO</span>
-      <span class="stat-value">2</span>
-    </div>
-    <div class="stat">
-      <span class="stat-label">Repair</span>
-      <span class="stat-value">2 tokens to clear Incident</span>
+    <div class="chip">
+      <span class="chip-label">Ремонт</span>
+      <span class="chip-value">2 ресурса за снятие инцидента</span>
     </div>
   </div>
   <div class="card-body">
-    <p><strong>Prerequisite:</strong> Requires Networking</p>
-    <p>When deployed gain 2 Resource tokens.</p>
+    <p class="prereq"><strong>Требование:</strong> Требует Сеть</p>
+    <p>При розыгрыше получите 2 ресурса.</p>
   </div>
   <div class="card-footer">
-    <div class="meta">
-      <span>Copy 1/3</span>
-      <span>Kube Cluster Clash</span>
-    </div>
+      <span>Копия 1/3</span>
+      <span>Kubernetes Cluster Clash</span>
   </div>
 </div>
 
 
-<div class="card card-type-workload">
-  <div class="card-header">
-    <span class="tag">Workload</span>
-    <span class="card-name">Event Processor Queue</span>
+<div class="card card-type-нагрузка">
+  <div class="card-top">
+    <span class="tag">Нагрузка</span>
+    <span class="cost-badge">⚙ 3</span>
   </div>
-  <div class="stats">
-    <div class="stat">
-      <span class="stat-label">Cost</span>
-      <span class="stat-value">3</span>
+  <h2 class="card-name">Очередь обработки событий</h2>
+  <div class="stat-row">
+    <div class="chip">
+      <span class="chip-label">SLO</span>
+      <span class="chip-value">2</span>
     </div>
-    <div class="stat">
-      <span class="stat-label">SLO</span>
-      <span class="stat-value">2</span>
-    </div>
-    <div class="stat">
-      <span class="stat-label">Repair</span>
-      <span class="stat-value">2 tokens to clear Incident</span>
+    <div class="chip">
+      <span class="chip-label">Ремонт</span>
+      <span class="chip-value">2 ресурса за снятие инцидента</span>
     </div>
   </div>
   <div class="card-body">
-    <p><strong>Prerequisite:</strong> Requires Networking</p>
-    <p>When deployed gain 2 Resource tokens.</p>
+    <p class="prereq"><strong>Требование:</strong> Требует Сеть</p>
+    <p>При розыгрыше получите 2 ресурса.</p>
   </div>
   <div class="card-footer">
-    <div class="meta">
-      <span>Copy 2/3</span>
-      <span>Kube Cluster Clash</span>
-    </div>
+      <span>Копия 2/3</span>
+      <span>Kubernetes Cluster Clash</span>
   </div>
 </div>
 
 
-<div class="card card-type-workload">
-  <div class="card-header">
-    <span class="tag">Workload</span>
-    <span class="card-name">Event Processor Queue</span>
+<div class="card card-type-нагрузка">
+  <div class="card-top">
+    <span class="tag">Нагрузка</span>
+    <span class="cost-badge">⚙ 3</span>
   </div>
-  <div class="stats">
-    <div class="stat">
-      <span class="stat-label">Cost</span>
-      <span class="stat-value">3</span>
+  <h2 class="card-name">Очередь обработки событий</h2>
+  <div class="stat-row">
+    <div class="chip">
+      <span class="chip-label">SLO</span>
+      <span class="chip-value">2</span>
     </div>
-    <div class="stat">
-      <span class="stat-label">SLO</span>
-      <span class="stat-value">2</span>
-    </div>
-    <div class="stat">
-      <span class="stat-label">Repair</span>
-      <span class="stat-value">2 tokens to clear Incident</span>
+    <div class="chip">
+      <span class="chip-label">Ремонт</span>
+      <span class="chip-value">2 ресурса за снятие инцидента</span>
     </div>
   </div>
   <div class="card-body">
-    <p><strong>Prerequisite:</strong> Requires Networking</p>
-    <p>When deployed gain 2 Resource tokens.</p>
+    <p class="prereq"><strong>Требование:</strong> Требует Сеть</p>
+    <p>При розыгрыше получите 2 ресурса.</p>
   </div>
   <div class="card-footer">
-    <div class="meta">
-      <span>Copy 3/3</span>
-      <span>Kube Cluster Clash</span>
-    </div>
+      <span>Копия 3/3</span>
+      <span>Kubernetes Cluster Clash</span>
   </div>
 </div>
 
 
-<div class="card card-type-workload">
-  <div class="card-header">
-    <span class="tag">Workload</span>
-    <span class="card-name">Stateful Database Cluster</span>
+<div class="card card-type-нагрузка">
+  <div class="card-top">
+    <span class="tag">Нагрузка</span>
+    <span class="cost-badge">⚙ 4</span>
   </div>
-  <div class="stats">
-    <div class="stat">
-      <span class="stat-label">Cost</span>
-      <span class="stat-value">4</span>
+  <h2 class="card-name">Кластер stateful-базы данных</h2>
+  <div class="stat-row">
+    <div class="chip">
+      <span class="chip-label">SLO</span>
+      <span class="chip-value">3</span>
     </div>
-    <div class="stat">
-      <span class="stat-label">SLO</span>
-      <span class="stat-value">3</span>
-    </div>
-    <div class="stat">
-      <span class="stat-label">Repair</span>
-      <span class="stat-value">3 tokens to clear Incident</span>
+    <div class="chip">
+      <span class="chip-label">Ремонт</span>
+      <span class="chip-value">3 ресурса за снятие инцидента</span>
     </div>
   </div>
   <div class="card-body">
-    <p><strong>Prerequisite:</strong> Requires Storage</p>
-    <p>Add +1 SLO for each Persistent Volume Stack you control.</p>
+    <p class="prereq"><strong>Требование:</strong> Требует Хранилище</p>
+    <p>Получает +1 SLO за каждый ваш Стек постоянных томов.</p>
   </div>
   <div class="card-footer">
-    <div class="meta">
-      <span>Copy 1/3</span>
-      <span>Kube Cluster Clash</span>
-    </div>
+      <span>Копия 1/3</span>
+      <span>Kubernetes Cluster Clash</span>
   </div>
 </div>
 
 
-<div class="card card-type-workload">
-  <div class="card-header">
-    <span class="tag">Workload</span>
-    <span class="card-name">Stateful Database Cluster</span>
+<div class="card card-type-нагрузка">
+  <div class="card-top">
+    <span class="tag">Нагрузка</span>
+    <span class="cost-badge">⚙ 4</span>
   </div>
-  <div class="stats">
-    <div class="stat">
-      <span class="stat-label">Cost</span>
-      <span class="stat-value">4</span>
+  <h2 class="card-name">Кластер stateful-базы данных</h2>
+  <div class="stat-row">
+    <div class="chip">
+      <span class="chip-label">SLO</span>
+      <span class="chip-value">3</span>
     </div>
-    <div class="stat">
-      <span class="stat-label">SLO</span>
-      <span class="stat-value">3</span>
-    </div>
-    <div class="stat">
-      <span class="stat-label">Repair</span>
-      <span class="stat-value">3 tokens to clear Incident</span>
+    <div class="chip">
+      <span class="chip-label">Ремонт</span>
+      <span class="chip-value">3 ресурса за снятие инцидента</span>
     </div>
   </div>
   <div class="card-body">
-    <p><strong>Prerequisite:</strong> Requires Storage</p>
-    <p>Add +1 SLO for each Persistent Volume Stack you control.</p>
+    <p class="prereq"><strong>Требование:</strong> Требует Хранилище</p>
+    <p>Получает +1 SLO за каждый ваш Стек постоянных томов.</p>
   </div>
   <div class="card-footer">
-    <div class="meta">
-      <span>Copy 2/3</span>
-      <span>Kube Cluster Clash</span>
-    </div>
+      <span>Копия 2/3</span>
+      <span>Kubernetes Cluster Clash</span>
   </div>
 </div>
 
 
-<div class="card card-type-workload">
-  <div class="card-header">
-    <span class="tag">Workload</span>
-    <span class="card-name">Stateful Database Cluster</span>
+<div class="card card-type-нагрузка">
+  <div class="card-top">
+    <span class="tag">Нагрузка</span>
+    <span class="cost-badge">⚙ 4</span>
   </div>
-  <div class="stats">
-    <div class="stat">
-      <span class="stat-label">Cost</span>
-      <span class="stat-value">4</span>
+  <h2 class="card-name">Кластер stateful-базы данных</h2>
+  <div class="stat-row">
+    <div class="chip">
+      <span class="chip-label">SLO</span>
+      <span class="chip-value">3</span>
     </div>
-    <div class="stat">
-      <span class="stat-label">SLO</span>
-      <span class="stat-value">3</span>
-    </div>
-    <div class="stat">
-      <span class="stat-label">Repair</span>
-      <span class="stat-value">3 tokens to clear Incident</span>
+    <div class="chip">
+      <span class="chip-label">Ремонт</span>
+      <span class="chip-value">3 ресурса за снятие инцидента</span>
     </div>
   </div>
   <div class="card-body">
-    <p><strong>Prerequisite:</strong> Requires Storage</p>
-    <p>Add +1 SLO for each Persistent Volume Stack you control.</p>
+    <p class="prereq"><strong>Требование:</strong> Требует Хранилище</p>
+    <p>Получает +1 SLO за каждый ваш Стек постоянных томов.</p>
   </div>
   <div class="card-footer">
-    <div class="meta">
-      <span>Copy 3/3</span>
-      <span>Kube Cluster Clash</span>
-    </div>
+      <span>Копия 3/3</span>
+      <span>Kubernetes Cluster Clash</span>
   </div>
 </div>
 
 
-<div class="card card-type-workload">
-  <div class="card-header">
-    <span class="tag">Workload</span>
-    <span class="card-name">Machine Learning Platform</span>
+<div class="card card-type-нагрузка">
+  <div class="card-top">
+    <span class="tag">Нагрузка</span>
+    <span class="cost-badge">⚙ 5</span>
   </div>
-  <div class="stats">
-    <div class="stat">
-      <span class="stat-label">Cost</span>
-      <span class="stat-value">5</span>
+  <h2 class="card-name">Платформа машинного обучения</h2>
+  <div class="stat-row">
+    <div class="chip">
+      <span class="chip-label">SLO</span>
+      <span class="chip-value">4</span>
     </div>
-    <div class="stat">
-      <span class="stat-label">SLO</span>
-      <span class="stat-value">4</span>
-    </div>
-    <div class="stat">
-      <span class="stat-label">Repair</span>
-      <span class="stat-value">3 tokens to clear Incident</span>
+    <div class="chip">
+      <span class="chip-label">Ремонт</span>
+      <span class="chip-value">чтобы сыграть Атаку против вас.</span>
     </div>
   </div>
   <div class="card-body">
-    <p><strong>Prerequisite:</strong> Requires GPU Accelerator Node</p>
-    <p>Opponents pay +1 Resource to target you with Attacks.</p>
+    <p class="prereq"><strong>Требование:</strong> Требует Ноду с GPU-ускорителем</p>
+    <p>Противники платят +1 ресурс</p>
   </div>
   <div class="card-footer">
-    <div class="meta">
-      <span>Copy 1/2</span>
-      <span>Kube Cluster Clash</span>
-    </div>
+      <span>Копия 1/2</span>
+      <span>Kubernetes Cluster Clash</span>
   </div>
 </div>
 
 </section>
 <section class="sheet">
 
-<div class="card card-type-workload">
-  <div class="card-header">
-    <span class="tag">Workload</span>
-    <span class="card-name">Machine Learning Platform</span>
+<div class="card card-type-нагрузка">
+  <div class="card-top">
+    <span class="tag">Нагрузка</span>
+    <span class="cost-badge">⚙ 5</span>
   </div>
-  <div class="stats">
-    <div class="stat">
-      <span class="stat-label">Cost</span>
-      <span class="stat-value">5</span>
+  <h2 class="card-name">Платформа машинного обучения</h2>
+  <div class="stat-row">
+    <div class="chip">
+      <span class="chip-label">SLO</span>
+      <span class="chip-value">4</span>
     </div>
-    <div class="stat">
-      <span class="stat-label">SLO</span>
-      <span class="stat-value">4</span>
-    </div>
-    <div class="stat">
-      <span class="stat-label">Repair</span>
-      <span class="stat-value">3 tokens to clear Incident</span>
+    <div class="chip">
+      <span class="chip-label">Ремонт</span>
+      <span class="chip-value">чтобы сыграть Атаку против вас.</span>
     </div>
   </div>
   <div class="card-body">
-    <p><strong>Prerequisite:</strong> Requires GPU Accelerator Node</p>
-    <p>Opponents pay +1 Resource to target you with Attacks.</p>
+    <p class="prereq"><strong>Требование:</strong> Требует Ноду с GPU-ускорителем</p>
+    <p>Противники платят +1 ресурс</p>
   </div>
   <div class="card-footer">
-    <div class="meta">
-      <span>Copy 2/2</span>
-      <span>Kube Cluster Clash</span>
-    </div>
+      <span>Копия 2/2</span>
+      <span>Kubernetes Cluster Clash</span>
   </div>
 </div>
 
 
-<div class="card card-type-workload">
-  <div class="card-header">
-    <span class="tag">Workload</span>
-    <span class="card-name">Batch ETL Pipeline</span>
+<div class="card card-type-нагрузка">
+  <div class="card-top">
+    <span class="tag">Нагрузка</span>
+    <span class="cost-badge">⚙ 3</span>
   </div>
-  <div class="stats">
-    <div class="stat">
-      <span class="stat-label">Cost</span>
-      <span class="stat-value">3</span>
+  <h2 class="card-name">Пакетный ETL-конвейер</h2>
+  <div class="stat-row">
+    <div class="chip">
+      <span class="chip-label">SLO</span>
+      <span class="chip-value">2</span>
     </div>
-    <div class="stat">
-      <span class="stat-label">SLO</span>
-      <span class="stat-value">2</span>
-    </div>
-    <div class="stat">
-      <span class="stat-label">Repair</span>
-      <span class="stat-value">2 tokens to clear Incident</span>
+    <div class="chip">
+      <span class="chip-label">Ремонт</span>
+      <span class="chip-value">чтобы получить 2 ресурса.</span>
     </div>
   </div>
   <div class="card-body">
-    <p><strong>Prerequisite:</strong> Requires Node</p>
-    <p>At end of turn you may discard 1 card to gain 2 Resources.</p>
+    <p class="prereq"><strong>Требование:</strong> Требует Ноду</p>
+    <p>В конце хода можете сбросить карту</p>
   </div>
   <div class="card-footer">
-    <div class="meta">
-      <span>Copy 1/3</span>
-      <span>Kube Cluster Clash</span>
-    </div>
+      <span>Копия 1/3</span>
+      <span>Kubernetes Cluster Clash</span>
   </div>
 </div>
 
 
-<div class="card card-type-workload">
-  <div class="card-header">
-    <span class="tag">Workload</span>
-    <span class="card-name">Batch ETL Pipeline</span>
+<div class="card card-type-нагрузка">
+  <div class="card-top">
+    <span class="tag">Нагрузка</span>
+    <span class="cost-badge">⚙ 3</span>
   </div>
-  <div class="stats">
-    <div class="stat">
-      <span class="stat-label">Cost</span>
-      <span class="stat-value">3</span>
+  <h2 class="card-name">Пакетный ETL-конвейер</h2>
+  <div class="stat-row">
+    <div class="chip">
+      <span class="chip-label">SLO</span>
+      <span class="chip-value">2</span>
     </div>
-    <div class="stat">
-      <span class="stat-label">SLO</span>
-      <span class="stat-value">2</span>
-    </div>
-    <div class="stat">
-      <span class="stat-label">Repair</span>
-      <span class="stat-value">2 tokens to clear Incident</span>
+    <div class="chip">
+      <span class="chip-label">Ремонт</span>
+      <span class="chip-value">чтобы получить 2 ресурса.</span>
     </div>
   </div>
   <div class="card-body">
-    <p><strong>Prerequisite:</strong> Requires Node</p>
-    <p>At end of turn you may discard 1 card to gain 2 Resources.</p>
+    <p class="prereq"><strong>Требование:</strong> Требует Ноду</p>
+    <p>В конце хода можете сбросить карту</p>
   </div>
   <div class="card-footer">
-    <div class="meta">
-      <span>Copy 2/3</span>
-      <span>Kube Cluster Clash</span>
-    </div>
+      <span>Копия 2/3</span>
+      <span>Kubernetes Cluster Clash</span>
   </div>
 </div>
 
 
-<div class="card card-type-workload">
-  <div class="card-header">
-    <span class="tag">Workload</span>
-    <span class="card-name">Batch ETL Pipeline</span>
+<div class="card card-type-нагрузка">
+  <div class="card-top">
+    <span class="tag">Нагрузка</span>
+    <span class="cost-badge">⚙ 3</span>
   </div>
-  <div class="stats">
-    <div class="stat">
-      <span class="stat-label">Cost</span>
-      <span class="stat-value">3</span>
+  <h2 class="card-name">Пакетный ETL-конвейер</h2>
+  <div class="stat-row">
+    <div class="chip">
+      <span class="chip-label">SLO</span>
+      <span class="chip-value">2</span>
     </div>
-    <div class="stat">
-      <span class="stat-label">SLO</span>
-      <span class="stat-value">2</span>
-    </div>
-    <div class="stat">
-      <span class="stat-label">Repair</span>
-      <span class="stat-value">2 tokens to clear Incident</span>
+    <div class="chip">
+      <span class="chip-label">Ремонт</span>
+      <span class="chip-value">чтобы получить 2 ресурса.</span>
     </div>
   </div>
   <div class="card-body">
-    <p><strong>Prerequisite:</strong> Requires Node</p>
-    <p>At end of turn you may discard 1 card to gain 2 Resources.</p>
+    <p class="prereq"><strong>Требование:</strong> Требует Ноду</p>
+    <p>В конце хода можете сбросить карту</p>
   </div>
   <div class="card-footer">
-    <div class="meta">
-      <span>Copy 3/3</span>
-      <span>Kube Cluster Clash</span>
-    </div>
+      <span>Копия 3/3</span>
+      <span>Kubernetes Cluster Clash</span>
   </div>
 </div>
 
 
-<div class="card card-type-workload">
-  <div class="card-header">
-    <span class="tag">Workload</span>
-    <span class="card-name">Realtime Analytics Dashboard</span>
+<div class="card card-type-нагрузка">
+  <div class="card-top">
+    <span class="tag">Нагрузка</span>
+    <span class="cost-badge">⚙ 4</span>
   </div>
-  <div class="stats">
-    <div class="stat">
-      <span class="stat-label">Cost</span>
-      <span class="stat-value">4</span>
+  <h2 class="card-name">Панель realtime-аналитики</h2>
+  <div class="stat-row">
+    <div class="chip">
+      <span class="chip-label">SLO</span>
+      <span class="chip-value">3</span>
     </div>
-    <div class="stat">
-      <span class="stat-label">SLO</span>
-      <span class="stat-value">3</span>
-    </div>
-    <div class="stat">
-      <span class="stat-label">Repair</span>
-      <span class="stat-value">2 tokens to clear Incident</span>
+    <div class="chip">
+      <span class="chip-label">Ремонт</span>
+      <span class="chip-value">вторую сбросьте.</span>
     </div>
   </div>
   <div class="card-body">
-    <p><strong>Prerequisite:</strong> Requires Networking</p>
-    <p>When deployed draw 2 cards; keep 1 and discard the other.</p>
+    <p class="prereq"><strong>Требование:</strong> Требует Сеть</p>
+    <p>При розыгрыше возьмите 2 карты: одну оставьте</p>
   </div>
   <div class="card-footer">
-    <div class="meta">
-      <span>Copy 1/2</span>
-      <span>Kube Cluster Clash</span>
-    </div>
+      <span>Копия 1/2</span>
+      <span>Kubernetes Cluster Clash</span>
   </div>
 </div>
 
 
-<div class="card card-type-workload">
-  <div class="card-header">
-    <span class="tag">Workload</span>
-    <span class="card-name">Realtime Analytics Dashboard</span>
+<div class="card card-type-нагрузка">
+  <div class="card-top">
+    <span class="tag">Нагрузка</span>
+    <span class="cost-badge">⚙ 4</span>
   </div>
-  <div class="stats">
-    <div class="stat">
-      <span class="stat-label">Cost</span>
-      <span class="stat-value">4</span>
+  <h2 class="card-name">Панель realtime-аналитики</h2>
+  <div class="stat-row">
+    <div class="chip">
+      <span class="chip-label">SLO</span>
+      <span class="chip-value">3</span>
     </div>
-    <div class="stat">
-      <span class="stat-label">SLO</span>
-      <span class="stat-value">3</span>
-    </div>
-    <div class="stat">
-      <span class="stat-label">Repair</span>
-      <span class="stat-value">2 tokens to clear Incident</span>
+    <div class="chip">
+      <span class="chip-label">Ремонт</span>
+      <span class="chip-value">вторую сбросьте.</span>
     </div>
   </div>
   <div class="card-body">
-    <p><strong>Prerequisite:</strong> Requires Networking</p>
-    <p>When deployed draw 2 cards; keep 1 and discard the other.</p>
+    <p class="prereq"><strong>Требование:</strong> Требует Сеть</p>
+    <p>При розыгрыше возьмите 2 карты: одну оставьте</p>
   </div>
   <div class="card-footer">
-    <div class="meta">
-      <span>Copy 2/2</span>
-      <span>Kube Cluster Clash</span>
-    </div>
+      <span>Копия 2/2</span>
+      <span>Kubernetes Cluster Clash</span>
   </div>
 </div>
 
 
-<div class="card card-type-workload">
-  <div class="card-header">
-    <span class="tag">Workload</span>
-    <span class="card-name">Internal Tools Suite</span>
+<div class="card card-type-нагрузка">
+  <div class="card-top">
+    <span class="tag">Нагрузка</span>
+    <span class="cost-badge">⚙ 2</span>
   </div>
-  <div class="stats">
-    <div class="stat">
-      <span class="stat-label">Cost</span>
-      <span class="stat-value">2</span>
+  <h2 class="card-name">Пакет внутренних инструментов</h2>
+  <div class="stat-row">
+    <div class="chip">
+      <span class="chip-label">SLO</span>
+      <span class="chip-value">1</span>
     </div>
-    <div class="stat">
-      <span class="stat-label">SLO</span>
-      <span class="stat-value">1</span>
-    </div>
-    <div class="stat">
-      <span class="stat-label">Repair</span>
-      <span class="stat-value">1 token to clear Incident</span>
+    <div class="chip">
+      <span class="chip-label">Ремонт</span>
+      <span class="chip-value">1 ресурс за снятие инцидента</span>
     </div>
   </div>
   <div class="card-body">
-    <p><strong>Prerequisite:</strong> Requires Control Plane</p>
-    <p>Gain +1 Resilience when deployed.</p>
+    <p class="prereq"><strong>Требование:</strong> Требует Контрольного плана</p>
+    <p>При розыгрыше получите +1 к устойчивости.</p>
   </div>
   <div class="card-footer">
-    <div class="meta">
-      <span>Copy 1/3</span>
-      <span>Kube Cluster Clash</span>
-    </div>
+      <span>Копия 1/3</span>
+      <span>Kubernetes Cluster Clash</span>
   </div>
 </div>
 
 
-<div class="card card-type-workload">
-  <div class="card-header">
-    <span class="tag">Workload</span>
-    <span class="card-name">Internal Tools Suite</span>
+<div class="card card-type-нагрузка">
+  <div class="card-top">
+    <span class="tag">Нагрузка</span>
+    <span class="cost-badge">⚙ 2</span>
   </div>
-  <div class="stats">
-    <div class="stat">
-      <span class="stat-label">Cost</span>
-      <span class="stat-value">2</span>
+  <h2 class="card-name">Пакет внутренних инструментов</h2>
+  <div class="stat-row">
+    <div class="chip">
+      <span class="chip-label">SLO</span>
+      <span class="chip-value">1</span>
     </div>
-    <div class="stat">
-      <span class="stat-label">SLO</span>
-      <span class="stat-value">1</span>
-    </div>
-    <div class="stat">
-      <span class="stat-label">Repair</span>
-      <span class="stat-value">1 token to clear Incident</span>
+    <div class="chip">
+      <span class="chip-label">Ремонт</span>
+      <span class="chip-value">1 ресурс за снятие инцидента</span>
     </div>
   </div>
   <div class="card-body">
-    <p><strong>Prerequisite:</strong> Requires Control Plane</p>
-    <p>Gain +1 Resilience when deployed.</p>
+    <p class="prereq"><strong>Требование:</strong> Требует Контрольного плана</p>
+    <p>При розыгрыше получите +1 к устойчивости.</p>
   </div>
   <div class="card-footer">
-    <div class="meta">
-      <span>Copy 2/3</span>
-      <span>Kube Cluster Clash</span>
-    </div>
+      <span>Копия 2/3</span>
+      <span>Kubernetes Cluster Clash</span>
   </div>
 </div>
 
 
-<div class="card card-type-workload">
-  <div class="card-header">
-    <span class="tag">Workload</span>
-    <span class="card-name">Internal Tools Suite</span>
+<div class="card card-type-нагрузка">
+  <div class="card-top">
+    <span class="tag">Нагрузка</span>
+    <span class="cost-badge">⚙ 2</span>
   </div>
-  <div class="stats">
-    <div class="stat">
-      <span class="stat-label">Cost</span>
-      <span class="stat-value">2</span>
+  <h2 class="card-name">Пакет внутренних инструментов</h2>
+  <div class="stat-row">
+    <div class="chip">
+      <span class="chip-label">SLO</span>
+      <span class="chip-value">1</span>
     </div>
-    <div class="stat">
-      <span class="stat-label">SLO</span>
-      <span class="stat-value">1</span>
-    </div>
-    <div class="stat">
-      <span class="stat-label">Repair</span>
-      <span class="stat-value">1 token to clear Incident</span>
+    <div class="chip">
+      <span class="chip-label">Ремонт</span>
+      <span class="chip-value">1 ресурс за снятие инцидента</span>
     </div>
   </div>
   <div class="card-body">
-    <p><strong>Prerequisite:</strong> Requires Control Plane</p>
-    <p>Gain +1 Resilience when deployed.</p>
+    <p class="prereq"><strong>Требование:</strong> Требует Контрольного плана</p>
+    <p>При розыгрыше получите +1 к устойчивости.</p>
   </div>
   <div class="card-footer">
-    <div class="meta">
-      <span>Copy 3/3</span>
-      <span>Kube Cluster Clash</span>
-    </div>
+      <span>Копия 3/3</span>
+      <span>Kubernetes Cluster Clash</span>
   </div>
 </div>
 
 </section>
 <section class="sheet">
 
-<div class="card card-type-attack">
-  <div class="card-header">
-    <span class="tag">Attack</span>
-    <span class="card-name">DDoS Burst</span>
+<div class="card card-type-атака">
+  <div class="card-top">
+    <span class="tag">Атака</span>
+    <span class="cost-badge">⚙ 3</span>
   </div>
-  <div class="stats">
-    <div class="stat">
-      <span class="stat-label">Cost</span>
-      <span class="stat-value">3</span>
+  <h2 class="card-name">Всплеск DDoS</h2>
+  <div class="stat-row">
+    <div class="chip">
+      <span class="chip-label">SLO</span>
+      <span class="chip-value">—</span>
     </div>
-    <div class="stat">
-      <span class="stat-label">SLO</span>
-      <span class="stat-value">—</span>
-    </div>
-    <div class="stat">
-      <span class="stat-label">Repair</span>
-      <span class="stat-value">Target pays 2 tokens per Incident</span>
+    <div class="chip">
+      <span class="chip-label">Ремонт</span>
+      <span class="chip-value">полученные в этот ход.</span>
     </div>
   </div>
   <div class="card-body">
     
-    <p>Place 2 Incidents across target Nodes; they lose Resources gained this turn.</p>
+    <p>Разместите 2 инцидента на Нодах цели; она теряет ресурсы</p>
   </div>
   <div class="card-footer">
-    <div class="meta">
-      <span>Copy 1/4</span>
-      <span>Kube Cluster Clash</span>
-    </div>
+      <span>Копия 1/4</span>
+      <span>Kubernetes Cluster Clash</span>
   </div>
 </div>
 
 
-<div class="card card-type-attack">
-  <div class="card-header">
-    <span class="tag">Attack</span>
-    <span class="card-name">DDoS Burst</span>
+<div class="card card-type-атака">
+  <div class="card-top">
+    <span class="tag">Атака</span>
+    <span class="cost-badge">⚙ 3</span>
   </div>
-  <div class="stats">
-    <div class="stat">
-      <span class="stat-label">Cost</span>
-      <span class="stat-value">3</span>
+  <h2 class="card-name">Всплеск DDoS</h2>
+  <div class="stat-row">
+    <div class="chip">
+      <span class="chip-label">SLO</span>
+      <span class="chip-value">—</span>
     </div>
-    <div class="stat">
-      <span class="stat-label">SLO</span>
-      <span class="stat-value">—</span>
-    </div>
-    <div class="stat">
-      <span class="stat-label">Repair</span>
-      <span class="stat-value">Target pays 2 tokens per Incident</span>
+    <div class="chip">
+      <span class="chip-label">Ремонт</span>
+      <span class="chip-value">полученные в этот ход.</span>
     </div>
   </div>
   <div class="card-body">
     
-    <p>Place 2 Incidents across target Nodes; they lose Resources gained this turn.</p>
+    <p>Разместите 2 инцидента на Нодах цели; она теряет ресурсы</p>
   </div>
   <div class="card-footer">
-    <div class="meta">
-      <span>Copy 2/4</span>
-      <span>Kube Cluster Clash</span>
-    </div>
+      <span>Копия 2/4</span>
+      <span>Kubernetes Cluster Clash</span>
   </div>
 </div>
 
 
-<div class="card card-type-attack">
-  <div class="card-header">
-    <span class="tag">Attack</span>
-    <span class="card-name">DDoS Burst</span>
+<div class="card card-type-атака">
+  <div class="card-top">
+    <span class="tag">Атака</span>
+    <span class="cost-badge">⚙ 3</span>
   </div>
-  <div class="stats">
-    <div class="stat">
-      <span class="stat-label">Cost</span>
-      <span class="stat-value">3</span>
+  <h2 class="card-name">Всплеск DDoS</h2>
+  <div class="stat-row">
+    <div class="chip">
+      <span class="chip-label">SLO</span>
+      <span class="chip-value">—</span>
     </div>
-    <div class="stat">
-      <span class="stat-label">SLO</span>
-      <span class="stat-value">—</span>
-    </div>
-    <div class="stat">
-      <span class="stat-label">Repair</span>
-      <span class="stat-value">Target pays 2 tokens per Incident</span>
+    <div class="chip">
+      <span class="chip-label">Ремонт</span>
+      <span class="chip-value">полученные в этот ход.</span>
     </div>
   </div>
   <div class="card-body">
     
-    <p>Place 2 Incidents across target Nodes; they lose Resources gained this turn.</p>
+    <p>Разместите 2 инцидента на Нодах цели; она теряет ресурсы</p>
   </div>
   <div class="card-footer">
-    <div class="meta">
-      <span>Copy 3/4</span>
-      <span>Kube Cluster Clash</span>
-    </div>
+      <span>Копия 3/4</span>
+      <span>Kubernetes Cluster Clash</span>
   </div>
 </div>
 
 
-<div class="card card-type-attack">
-  <div class="card-header">
-    <span class="tag">Attack</span>
-    <span class="card-name">DDoS Burst</span>
+<div class="card card-type-атака">
+  <div class="card-top">
+    <span class="tag">Атака</span>
+    <span class="cost-badge">⚙ 3</span>
   </div>
-  <div class="stats">
-    <div class="stat">
-      <span class="stat-label">Cost</span>
-      <span class="stat-value">3</span>
+  <h2 class="card-name">Всплеск DDoS</h2>
+  <div class="stat-row">
+    <div class="chip">
+      <span class="chip-label">SLO</span>
+      <span class="chip-value">—</span>
     </div>
-    <div class="stat">
-      <span class="stat-label">SLO</span>
-      <span class="stat-value">—</span>
-    </div>
-    <div class="stat">
-      <span class="stat-label">Repair</span>
-      <span class="stat-value">Target pays 2 tokens per Incident</span>
+    <div class="chip">
+      <span class="chip-label">Ремонт</span>
+      <span class="chip-value">полученные в этот ход.</span>
     </div>
   </div>
   <div class="card-body">
     
-    <p>Place 2 Incidents across target Nodes; they lose Resources gained this turn.</p>
+    <p>Разместите 2 инцидента на Нодах цели; она теряет ресурсы</p>
   </div>
   <div class="card-footer">
-    <div class="meta">
-      <span>Copy 4/4</span>
-      <span>Kube Cluster Clash</span>
-    </div>
+      <span>Копия 4/4</span>
+      <span>Kubernetes Cluster Clash</span>
   </div>
 </div>
 
 
-<div class="card card-type-attack">
-  <div class="card-header">
-    <span class="tag">Attack</span>
-    <span class="card-name">Supply Chain Compromise</span>
+<div class="card card-type-атака">
+  <div class="card-top">
+    <span class="tag">Атака</span>
+    <span class="cost-badge">⚙ 4</span>
   </div>
-  <div class="stats">
-    <div class="stat">
-      <span class="stat-label">Cost</span>
-      <span class="stat-value">4</span>
+  <h2 class="card-name">Компрометация цепочки поставок</h2>
+  <div class="stat-row">
+    <div class="chip">
+      <span class="chip-label">SLO</span>
+      <span class="chip-value">—</span>
     </div>
-    <div class="stat">
-      <span class="stat-label">SLO</span>
-      <span class="stat-value">—</span>
-    </div>
-    <div class="stat">
-      <span class="stat-label">Repair</span>
-      <span class="stat-value">Target pays 3 tokens to clear Incident</span>
+    <div class="chip">
+      <span class="chip-label">Ремонт</span>
+      <span class="chip-value">Цель платит 3 ресурса за снятие инцидента</span>
     </div>
   </div>
   <div class="card-body">
     
-    <p>Steal an Automation or Upgrade card; place 1 Incident on new card.</p>
+    <p>Заберите у цели карту Автоматизации или Улучшения; разместите 1 инцидент на новой карте.</p>
   </div>
   <div class="card-footer">
-    <div class="meta">
-      <span>Copy 1/2</span>
-      <span>Kube Cluster Clash</span>
-    </div>
+      <span>Копия 1/2</span>
+      <span>Kubernetes Cluster Clash</span>
   </div>
 </div>
 
 
-<div class="card card-type-attack">
-  <div class="card-header">
-    <span class="tag">Attack</span>
-    <span class="card-name">Supply Chain Compromise</span>
+<div class="card card-type-атака">
+  <div class="card-top">
+    <span class="tag">Атака</span>
+    <span class="cost-badge">⚙ 4</span>
   </div>
-  <div class="stats">
-    <div class="stat">
-      <span class="stat-label">Cost</span>
-      <span class="stat-value">4</span>
+  <h2 class="card-name">Компрометация цепочки поставок</h2>
+  <div class="stat-row">
+    <div class="chip">
+      <span class="chip-label">SLO</span>
+      <span class="chip-value">—</span>
     </div>
-    <div class="stat">
-      <span class="stat-label">SLO</span>
-      <span class="stat-value">—</span>
-    </div>
-    <div class="stat">
-      <span class="stat-label">Repair</span>
-      <span class="stat-value">Target pays 3 tokens to clear Incident</span>
+    <div class="chip">
+      <span class="chip-label">Ремонт</span>
+      <span class="chip-value">Цель платит 3 ресурса за снятие инцидента</span>
     </div>
   </div>
   <div class="card-body">
     
-    <p>Steal an Automation or Upgrade card; place 1 Incident on new card.</p>
+    <p>Заберите у цели карту Автоматизации или Улучшения; разместите 1 инцидент на новой карте.</p>
   </div>
   <div class="card-footer">
-    <div class="meta">
-      <span>Copy 2/2</span>
-      <span>Kube Cluster Clash</span>
-    </div>
+      <span>Копия 2/2</span>
+      <span>Kubernetes Cluster Clash</span>
   </div>
 </div>
 
 
-<div class="card card-type-attack">
-  <div class="card-header">
-    <span class="tag">Attack</span>
-    <span class="card-name">Rogue CronJob</span>
+<div class="card card-type-атака">
+  <div class="card-top">
+    <span class="tag">Атака</span>
+    <span class="cost-badge">⚙ 2</span>
   </div>
-  <div class="stats">
-    <div class="stat">
-      <span class="stat-label">Cost</span>
-      <span class="stat-value">2</span>
+  <h2 class="card-name">Сбойный CronJob</h2>
+  <div class="stat-row">
+    <div class="chip">
+      <span class="chip-label">SLO</span>
+      <span class="chip-value">—</span>
     </div>
-    <div class="stat">
-      <span class="stat-label">SLO</span>
-      <span class="stat-value">—</span>
-    </div>
-    <div class="stat">
-      <span class="stat-label">Repair</span>
-      <span class="stat-value">Target pays 2 tokens to clear Incident</span>
+    <div class="chip">
+      <span class="chip-label">Ремонт</span>
+      <span class="chip-value">Цель платит 2 ресурса за снятие инцидента</span>
     </div>
   </div>
   <div class="card-body">
     
-    <p>Place 1 Incident on a Workload; it provides no SLO until cleared.</p>
+    <p>Разместите 1 инцидент на Нагрузке; она не даёт SLO до ремонта.</p>
   </div>
   <div class="card-footer">
-    <div class="meta">
-      <span>Copy 1/2</span>
-      <span>Kube Cluster Clash</span>
-    </div>
+      <span>Копия 1/2</span>
+      <span>Kubernetes Cluster Clash</span>
   </div>
 </div>
 
 
-<div class="card card-type-attack">
-  <div class="card-header">
-    <span class="tag">Attack</span>
-    <span class="card-name">Rogue CronJob</span>
+<div class="card card-type-атака">
+  <div class="card-top">
+    <span class="tag">Атака</span>
+    <span class="cost-badge">⚙ 2</span>
   </div>
-  <div class="stats">
-    <div class="stat">
-      <span class="stat-label">Cost</span>
-      <span class="stat-value">2</span>
+  <h2 class="card-name">Сбойный CronJob</h2>
+  <div class="stat-row">
+    <div class="chip">
+      <span class="chip-label">SLO</span>
+      <span class="chip-value">—</span>
     </div>
-    <div class="stat">
-      <span class="stat-label">SLO</span>
-      <span class="stat-value">—</span>
-    </div>
-    <div class="stat">
-      <span class="stat-label">Repair</span>
-      <span class="stat-value">Target pays 2 tokens to clear Incident</span>
+    <div class="chip">
+      <span class="chip-label">Ремонт</span>
+      <span class="chip-value">Цель платит 2 ресурса за снятие инцидента</span>
     </div>
   </div>
   <div class="card-body">
     
-    <p>Place 1 Incident on a Workload; it provides no SLO until cleared.</p>
+    <p>Разместите 1 инцидент на Нагрузке; она не даёт SLO до ремонта.</p>
   </div>
   <div class="card-footer">
-    <div class="meta">
-      <span>Copy 2/2</span>
-      <span>Kube Cluster Clash</span>
-    </div>
+      <span>Копия 2/2</span>
+      <span>Kubernetes Cluster Clash</span>
   </div>
 </div>
 
 
-<div class="card card-type-attack">
-  <div class="card-header">
-    <span class="tag">Attack</span>
-    <span class="card-name">Budget Freeze</span>
+<div class="card card-type-атака">
+  <div class="card-top">
+    <span class="tag">Атака</span>
+    <span class="cost-badge">⚙ 3</span>
   </div>
-  <div class="stats">
-    <div class="stat">
-      <span class="stat-label">Cost</span>
-      <span class="stat-value">3</span>
+  <h2 class="card-name">Заморозка бюджета</h2>
+  <div class="stat-row">
+    <div class="chip">
+      <span class="chip-label">SLO</span>
+      <span class="chip-value">—</span>
     </div>
-    <div class="stat">
-      <span class="stat-label">SLO</span>
-      <span class="stat-value">—</span>
-    </div>
-    <div class="stat">
-      <span class="stat-label">Repair</span>
-      <span class="stat-value">Cannot be repaired; Incident clears automatically after skip</span>
+    <div class="chip">
+      <span class="chip-label">Ремонт</span>
+      <span class="chip-value">Не ремонтируется; инцидент снимается после пропуска</span>
     </div>
   </div>
   <div class="card-body">
     
-    <p>Target skips their next Plan phase and loses 2 Resources.</p>
+    <p>Цель пропускает следующую фазу Планирования и теряет 2 ресурса.</p>
   </div>
   <div class="card-footer">
-    <div class="meta">
-      <span>Copy 1/3</span>
-      <span>Kube Cluster Clash</span>
-    </div>
+      <span>Копия 1/3</span>
+      <span>Kubernetes Cluster Clash</span>
   </div>
 </div>
 
 </section>
 <section class="sheet">
 
-<div class="card card-type-attack">
-  <div class="card-header">
-    <span class="tag">Attack</span>
-    <span class="card-name">Budget Freeze</span>
+<div class="card card-type-атака">
+  <div class="card-top">
+    <span class="tag">Атака</span>
+    <span class="cost-badge">⚙ 3</span>
   </div>
-  <div class="stats">
-    <div class="stat">
-      <span class="stat-label">Cost</span>
-      <span class="stat-value">3</span>
+  <h2 class="card-name">Заморозка бюджета</h2>
+  <div class="stat-row">
+    <div class="chip">
+      <span class="chip-label">SLO</span>
+      <span class="chip-value">—</span>
     </div>
-    <div class="stat">
-      <span class="stat-label">SLO</span>
-      <span class="stat-value">—</span>
-    </div>
-    <div class="stat">
-      <span class="stat-label">Repair</span>
-      <span class="stat-value">Cannot be repaired; Incident clears automatically after skip</span>
+    <div class="chip">
+      <span class="chip-label">Ремонт</span>
+      <span class="chip-value">Не ремонтируется; инцидент снимается после пропуска</span>
     </div>
   </div>
   <div class="card-body">
     
-    <p>Target skips their next Plan phase and loses 2 Resources.</p>
+    <p>Цель пропускает следующую фазу Планирования и теряет 2 ресурса.</p>
   </div>
   <div class="card-footer">
-    <div class="meta">
-      <span>Copy 2/3</span>
-      <span>Kube Cluster Clash</span>
-    </div>
+      <span>Копия 2/3</span>
+      <span>Kubernetes Cluster Clash</span>
   </div>
 </div>
 
 
-<div class="card card-type-attack">
-  <div class="card-header">
-    <span class="tag">Attack</span>
-    <span class="card-name">Budget Freeze</span>
+<div class="card card-type-атака">
+  <div class="card-top">
+    <span class="tag">Атака</span>
+    <span class="cost-badge">⚙ 3</span>
   </div>
-  <div class="stats">
-    <div class="stat">
-      <span class="stat-label">Cost</span>
-      <span class="stat-value">3</span>
+  <h2 class="card-name">Заморозка бюджета</h2>
+  <div class="stat-row">
+    <div class="chip">
+      <span class="chip-label">SLO</span>
+      <span class="chip-value">—</span>
     </div>
-    <div class="stat">
-      <span class="stat-label">SLO</span>
-      <span class="stat-value">—</span>
-    </div>
-    <div class="stat">
-      <span class="stat-label">Repair</span>
-      <span class="stat-value">Cannot be repaired; Incident clears automatically after skip</span>
+    <div class="chip">
+      <span class="chip-label">Ремонт</span>
+      <span class="chip-value">Не ремонтируется; инцидент снимается после пропуска</span>
     </div>
   </div>
   <div class="card-body">
     
-    <p>Target skips their next Plan phase and loses 2 Resources.</p>
+    <p>Цель пропускает следующую фазу Планирования и теряет 2 ресурса.</p>
   </div>
   <div class="card-footer">
-    <div class="meta">
-      <span>Copy 3/3</span>
-      <span>Kube Cluster Clash</span>
-    </div>
+      <span>Копия 3/3</span>
+      <span>Kubernetes Cluster Clash</span>
   </div>
 </div>
 
 
-<div class="card card-type-attack">
-  <div class="card-header">
-    <span class="tag">Attack</span>
-    <span class="card-name">Compliance Audit</span>
+<div class="card card-type-атака">
+  <div class="card-top">
+    <span class="tag">Атака</span>
+    <span class="cost-badge">⚙ 2</span>
   </div>
-  <div class="stats">
-    <div class="stat">
-      <span class="stat-label">Cost</span>
-      <span class="stat-value">2</span>
+  <h2 class="card-name">Аудит соответствия</h2>
+  <div class="stat-row">
+    <div class="chip">
+      <span class="chip-label">SLO</span>
+      <span class="chip-value">—</span>
     </div>
-    <div class="stat">
-      <span class="stat-label">SLO</span>
-      <span class="stat-value">—</span>
-    </div>
-    <div class="stat">
-      <span class="stat-label">Repair</span>
-      <span class="stat-value">No repair required</span>
+    <div class="chip">
+      <span class="chip-label">Ремонт</span>
+      <span class="chip-value">Ремонт не требуется</span>
     </div>
   </div>
   <div class="card-body">
     
-    <p>Target must discard an Automation or reveal a hand without Attacks.</p>
+    <p>Цель должна сбросить карту Автоматизации или показать руку без Атак.</p>
   </div>
   <div class="card-footer">
-    <div class="meta">
-      <span>Copy 1/2</span>
-      <span>Kube Cluster Clash</span>
-    </div>
+      <span>Копия 1/2</span>
+      <span>Kubernetes Cluster Clash</span>
   </div>
 </div>
 
 
-<div class="card card-type-attack">
-  <div class="card-header">
-    <span class="tag">Attack</span>
-    <span class="card-name">Compliance Audit</span>
+<div class="card card-type-атака">
+  <div class="card-top">
+    <span class="tag">Атака</span>
+    <span class="cost-badge">⚙ 2</span>
   </div>
-  <div class="stats">
-    <div class="stat">
-      <span class="stat-label">Cost</span>
-      <span class="stat-value">2</span>
+  <h2 class="card-name">Аудит соответствия</h2>
+  <div class="stat-row">
+    <div class="chip">
+      <span class="chip-label">SLO</span>
+      <span class="chip-value">—</span>
     </div>
-    <div class="stat">
-      <span class="stat-label">SLO</span>
-      <span class="stat-value">—</span>
-    </div>
-    <div class="stat">
-      <span class="stat-label">Repair</span>
-      <span class="stat-value">No repair required</span>
+    <div class="chip">
+      <span class="chip-label">Ремонт</span>
+      <span class="chip-value">Ремонт не требуется</span>
     </div>
   </div>
   <div class="card-body">
     
-    <p>Target must discard an Automation or reveal a hand without Attacks.</p>
+    <p>Цель должна сбросить карту Автоматизации или показать руку без Атак.</p>
   </div>
   <div class="card-footer">
-    <div class="meta">
-      <span>Copy 2/2</span>
-      <span>Kube Cluster Clash</span>
-    </div>
+      <span>Копия 2/2</span>
+      <span>Kubernetes Cluster Clash</span>
   </div>
 </div>
 
 
-<div class="card card-type-attack">
-  <div class="card-header">
-    <span class="tag">Attack</span>
-    <span class="card-name">Zombie Pod Swarm</span>
+<div class="card card-type-атака">
+  <div class="card-top">
+    <span class="tag">Атака</span>
+    <span class="cost-badge">⚙ 4</span>
   </div>
-  <div class="stats">
-    <div class="stat">
-      <span class="stat-label">Cost</span>
-      <span class="stat-value">4</span>
+  <h2 class="card-name">Рой зомби-подов</h2>
+  <div class="stat-row">
+    <div class="chip">
+      <span class="chip-label">SLO</span>
+      <span class="chip-value">—</span>
     </div>
-    <div class="stat">
-      <span class="stat-label">SLO</span>
-      <span class="stat-value">—</span>
-    </div>
-    <div class="stat">
-      <span class="stat-label">Repair</span>
-      <span class="stat-value">Target pays 3 tokens to clear Incident</span>
+    <div class="chip">
+      <span class="chip-label">Ремонт</span>
+      <span class="chip-value">Цель платит 3 ресурса за снятие инцидента</span>
     </div>
   </div>
   <div class="card-body">
     
-    <p>Remove 1 Resilience and place an Incident on target Control Plane.</p>
+    <p>Цель теряет 1 устойчивость и получает инцидент на Контрольном плане.</p>
   </div>
   <div class="card-footer">
-    <div class="meta">
-      <span>Copy 1/3</span>
-      <span>Kube Cluster Clash</span>
-    </div>
+      <span>Копия 1/3</span>
+      <span>Kubernetes Cluster Clash</span>
   </div>
 </div>
 
 
-<div class="card card-type-attack">
-  <div class="card-header">
-    <span class="tag">Attack</span>
-    <span class="card-name">Zombie Pod Swarm</span>
+<div class="card card-type-атака">
+  <div class="card-top">
+    <span class="tag">Атака</span>
+    <span class="cost-badge">⚙ 4</span>
   </div>
-  <div class="stats">
-    <div class="stat">
-      <span class="stat-label">Cost</span>
-      <span class="stat-value">4</span>
+  <h2 class="card-name">Рой зомби-подов</h2>
+  <div class="stat-row">
+    <div class="chip">
+      <span class="chip-label">SLO</span>
+      <span class="chip-value">—</span>
     </div>
-    <div class="stat">
-      <span class="stat-label">SLO</span>
-      <span class="stat-value">—</span>
-    </div>
-    <div class="stat">
-      <span class="stat-label">Repair</span>
-      <span class="stat-value">Target pays 3 tokens to clear Incident</span>
+    <div class="chip">
+      <span class="chip-label">Ремонт</span>
+      <span class="chip-value">Цель платит 3 ресурса за снятие инцидента</span>
     </div>
   </div>
   <div class="card-body">
     
-    <p>Remove 1 Resilience and place an Incident on target Control Plane.</p>
+    <p>Цель теряет 1 устойчивость и получает инцидент на Контрольном плане.</p>
   </div>
   <div class="card-footer">
-    <div class="meta">
-      <span>Copy 2/3</span>
-      <span>Kube Cluster Clash</span>
-    </div>
+      <span>Копия 2/3</span>
+      <span>Kubernetes Cluster Clash</span>
   </div>
 </div>
 
 
-<div class="card card-type-attack">
-  <div class="card-header">
-    <span class="tag">Attack</span>
-    <span class="card-name">Zombie Pod Swarm</span>
+<div class="card card-type-атака">
+  <div class="card-top">
+    <span class="tag">Атака</span>
+    <span class="cost-badge">⚙ 4</span>
   </div>
-  <div class="stats">
-    <div class="stat">
-      <span class="stat-label">Cost</span>
-      <span class="stat-value">4</span>
+  <h2 class="card-name">Рой зомби-подов</h2>
+  <div class="stat-row">
+    <div class="chip">
+      <span class="chip-label">SLO</span>
+      <span class="chip-value">—</span>
     </div>
-    <div class="stat">
-      <span class="stat-label">SLO</span>
-      <span class="stat-value">—</span>
-    </div>
-    <div class="stat">
-      <span class="stat-label">Repair</span>
-      <span class="stat-value">Target pays 3 tokens to clear Incident</span>
+    <div class="chip">
+      <span class="chip-label">Ремонт</span>
+      <span class="chip-value">Цель платит 3 ресурса за снятие инцидента</span>
     </div>
   </div>
   <div class="card-body">
     
-    <p>Remove 1 Resilience and place an Incident on target Control Plane.</p>
+    <p>Цель теряет 1 устойчивость и получает инцидент на Контрольном плане.</p>
   </div>
   <div class="card-footer">
-    <div class="meta">
-      <span>Copy 3/3</span>
-      <span>Kube Cluster Clash</span>
-    </div>
+      <span>Копия 3/3</span>
+      <span>Kubernetes Cluster Clash</span>
   </div>
 </div>
 
 
-<div class="card card-type-response">
-  <div class="card-header">
-    <span class="tag">Response</span>
-    <span class="card-name">Incident Response Runbook</span>
+<div class="card card-type-ответ">
+  <div class="card-top">
+    <span class="tag">Ответ</span>
+    <span class="cost-badge">⚙ 1</span>
   </div>
-  <div class="stats">
-    <div class="stat">
-      <span class="stat-label">Cost</span>
-      <span class="stat-value">1</span>
+  <h2 class="card-name">Плейбук реагирования на инциденты</h2>
+  <div class="stat-row">
+    <div class="chip">
+      <span class="chip-label">SLO</span>
+      <span class="chip-value">—</span>
     </div>
-    <div class="stat">
-      <span class="stat-label">SLO</span>
-      <span class="stat-value">—</span>
-    </div>
-    <div class="stat">
-      <span class="stat-label">Repair</span>
-      <span class="stat-value">-</span>
+    <div class="chip">
+      <span class="chip-label">Ремонт</span>
+      <span class="chip-value">нацеленную на вас</span>
     </div>
   </div>
   <div class="card-body">
     
-    <p>Cancel an Attack that targets you and draw a card.</p>
+    <p>Отмените атаку</p>
   </div>
   <div class="card-footer">
-    <div class="meta">
-      <span>Copy 1/3</span>
-      <span>Kube Cluster Clash</span>
-    </div>
+      <span>Копия 1/3</span>
+      <span>Kubernetes Cluster Clash</span>
   </div>
 </div>
 
 
-<div class="card card-type-response">
-  <div class="card-header">
-    <span class="tag">Response</span>
-    <span class="card-name">Incident Response Runbook</span>
+<div class="card card-type-ответ">
+  <div class="card-top">
+    <span class="tag">Ответ</span>
+    <span class="cost-badge">⚙ 1</span>
   </div>
-  <div class="stats">
-    <div class="stat">
-      <span class="stat-label">Cost</span>
-      <span class="stat-value">1</span>
+  <h2 class="card-name">Плейбук реагирования на инциденты</h2>
+  <div class="stat-row">
+    <div class="chip">
+      <span class="chip-label">SLO</span>
+      <span class="chip-value">—</span>
     </div>
-    <div class="stat">
-      <span class="stat-label">SLO</span>
-      <span class="stat-value">—</span>
-    </div>
-    <div class="stat">
-      <span class="stat-label">Repair</span>
-      <span class="stat-value">-</span>
+    <div class="chip">
+      <span class="chip-label">Ремонт</span>
+      <span class="chip-value">нацеленную на вас</span>
     </div>
   </div>
   <div class="card-body">
     
-    <p>Cancel an Attack that targets you and draw a card.</p>
+    <p>Отмените атаку</p>
   </div>
   <div class="card-footer">
-    <div class="meta">
-      <span>Copy 2/3</span>
-      <span>Kube Cluster Clash</span>
-    </div>
+      <span>Копия 2/3</span>
+      <span>Kubernetes Cluster Clash</span>
   </div>
 </div>
 
 </section>
 <section class="sheet">
 
-<div class="card card-type-response">
-  <div class="card-header">
-    <span class="tag">Response</span>
-    <span class="card-name">Incident Response Runbook</span>
+<div class="card card-type-ответ">
+  <div class="card-top">
+    <span class="tag">Ответ</span>
+    <span class="cost-badge">⚙ 1</span>
   </div>
-  <div class="stats">
-    <div class="stat">
-      <span class="stat-label">Cost</span>
-      <span class="stat-value">1</span>
+  <h2 class="card-name">Плейбук реагирования на инциденты</h2>
+  <div class="stat-row">
+    <div class="chip">
+      <span class="chip-label">SLO</span>
+      <span class="chip-value">—</span>
     </div>
-    <div class="stat">
-      <span class="stat-label">SLO</span>
-      <span class="stat-value">—</span>
-    </div>
-    <div class="stat">
-      <span class="stat-label">Repair</span>
-      <span class="stat-value">-</span>
+    <div class="chip">
+      <span class="chip-label">Ремонт</span>
+      <span class="chip-value">нацеленную на вас</span>
     </div>
   </div>
   <div class="card-body">
     
-    <p>Cancel an Attack that targets you and draw a card.</p>
+    <p>Отмените атаку</p>
   </div>
   <div class="card-footer">
-    <div class="meta">
-      <span>Copy 3/3</span>
-      <span>Kube Cluster Clash</span>
-    </div>
+      <span>Копия 3/3</span>
+      <span>Kubernetes Cluster Clash</span>
   </div>
 </div>
 
 
-<div class="card card-type-response">
-  <div class="card-header">
-    <span class="tag">Response</span>
-    <span class="card-name">Chaos Engineering Drill</span>
+<div class="card card-type-ответ">
+  <div class="card-top">
+    <span class="tag">Ответ</span>
+    <span class="cost-badge">⚙ 2</span>
   </div>
-  <div class="stats">
-    <div class="stat">
-      <span class="stat-label">Cost</span>
-      <span class="stat-value">2</span>
+  <h2 class="card-name">Учения по Chaos Engineering</h2>
+  <div class="stat-row">
+    <div class="chip">
+      <span class="chip-label">SLO</span>
+      <span class="chip-value">—</span>
     </div>
-    <div class="stat">
-      <span class="stat-label">SLO</span>
-      <span class="stat-value">—</span>
-    </div>
-    <div class="stat">
-      <span class="stat-label">Repair</span>
-      <span class="stat-value">-</span>
+    <div class="chip">
+      <span class="chip-label">Ремонт</span>
+      <span class="chip-value">-</span>
     </div>
   </div>
   <div class="card-body">
     
-    <p>Remove up to 2 Incidents from your cards.</p>
+    <p>Удалите до 2 инцидентов со своих карт.</p>
   </div>
   <div class="card-footer">
-    <div class="meta">
-      <span>Copy 1/3</span>
-      <span>Kube Cluster Clash</span>
-    </div>
+      <span>Копия 1/3</span>
+      <span>Kubernetes Cluster Clash</span>
   </div>
 </div>
 
 
-<div class="card card-type-response">
-  <div class="card-header">
-    <span class="tag">Response</span>
-    <span class="card-name">Chaos Engineering Drill</span>
+<div class="card card-type-ответ">
+  <div class="card-top">
+    <span class="tag">Ответ</span>
+    <span class="cost-badge">⚙ 2</span>
   </div>
-  <div class="stats">
-    <div class="stat">
-      <span class="stat-label">Cost</span>
-      <span class="stat-value">2</span>
+  <h2 class="card-name">Учения по Chaos Engineering</h2>
+  <div class="stat-row">
+    <div class="chip">
+      <span class="chip-label">SLO</span>
+      <span class="chip-value">—</span>
     </div>
-    <div class="stat">
-      <span class="stat-label">SLO</span>
-      <span class="stat-value">—</span>
-    </div>
-    <div class="stat">
-      <span class="stat-label">Repair</span>
-      <span class="stat-value">-</span>
+    <div class="chip">
+      <span class="chip-label">Ремонт</span>
+      <span class="chip-value">-</span>
     </div>
   </div>
   <div class="card-body">
     
-    <p>Remove up to 2 Incidents from your cards.</p>
+    <p>Удалите до 2 инцидентов со своих карт.</p>
   </div>
   <div class="card-footer">
-    <div class="meta">
-      <span>Copy 2/3</span>
-      <span>Kube Cluster Clash</span>
-    </div>
+      <span>Копия 2/3</span>
+      <span>Kubernetes Cluster Clash</span>
   </div>
 </div>
 
 
-<div class="card card-type-response">
-  <div class="card-header">
-    <span class="tag">Response</span>
-    <span class="card-name">Chaos Engineering Drill</span>
+<div class="card card-type-ответ">
+  <div class="card-top">
+    <span class="tag">Ответ</span>
+    <span class="cost-badge">⚙ 2</span>
   </div>
-  <div class="stats">
-    <div class="stat">
-      <span class="stat-label">Cost</span>
-      <span class="stat-value">2</span>
+  <h2 class="card-name">Учения по Chaos Engineering</h2>
+  <div class="stat-row">
+    <div class="chip">
+      <span class="chip-label">SLO</span>
+      <span class="chip-value">—</span>
     </div>
-    <div class="stat">
-      <span class="stat-label">SLO</span>
-      <span class="stat-value">—</span>
-    </div>
-    <div class="stat">
-      <span class="stat-label">Repair</span>
-      <span class="stat-value">-</span>
+    <div class="chip">
+      <span class="chip-label">Ремонт</span>
+      <span class="chip-value">-</span>
     </div>
   </div>
   <div class="card-body">
     
-    <p>Remove up to 2 Incidents from your cards.</p>
+    <p>Удалите до 2 инцидентов со своих карт.</p>
   </div>
   <div class="card-footer">
-    <div class="meta">
-      <span>Copy 3/3</span>
-      <span>Kube Cluster Clash</span>
-    </div>
+      <span>Копия 3/3</span>
+      <span>Kubernetes Cluster Clash</span>
   </div>
 </div>
 
 
-<div class="card card-type-response">
-  <div class="card-header">
-    <span class="tag">Response</span>
-    <span class="card-name">Hotfix Brigade</span>
+<div class="card card-type-ответ">
+  <div class="card-top">
+    <span class="tag">Ответ</span>
+    <span class="cost-badge">⚙ 2</span>
   </div>
-  <div class="stats">
-    <div class="stat">
-      <span class="stat-label">Cost</span>
-      <span class="stat-value">2</span>
+  <h2 class="card-name">Горячая бригада</h2>
+  <div class="stat-row">
+    <div class="chip">
+      <span class="chip-label">SLO</span>
+      <span class="chip-value">—</span>
     </div>
-    <div class="stat">
-      <span class="stat-label">SLO</span>
-      <span class="stat-value">—</span>
-    </div>
-    <div class="stat">
-      <span class="stat-label">Repair</span>
-      <span class="stat-value">-</span>
+    <div class="chip">
+      <span class="chip-label">Ремонт</span>
+      <span class="chip-value">-</span>
     </div>
   </div>
   <div class="card-body">
     
-    <p>Restore 2 Resilience.</p>
+    <p>Восстановите 2 единицы устойчивости.</p>
   </div>
   <div class="card-footer">
-    <div class="meta">
-      <span>Copy 1/3</span>
-      <span>Kube Cluster Clash</span>
-    </div>
+      <span>Копия 1/3</span>
+      <span>Kubernetes Cluster Clash</span>
   </div>
 </div>
 
 
-<div class="card card-type-response">
-  <div class="card-header">
-    <span class="tag">Response</span>
-    <span class="card-name">Hotfix Brigade</span>
+<div class="card card-type-ответ">
+  <div class="card-top">
+    <span class="tag">Ответ</span>
+    <span class="cost-badge">⚙ 2</span>
   </div>
-  <div class="stats">
-    <div class="stat">
-      <span class="stat-label">Cost</span>
-      <span class="stat-value">2</span>
+  <h2 class="card-name">Горячая бригада</h2>
+  <div class="stat-row">
+    <div class="chip">
+      <span class="chip-label">SLO</span>
+      <span class="chip-value">—</span>
     </div>
-    <div class="stat">
-      <span class="stat-label">SLO</span>
-      <span class="stat-value">—</span>
-    </div>
-    <div class="stat">
-      <span class="stat-label">Repair</span>
-      <span class="stat-value">-</span>
+    <div class="chip">
+      <span class="chip-label">Ремонт</span>
+      <span class="chip-value">-</span>
     </div>
   </div>
   <div class="card-body">
     
-    <p>Restore 2 Resilience.</p>
+    <p>Восстановите 2 единицы устойчивости.</p>
   </div>
   <div class="card-footer">
-    <div class="meta">
-      <span>Copy 2/3</span>
-      <span>Kube Cluster Clash</span>
-    </div>
+      <span>Копия 2/3</span>
+      <span>Kubernetes Cluster Clash</span>
   </div>
 </div>
 
 
-<div class="card card-type-response">
-  <div class="card-header">
-    <span class="tag">Response</span>
-    <span class="card-name">Hotfix Brigade</span>
+<div class="card card-type-ответ">
+  <div class="card-top">
+    <span class="tag">Ответ</span>
+    <span class="cost-badge">⚙ 2</span>
   </div>
-  <div class="stats">
-    <div class="stat">
-      <span class="stat-label">Cost</span>
-      <span class="stat-value">2</span>
+  <h2 class="card-name">Горячая бригада</h2>
+  <div class="stat-row">
+    <div class="chip">
+      <span class="chip-label">SLO</span>
+      <span class="chip-value">—</span>
     </div>
-    <div class="stat">
-      <span class="stat-label">SLO</span>
-      <span class="stat-value">—</span>
-    </div>
-    <div class="stat">
-      <span class="stat-label">Repair</span>
-      <span class="stat-value">-</span>
+    <div class="chip">
+      <span class="chip-label">Ремонт</span>
+      <span class="chip-value">-</span>
     </div>
   </div>
   <div class="card-body">
     
-    <p>Restore 2 Resilience.</p>
+    <p>Восстановите 2 единицы устойчивости.</p>
   </div>
   <div class="card-footer">
-    <div class="meta">
-      <span>Copy 3/3</span>
-      <span>Kube Cluster Clash</span>
-    </div>
+      <span>Копия 3/3</span>
+      <span>Kubernetes Cluster Clash</span>
   </div>
 </div>
 
 
-<div class="card card-type-response">
-  <div class="card-header">
-    <span class="tag">Response</span>
-    <span class="card-name">Blue-Green Rollout</span>
+<div class="card card-type-ответ">
+  <div class="card-top">
+    <span class="tag">Ответ</span>
+    <span class="cost-badge">⚙ 3</span>
   </div>
-  <div class="stats">
-    <div class="stat">
-      <span class="stat-label">Cost</span>
-      <span class="stat-value">3</span>
+  <h2 class="card-name">Blue-Green релиз</h2>
+  <div class="stat-row">
+    <div class="chip">
+      <span class="chip-label">SLO</span>
+      <span class="chip-value">—</span>
     </div>
-    <div class="stat">
-      <span class="stat-label">SLO</span>
-      <span class="stat-value">—</span>
-    </div>
-    <div class="stat">
-      <span class="stat-label">Repair</span>
-      <span class="stat-value">-</span>
+    <div class="chip">
+      <span class="chip-label">Ремонт</span>
+      <span class="chip-value">-</span>
     </div>
   </div>
   <div class="card-body">
     
-    <p>Play a Workload from your discard pile for free; it gains 1 Incident.</p>
+    <p>Разыграйте Нагрузку из сброса бесплатно; она получает 1 инцидент.</p>
   </div>
   <div class="card-footer">
-    <div class="meta">
-      <span>Copy 1/2</span>
-      <span>Kube Cluster Clash</span>
-    </div>
+      <span>Копия 1/2</span>
+      <span>Kubernetes Cluster Clash</span>
   </div>
 </div>
 
 
-<div class="card card-type-response">
-  <div class="card-header">
-    <span class="tag">Response</span>
-    <span class="card-name">Blue-Green Rollout</span>
+<div class="card card-type-ответ">
+  <div class="card-top">
+    <span class="tag">Ответ</span>
+    <span class="cost-badge">⚙ 3</span>
   </div>
-  <div class="stats">
-    <div class="stat">
-      <span class="stat-label">Cost</span>
-      <span class="stat-value">3</span>
+  <h2 class="card-name">Blue-Green релиз</h2>
+  <div class="stat-row">
+    <div class="chip">
+      <span class="chip-label">SLO</span>
+      <span class="chip-value">—</span>
     </div>
-    <div class="stat">
-      <span class="stat-label">SLO</span>
-      <span class="stat-value">—</span>
-    </div>
-    <div class="stat">
-      <span class="stat-label">Repair</span>
-      <span class="stat-value">-</span>
+    <div class="chip">
+      <span class="chip-label">Ремонт</span>
+      <span class="chip-value">-</span>
     </div>
   </div>
   <div class="card-body">
     
-    <p>Play a Workload from your discard pile for free; it gains 1 Incident.</p>
+    <p>Разыграйте Нагрузку из сброса бесплатно; она получает 1 инцидент.</p>
   </div>
   <div class="card-footer">
-    <div class="meta">
-      <span>Copy 2/2</span>
-      <span>Kube Cluster Clash</span>
-    </div>
+      <span>Копия 2/2</span>
+      <span>Kubernetes Cluster Clash</span>
   </div>
 </div>
 
