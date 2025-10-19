@@ -21,10 +21,9 @@ services:
     build:
       context: ./frontend
       dockerfile: Dockerfile
-    command: sh -c "pnpm install && pnpm dev --host"
+    command: pnpm dev --host
     volumes:
       - ./frontend:/app
-      - node_modules:/app/node_modules
     ports:
       - "5173:5173"
     depends_on:
@@ -48,4 +47,3 @@ services:
 
 volumes:
   pgdata:
-  node_modules:
