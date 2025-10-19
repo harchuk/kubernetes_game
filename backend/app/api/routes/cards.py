@@ -31,8 +31,9 @@ def _load_junior_cards() -> list[dict]:
     with JUNIOR_CSV_PATH.open("r", encoding="utf-8") as handle:
         reader = csv.DictReader(handle)
         cards: list[dict] = []
-        for row in reader:
+        for idx, row in enumerate(reader):
             cards.append({
+                "id": f"junior_{idx}",
                 "name": row.get("name"),
                 "type": row.get("type"),
                 "stars": int(row.get("stars") or 0),
