@@ -15,8 +15,8 @@ ROOT = Path(__file__).resolve().parent.parent
 CARDS_DATA = ROOT / "cards" / "data" / "cards_en.json"
 
 BASE_HAND_SIZE = 5
-REFRESH_GAIN = 2
-WIN_SLO_THRESHOLD = 12
+REFRESH_GAIN = 3
+WIN_SLO_THRESHOLD = 10
 MAX_RESILIENCE = 6
 
 STRATEGY_ORDER = {
@@ -146,7 +146,7 @@ class PlayerState:
         return max(self.nodes, 0)
 
     def can_play_workload(self) -> bool:
-        return self.control_planes > 0 and self.nodes >= 2 and self.workloads < self.capacity()
+        return self.control_planes > 0 and self.nodes >= 1 and self.workloads < self.capacity()
 
     def apply_incident(self, amount: int = 1) -> None:
         self.incidents += amount
