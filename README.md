@@ -16,4 +16,4 @@ Kubernetes Cluster Clash — соревновательная настольна
 
 ## Генерация карточек
 
-Выполните `./tools/generate_card_sheets.py`, чтобы создать файл `cards/cards_print.html`, затем распечатайте его в PDF из браузера со 100% масштабом.
+Выполните `./tools/generate_card_sheets.py`, чтобы создать файлы `cards/cards_print.html` (фронты) и `cards/cards_back.html` (задники). Экспортируйте их в PDF с масштабом 100%, затем печатайте двойной стороной с переворотом по короткому краю.
