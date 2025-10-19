@@ -5,7 +5,7 @@ from enum import Enum
 from typing import Optional
 from uuid import UUID, uuid4
 
-from sqlalchemy import Column, UniqueConstraint
+from sqlalchemy import Column, UniqueConstraint, event
 from sqlalchemy.dialects.postgresql import JSONB
 from sqlmodel import Field, Relationship, SQLModel
 
@@ -61,6 +61,7 @@ class RoomMember(SQLModel, table=True):
     id: UUID = Field(default_factory=uuid4, primary_key=True)
     user_id: UUID = Field(foreign_key="users.id", nullable=False)
     room_id: UUID = Field(foreign_key="rooms.id", nullable=False)
+    alias: str = Field(default="Player", max_length=32)
     joined_at: datetime = Field(default_factory=datetime.utcnow, nullable=False)
 
     user: Optional[User] = Relationship(back_populates="rooms")
@@ -76,6 +77,7 @@ class GameSession(TimestampMixin, SQLModel, table=True):
     status: SessionStatus = Field(default=SessionStatus.PENDING)
     started_at: datetime = Field(default_factory=datetime.utcnow)
     ended_at: Optional[datetime] = None
+    players_snapshot: dict = Field(sa_column=Column(JSONB), default_factory=dict)
 
     room: Optional[GameRoom] = Relationship(back_populates="sessions")
     turns: list["TurnLog"] = Relationship(back_populates="session")
@@ -92,3 +94,12 @@ class TurnLog(SQLModel, table=True):
     created_at: datetime = Field(default_factory=datetime.utcnow, nullable=False)
 
     session: Optional[GameSession] = Relationship(back_populates="turns")
+
+
+def _set_updated_at(mapper, connection, target) -> None:  # type: ignore[no-untyped-def]
+    if isinstance(target, TimestampMixin):
+        target.updated_at = datetime.utcnow()
+
+
+for model in (User, GameRoom, GameSession):
+    event.listen(model, "before_update", _set_updated_at)

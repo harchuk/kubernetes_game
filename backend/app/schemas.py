@@ -44,6 +44,7 @@ class RoomSummary(BaseModel):
 class RoomMemberRead(BaseModel):
     user_id: UUID
     display_name: str
+    alias: str
     joined_at: datetime
     model_config = ConfigDict(from_attributes=True)
 
@@ -79,7 +80,6 @@ class GameSessionRead(BaseModel):
 
 
 class TurnLogCreate(BaseModel):
-    turn_number: int
     actor_id: UUID
     payload: dict
 

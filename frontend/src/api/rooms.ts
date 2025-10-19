@@ -11,6 +11,7 @@ export interface RoomDetails {
   members: Array<{
     user_id: string;
     display_name: string;
+    alias: string;
     joined_at: string;
   }>;
 }

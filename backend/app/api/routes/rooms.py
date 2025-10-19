@@ -1,5 +1,6 @@
 from __future__ import annotations
 
+from datetime import datetime
 from uuid import UUID
 
 from fastapi import APIRouter, Depends, HTTPException, Query, status
@@ -19,6 +20,7 @@ from app.schemas import (
     TurnLogCreate,
     TurnLogRead,
 )
+from app.services.gameplay import append_turn, get_or_create_active_session, get_recent_turns
 
 router = APIRouter(prefix="/rooms", tags=["rooms"])
 
@@ -70,7 +72,7 @@ async def create_room(payload: RoomCreate, session: AsyncSession = Depends(get_s
     session.add(room)
     await session.flush()
 
-    membership = RoomMember(user_id=payload.owner_id, room_id=room.id)
+    membership = RoomMember(user_id=payload.owner_id, room_id=room.id, alias="Player 1")
     session.add(membership)
     await session.commit()
     await session.refresh(room)
@@ -108,7 +110,17 @@ async def join_room(
     existing_stmt = select(RoomMember).where(RoomMember.room_id == room_id, RoomMember.user_id == payload.user_id)
     existing = (await session.execute(existing_stmt)).scalar_one_or_none()
     if not existing:
-        session.add(RoomMember(user_id=payload.user_id, room_id=room_id))
+        alias_stmt = select(RoomMember.alias).where(RoomMember.room_id == room_id)
+        aliases = [row[0] for row in (await session.execute(alias_stmt)).all()]
+        next_number = 1
+        for alias in aliases:
+            if alias.startswith("Player "):
+                try:
+                    number = int(alias.split(" ")[1])
+                    next_number = max(next_number, number + 1)
+                except (IndexError, ValueError):
+                    continue
+        session.add(RoomMember(user_id=payload.user_id, room_id=room_id, alias=f"Player {next_number}"))
     await session.commit()
 
     refreshed = await session.get(GameRoom, room_id)
@@ -134,7 +146,25 @@ async def start_session(
     if active:
         raise HTTPException(status_code=409, detail="Session already active")
 
-    game_session = GameSession(room_id=room_id, mode=mode, status=SessionStatus.ACTIVE)
+    member_stmt = select(RoomMember).where(RoomMember.room_id == room_id).order_by(RoomMember.joined_at)
+    members = (await session.execute(member_stmt)).scalars().all()
+    snapshot = {
+        "players": [
+            {
+                "user_id": str(member.user_id),
+                "alias": member.alias,
+                "joined_at": member.joined_at.isoformat(),
+            }
+            for member in members
+        ],
+    }
+
+    game_session = GameSession(
+        room_id=room_id,
+        mode=mode,
+        status=SessionStatus.ACTIVE,
+        players_snapshot=snapshot,
+    )
     session.add(game_session)
     await session.commit()
     await session.refresh(game_session)
@@ -162,16 +192,26 @@ async def add_turn(
     if not session_exists or session_exists.room_id != room_id:
         raise HTTPException(status_code=404, detail="Session not found")
 
-    turn = TurnLog(
-        session_id=session_id,
-        turn_number=payload.turn_number,
-        actor_id=payload.actor_id,
-        payload=payload.payload,
-    )
-    db.add(turn)
-    await db.commit()
-    await db.refresh(turn)
+    turn = await append_turn(db, session_id=session_id, actor_id=payload.actor_id, payload=payload.payload)
     return TurnLogRead.model_validate(turn)
+
+
+@router.post("/{room_id}/sessions/{session_id}/complete", response_model=GameSessionRead)
+async def complete_session_endpoint(
+    room_id: UUID,
+    session_id: UUID,
+    db: AsyncSession = Depends(get_session),
+) -> GameSessionRead:
+    statement = select(GameSession).where(GameSession.id == session_id, GameSession.room_id == room_id)
+    result = await db.execute(statement)
+    game_session = result.scalar_one_or_none()
+    if not game_session:
+        raise HTTPException(status_code=404, detail="Session not found")
+    game_session.status = SessionStatus.COMPLETED
+    game_session.ended_at = datetime.utcnow()
+    await db.commit()
+    await db.refresh(game_session)
+    return GameSessionRead.model_validate(game_session)
 
 
 async def _room_to_schema(room: GameRoom, session: AsyncSession) -> RoomRead:
@@ -183,7 +223,12 @@ async def _room_to_schema(room: GameRoom, session: AsyncSession) -> RoomRead:
     )
     result = await session.execute(join_stmt)
     members = [
-        RoomMemberRead(user_id=member.user_id, display_name=display_name, joined_at=member.joined_at)
+        RoomMemberRead(
+            user_id=member.user_id,
+            display_name=display_name,
+            alias=member.alias,
+            joined_at=member.joined_at,
+        )
         for member, display_name in result.all()
     ]
 
