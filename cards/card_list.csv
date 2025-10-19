@@ -1,0 +1,30 @@
+name,type,cost,slo,quantity,prerequisite,effect,repair_cost
+Standard Node,Node,2,0,7,,Gain +2 Resilience max; provides capacity for one Workload.,1 token to clear Incident
+GPU Accelerator Node,Node,4,0,3,Requires Control Plane,Gives +1 SLO to any Workload it hosts; draw a card when played.,2 tokens to clear Incident
+Spot Node,Node,1,0,4,,Provides 1 capacity; if hit by an Incident discard it instead of repairing.,Cannot be repaired
+Managed Control Plane,Control Plane,3,0,3,,Unlocks playing Workloads; draw 1 card on deploy.,2 tokens to clear Incident
+High-Availability Control Plane,Control Plane,5,0,2,Requires Control Plane,Your Resilience cannot drop below 1 while this is incident-free.,3 tokens to clear Incident
+Persistent Volume Stack,Storage,3,0,4,Requires Node,Each Stateful Workload you control gains +1 SLO.,2 tokens to clear Incident
+Service Mesh Gateway,Networking,3,0,3,,When you play a Workload, gain 1 Resource token.,2 tokens to clear Incident
+Edge Ingress Load Balancer,Networking,2,0,3,,Once per turn pay 1 Resource to draw a Commons Row card and discard it.,1 token to clear Incident
+Observability Stack,Automation,2,0,4,,At end of turn you may peek at top card of deck; you may keep or discard.,1 token to clear Incident
+GitOps Pipeline,Automation,3,0,3,Requires Control Plane,During Deploy you may play one additional card for 1 less Resource.,2 tokens to clear Incident
+Cluster Autoscaler,Automation,3,0,3,Requires Node,Gain +1 Resource during Refresh for each 2 Nodes you control.,2 tokens to clear Incident
+Disaster Recovery Plan,Upgrade,4,0,3,Requires Storage,If your Resilience would drop below 0, discard this instead and set Resilience to 2.,3 tokens to clear Incident
+Stateless API Service,Workload,2,2,5,Requires 2 Nodes,Provides +1 Resource during Refresh while incident-free.,2 tokens to clear Incident
+Event Processor Queue,Workload,3,2,3,Requires Networking,When deployed gain 2 Resource tokens.,2 tokens to clear Incident
+Stateful Database Cluster,Workload,4,3,3,Requires Storage,Add +1 SLO for each Persistent Volume Stack you control.,3 tokens to clear Incident
+Machine Learning Platform,Workload,5,4,2,Requires GPU Accelerator Node,Opponents pay +1 Resource to target you with Attacks.,3 tokens to clear Incident
+Batch ETL Pipeline,Workload,3,2,3,Requires Node,At end of turn you may discard 1 card to gain 2 Resources.,2 tokens to clear Incident
+Realtime Analytics Dashboard,Workload,4,3,2,Requires Networking,When deployed draw 2 cards; keep 1 and discard the other.,2 tokens to clear Incident
+Internal Tools Suite,Workload,2,1,3,Requires Control Plane,Gain +1 Resilience when deployed.,1 token to clear Incident
+DDoS Burst,Attack,3,0,4,,Place 2 Incidents across target Nodes; they lose Resources gained this turn.,Target pays 2 tokens per Incident
+Supply Chain Compromise,Attack,4,0,2,,Steal an Automation or Upgrade card; place 1 Incident on new card.,Target pays 3 tokens to clear Incident
+Rogue CronJob,Attack,2,0,2,,Place 1 Incident on a Workload; it provides no SLO until cleared.,Target pays 2 tokens to clear Incident
+Budget Freeze,Attack,3,0,3,,Target skips their next Plan phase and loses 2 Resources.,Cannot be repaired; Incident clears automatically after skip
+Compliance Audit,Attack,2,0,2,,Target must discard an Automation or reveal a hand without Attacks.,No repair required
+Zombie Pod Swarm,Attack,4,0,3,,Remove 1 Resilience and place an Incident on target Control Plane.,Target pays 3 tokens to clear Incident
+Incident Response Runbook,Response,1,0,3,,Cancel an Attack that targets you and draw a card.,-
+Chaos Engineering Drill,Response,2,0,3,,Remove up to 2 Incidents from your cards.,-
+Hotfix Brigade,Response,2,0,3,,Restore 2 Resilience.,-
+Blue-Green Rollout,Response,3,0,2,,Play a Workload from your discard pile for free; it gains 1 Incident.,-
