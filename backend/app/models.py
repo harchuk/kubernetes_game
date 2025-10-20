@@ -1,8 +1,6 @@
-from __future__ import annotations
-
 from datetime import datetime
 from enum import Enum
-from typing import Optional
+from typing import List, Optional
 from uuid import UUID, uuid4
 
 from sqlalchemy import Column, UniqueConstraint, event
@@ -34,7 +32,7 @@ class User(TimestampMixin, SQLModel, table=True):
     display_name: str = Field(index=True, max_length=64)
     avatar_url: Optional[str] = Field(default=None, max_length=255)
 
-    rooms: list["RoomMember"] = Relationship(back_populates="user", sa_relationship_kwargs={"cascade": "all, delete"})
+    rooms: List["RoomMember"] = Relationship(back_populates="user", sa_relationship_kwargs={"cascade": "all, delete"})
 
 
 class GameRoom(TimestampMixin, SQLModel, table=True):
@@ -48,8 +46,8 @@ class GameRoom(TimestampMixin, SQLModel, table=True):
     is_open: bool = Field(default=True)
 
     owner: Optional[User] = Relationship(sa_relationship_kwargs={"lazy": "selectin"})
-    members: list["RoomMember"] = Relationship(back_populates="room", sa_relationship_kwargs={"cascade": "all, delete"})
-    sessions: list["GameSession"] = Relationship(back_populates="room")
+    members: List["RoomMember"] = Relationship(back_populates="room", sa_relationship_kwargs={"cascade": "all, delete"})
+    sessions: List["GameSession"] = Relationship(back_populates="room")
 
 
 class RoomMember(SQLModel, table=True):
@@ -80,7 +78,7 @@ class GameSession(TimestampMixin, SQLModel, table=True):
     players_snapshot: dict = Field(sa_column=Column(JSONB), default_factory=dict)
 
     room: Optional[GameRoom] = Relationship(back_populates="sessions")
-    turns: list["TurnLog"] = Relationship(back_populates="session")
+    turns: List["TurnLog"] = Relationship(back_populates="session")
 
 
 class TurnLog(SQLModel, table=True):
